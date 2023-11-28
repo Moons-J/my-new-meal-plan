@@ -1,0 +1,82 @@
+.card-meal {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .meal-nutritionfacts{
+    margin: 0 11%;
+    padding: 5% 0;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p{
+      margin: 0;
+    }
+
+    .circle{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #717070;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .white-inner-circle{
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+    }
+    .circle-and-number-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .nutrition-data{
+        font-size: 1.0rem;
+      }
+    }
+  }
+
+  .meal-info {
+    padding: 16px;
+
+    p {
+      margin-top: 30px;
+    }
+  }
+
+  .edit-button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    right: 5%;
+  }
+}
