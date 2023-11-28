@@ -13,6 +13,7 @@ require 'csv'
 
 puts "Deleting old records..."
 
+BaseIngredient.destroy_all
 Ingredient.destroy_all
 Meal.destroy_all
 User.destroy_all
