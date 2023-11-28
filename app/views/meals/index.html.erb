@@ -1,0 +1,26 @@
+<div class="meal-cards-container">
+  <% @meals.each do |meal| %>
+    <%= render "meal_card", meal: meal %>
+  <% end %>
+</div>
+
+
+<div class="card-meal">
+  <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+  <div class="meal-info">
+    <h4>meal</h4>
+    <p>Please add your comment here. It will be usefull for you later one. And of course pls smile.</p>
+  </div>
+  <div class="meal-nutritionfacts">
+    <div class="circle">
+      <div class="white-inner-circle">
+        <p>10</p>
+      </div>
+    </div>
+    <p>10</p>
+    <p>10</p>
+    <p>10</p>
+    <p>10</p>
+  </div>
+  <%= link_to "Edit", "#", class: "edit-button" %>
+</div>
