@@ -1,6 +1,20 @@
-// Define variables for your color scheme
+// Buttons
+$light-red: #F26565;
+$green-buttons: #5FB300;
 
-// For example:
+// Icons, menu item's text
+$dark-gray: #3D3D3D;
+
+// Nutritions diagram colors
+$green-carbs: #5B8E7D;
+$green-calories: #8CB369;
+$red-protein: #BC4B51;
+$orange-satu: #F4A259;
+$yellow-fats: #F4E285;
+
+
+
+// Le Wagon's variables, don't change!
 $red: #FD1015;
 $blue: #0D6EFD;
 $yellow: #FFC65A;
@@ -8,12 +22,3 @@ $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
-
-// https://coolors.co/palette/dad7cd-a3b18a-588157-3a5a40-344e41
-
-$background: white;
-$green1: #BCDDA6;
-$green2: #448000;
-$green3: #5FB300;
-$green4: #004D3D;
-$green5: #1D201D;
