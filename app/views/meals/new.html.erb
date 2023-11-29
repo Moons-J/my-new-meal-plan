@@ -1,39 +1,41 @@
 <div class="justify-content-center">
   <%= simple_form_for(@meal) do |f| %>
-    <%= f.input :name, class: "standard-input" %>
-    <%= f.input :photo, as: :file %>
-    <p>Meal's nutrition</p>
-    <div class="meal-nutritionfacts">
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
+    <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
+    <div class="text-center">
+      <h4 class="text-center">Meal's nutrition</h4>
+      <div class="meal-nutritionfacts border-0">
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data"><%= @meal.calculate_nutrition("calories") %></p>
         </div>
-        <p class="nutrition-data"><%= @meal.calculate_nutrition("calories") %></p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data"><%= @meal.calculate_nutrition("fats") %></p>
         </div>
-        <p class="nutrition-data"><%= @meal.calculate_nutrition("fats") %></p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data"><%= @meal.calculate_nutrition("satu-fats") %></p>
         </div>
-        <p class="nutrition-data"><%= @meal.calculate_nutrition("satu-fats") %></p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data"><%= @meal.calculate_nutrition("carbs") %></p>
         </div>
-        <p class="nutrition-data"><%= @meal.calculate_nutrition("carbs") %></p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data"><%= @meal.calculate_nutrition("protein") %></p>
         </div>
-        <p class="nutrition-data"><%= @meal.calculate_nutrition("protein") %></p>
       </div>
+      <%= f.input :photo, as: :file, label: "Add a picture" %>
     </div>
     <%# Ingredients list %>
     <% current_user.ingredients.each do |user_ingredient| %>
