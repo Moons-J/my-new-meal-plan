@@ -1,0 +1,9 @@
+<%= simple_form_for(@ingredient) do |f| %>
+  <%= f.input :name, label: "Ingredient name", input_html: {class: "standard-input"} %>
+  <%= f.input :calories, label: "Calories (kCal)", input_html: {class: "standard-input"} %>
+  <%= f.input :fats, label: "Fats (g/100g)", input_html: {class: "standard-input"} %>
+  <%= f.input :satu_fats, label: "Saturated Fats (g/100g)", input_html: {class: "standard-input"} %>
+  <%= f.input :carbs, label: "Carbohydrates (g/100g)", input_html: {class: "standard-input"} %>
+  <%= f.input :protein, label: "Proteins (g/100g)", input_html: {class: "standard-input"} %>
+  <%= f.submit 'Add', class: "button-standard" %>
+<% end %>

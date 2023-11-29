@@ -1,0 +1,9 @@
+<div data-search-element-target="list">
+  <% if ingredients.any? %>
+    <% ingredients.each do |ingredient| %>
+      <%= render "ingredient_card", ingredient: ingredient %>
+    <% end %>
+  <% else %>
+    <em>Sorry, no ingredients found.</em>
+  <% end %>
+</div>
