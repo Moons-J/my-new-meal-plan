@@ -3,9 +3,10 @@ class IngredientsController < ApplicationController
 
   def index
     user_ingredients = Ingredient.where(user: current_user)
+    @query = params[:query]
     @ingredients = user_ingredients
-    if params[:query].present?
-      @ingredients = user_ingredients.search_by_name(params[:query])
+    if @query.present?
+      @ingredients = user_ingredients.search_by_name(@query)
     end
   end
 
