@@ -1,4 +1,4 @@
-<div class="card-meal">
+<div class="card-meal standard-card">
   <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <div class="meal-info">
     <h4><%= meal.name %></h4>
@@ -36,5 +36,5 @@
       <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
     </div>
   </div>
-  <%= link_to "Edit", "#", class: "edit-button" %>
+  <%= link_to "Edit", "#", class: "edit-button button-standard" %>
 </div>

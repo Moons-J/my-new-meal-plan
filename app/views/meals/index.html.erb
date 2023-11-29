@@ -1,3 +1,10 @@
+<div>
+  <% if @query %>
+    <p>Searched for <strong><%= @query %></strong>, found <%= @meals.count %> meals</p>
+  <% else %>
+    <p>All <%= @meals.count %> meals</p>
+  <% end %>
+</div>
 <div class="meal-cards-container">
   <% @meals.each do |meal| %>
     <%= render "meal_card", meal: meal %>
