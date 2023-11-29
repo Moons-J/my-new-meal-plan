@@ -9,7 +9,7 @@
   }
 
   .meal-nutritionfacts{
-    margin: 0 11%;
+    margin: 0 8%;
     padding: 5% 0;
     border-top: 1px solid black;
     display: flex;
@@ -47,23 +47,25 @@
       align-items: center;
 
       .nutrition-data{
-        font-size: 1.0rem;
+        font-size: 14px;
       }
     }
   }
 
   .meal-info {
-    padding: 16px;
+    padding: 19px 19px 0px 19px;
 
     p {
+      font-size: 14px;
       margin-top: 16px;
+      opacity: 0.8;
     }
   }
 
   .edit-button {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
-    right: 5%;
+    top: 200px;
+    right: -5%;
   }
 }

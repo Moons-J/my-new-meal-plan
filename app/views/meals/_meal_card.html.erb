@@ -1,7 +1,7 @@
-<div class="card-meal">
+<div class="card-meal standard-card">
   <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <div class="meal-info">
-    <h4><%= meal.name %></h4>
+    <h5><%= meal.name %></h5>
     <p><%= meal.comment %></p>
   </div>
   <div class="meal-nutritionfacts">
@@ -9,32 +9,32 @@
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">9999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("calories") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("fats") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("satu-fats") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("carbs") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
     </div>
   </div>
-  <%= link_to "Edit", "#", class: "edit-button" %>
+  <%= link_to "Edit", "#", class: "edit-button button-standard" %>
 </div>
