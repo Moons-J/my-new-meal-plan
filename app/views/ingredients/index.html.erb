@@ -1,30 +1,28 @@
 <h1 class="text-center">Ingredients</h1>
 
-<%# Search form %>
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: ingredients_path, method: :get, class: "search-form d-flex justify-content-between" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "standard-input border-0 flex-grow-1",
-            placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "button-standard border-0" %>
-    <% end %>
+<div data-controller="search-element">
+  <%# Search form %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: ingredients_path, method: :get, class: "search-form d-flex justify-content-between", data: {
+        search_element_target: "form",
+        action: "keyup->search-element#update"
+      } do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "standard-input border-0 flex-grow-1",
+              data: { search_element_target: "input" },
+              placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "button-standard border-0" %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="d-flex">
-  <%= link_to "Add", new_ingredient_path, class: "button-standard" %>
-</div>
+  <div class="d-flex">
+    <%= link_to "Add", new_ingredient_path, class: "button-standard" %>
+  </div>
 
-<%# Ingredients list %>
-<div data-controller="ingredient-list">
-  <% if @ingredients.any? %>
-    <% @ingredients.each do |ingredient| %>
-      <%= render "ingredient_card", ingredient: ingredient %>
-    <% end %>
-  <% else %>
-    <em>Sorry, no ingredients found.</em>
-  <% end %>
+  <%# Ingredients list %>
+  <%= render "ingredients_list", ingredients: @ingredients %>
 </div>
