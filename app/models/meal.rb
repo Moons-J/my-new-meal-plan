@@ -4,6 +4,8 @@ class Meal < ApplicationRecord
   has_many :daily_plan_meals
   has_many :ingredients, through: :meal_ingredients
 
+  accepts_nested_attributes_for :meal_ingredients
+
   def calculate_nutrition(what_nutrition)
     number = 0
     self.ingredients.each do |ingredient|

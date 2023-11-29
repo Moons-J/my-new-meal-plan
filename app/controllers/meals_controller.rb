@@ -10,15 +10,22 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
+    @meal.meal_ingredients.new
   end
 
-  # def create
-  #   @meal = Meal.new
-  # end
+  def create
+    @meal = Meal.new(meal_ingredients_params)
+    @meal.user = current_user
+    if @meal.save
+      redirect_to meals_path
+    else
+      render :new, status: unprocessable_entity
+    end
+  end
 
   # private
 
-  # def meal_params
-  #   params.require(:meal).permit()
-  # end
+  def meal_ingredients_params
+    params.require(:meal).permit(:name,meal_ingredients_attributes: [:amount, :ingredient_id])
+  end
 end
