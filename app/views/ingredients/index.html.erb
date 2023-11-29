@@ -22,15 +22,15 @@
 <div data-controller="ingredient-list">
   <% if @ingredients.any? %>
     <% @ingredients.each do |ingredient| %>
-    <div class="ingredient-card standard-card d-flex justify-content-between align-items-center  p-3 my-3">
-      <h2 class="mb-0"><%= ingredient.name %></h2>
-      <%= link_to edit_ingredient_path(ingredient) do %>
-        <i class="fa-regular fa-pen-to-square"></i>
-      <% end %>
-      <%= link_to ingredients_path(ingredient), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-        <i class="fa-solid fa-trash"></i>
-      <% end %>
-    </div>
+      <div class="ingredient-card standard-card d-flex align-items-center  p-3 my-3">
+        <div class="flex-grow-1"><h2 class="mb-0"><%= ingredient.name %></h2></div>
+        <div class="mx-2"><%= link_to edit_ingredient_path(ingredient) do %>
+          <i class="fa-regular fa-pen-to-square"></i>
+        <% end %></div>
+        <div class="mx-2"><%= link_to ingredient_path(ingredient), data: {turbo_method: :delete} do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %></div>
+      </div>
     <% end %>
   <% else %>
     <em>Sorry, no ingredients found.</em>
