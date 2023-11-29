@@ -2,5 +2,39 @@
   background: white;
   border-radius: 6px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 16px;
   position: relative;
 }
+.plan {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+
+
+  img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+  }
+
+  .button-standard {
+    max-width: 61px;
+    margin-bottom: 8px;
+  }
+
+  h6 {
+    align-self: center;
+    text-align: left;
+    max-width: 310px;
+    max-height: 100px;
+    margin-bottom: 0px;
+    text-decoration: none;
+    color: black;
+  }
+}
+// .plan-button-position {
+//   position: absolute;
+//   transform: translate(-50%, -50%);
+//   top: 91px;
+//   left: 264px;
+// }
