@@ -1,7 +1,8 @@
-<div class="card-meal standard-card">
+<div class="card-meal standard-card" data-swipe-delete-target="meal">
   <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <div class="meal-info">
     <h5><%= meal.name %></h5>
+    <p><%= link_to("Delete", meal_path(meal), data: {turbo_method: :delete}) %></p>
     <p><%= meal.comment %></p>
   </div>
   <div class="meal-nutritionfacts">
