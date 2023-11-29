@@ -12,16 +12,35 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <body>
+    <%= render "shared/flashes" %>
 
-<%= render "shared/flashes" %>
+    <nav>
+      <div>
+        <h6>
+          <% if user_signed_in? %>
+            <h6><%= current_user.first_name %></h6>
+          <% end %>
+        </h6>
+        <p><%= Time.new.strftime("%b %d, %Y") %><p>
+      </div>
+      <div>
+        <h1>Navbar</h1>
+      </div>
+      <div>
+        <%# button actions %>
+      </div>
+    </nav>
+
     <div class="basic-container">
       <%= yield %>
     </div>
+
     <footer>
       <ul>
         <div>
           <li class="menu-item">
-            <%= link_to ingredients_path, class: "no-text-decoration" do %>
+            <%= link_to meals_path do %>
             <i class="fa-solid fa-carrot"></i>Food
             <% end %>
           </li>
