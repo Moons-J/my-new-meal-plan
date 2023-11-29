@@ -8,4 +8,24 @@ class IngredientsController < ApplicationController
       @ingredients = user_ingredients.search_by_name(params[:query])
     end
   end
+
+  def new
+    @ingredient = Ingredient.new
+  end
+
+  def create
+    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.user = current_user
+    if @ingredient.save
+      redirect_to ingredients_path # notice: 'Ingredient successfully added.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def ingredient_params
+    params.require(:ingredient).permit(:name, :calories, :fats, :satu_fats, :carbs, :protein)
+  end
 end
