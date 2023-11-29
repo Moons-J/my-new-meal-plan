@@ -9,6 +9,10 @@ class IngredientsController < ApplicationController
     if @query.present?
       @ingredients = user_ingredients.search_by_name(@query)
     end
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "ingredients/ingredients_list", locals: { ingredients: @ingredients }, formats: [:html] }
+    end
   end
 
   def show
