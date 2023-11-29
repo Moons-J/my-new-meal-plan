@@ -9,7 +9,6 @@ export default class extends Controller {
 
   update() {
     const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
-    console.log(url)
     fetch(url, {headers: {"Accept": "text/plain"}})
       .then(response => response.text())
       .then((data) => {
