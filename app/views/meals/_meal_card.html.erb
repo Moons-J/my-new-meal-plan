@@ -9,31 +9,31 @@
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">9999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("calories") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("fats") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("satu-fats") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("carbs") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data">999</p>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
     </div>
   </div>
   <%= link_to "Edit", "#", class: "edit-button" %>
