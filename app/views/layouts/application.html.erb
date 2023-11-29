@@ -17,6 +17,44 @@
     <div class="basic-container">
       <%= yield %>
     </div>
-
+    <footer>
+      <ul>
+        <div>
+          <li class="menu-item">
+            <%= link_to meals_path, class: "no-text-decoration" do %>
+            <i class="fa-solid fa-carrot"></i>Food
+            <% end %>
+          </li>
+        </div>
+        <div>
+          <li class="menu-item">
+            <%= link_to meals_path do %>
+            <i class="fa-solid fa-utensils"></i>Meals
+            <% end %>
+          </li>
+        </div>
+        <div>
+          <li class="menu-item">
+            <%= link_to meals_path do %>
+            <i class="fa-solid fa-house"></i>Home
+            <% end %>
+          </li>
+        </div>
+        <div>
+          <li class="menu-item">
+            <%= link_to meals_path do %>
+            <i class="fa-solid fa-calendar-days"></i>Plans
+            <% end %>
+          </li>
+        </div>
+        <div>
+          <li class="menu-item">
+            <%= link_to meals_path do %>
+            <i class="fa-solid fa-basket-shopping"></i>Groceries
+            <% end %>
+          </li>
+        </div>
+      </ul>
+    </footer>
   </body>
 </html>
