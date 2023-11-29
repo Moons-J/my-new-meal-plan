@@ -1,3 +1,15 @@
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: meals_path, method: :get, class: "search-form d-flex justify-content-between" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "standard-input border-0 flex-grow-1",
+            placeholder: "Type a meal name"
+        %>
+      <%= submit_tag "Search", name: "", class: "button-standard border-0" %>
+    <% end %>
+  </div>
+</div>
 <div>
   <% if @query %>
     <p>Searched for <strong><%= @query %></strong>, found <%= @meals.count %> meals</p>

@@ -47,16 +47,18 @@
       align-items: center;
 
       .nutrition-data{
-        font-size: 1.0rem;
+        font-size: 14px;
       }
     }
   }
 
   .meal-info {
-    padding: 19px 19px 19px 0;
+    padding: 19px 19px 0px 19px;
 
     p {
+      font-size: 14px;
       margin-top: 16px;
+      opacity: 0.8;
     }
   }
 

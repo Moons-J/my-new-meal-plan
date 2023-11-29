@@ -28,4 +28,14 @@ class Meal < ApplicationRecord
 
     return number.round(1)
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_comment_ingredients,
+    against: [ :name, :comment ],
+    associated_against: {
+      ingredients: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
