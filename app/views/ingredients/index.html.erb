@@ -1,5 +1,33 @@
-<h1>Ingredients</h1>
-<div class="ingredient-card">
-  <h2>Apples</h2>
-  <i class="fa-regular fa-pen-to-square"></i>
+<h1 class="text-center">Ingredients</h1>
+
+<%# Search form %>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: ingredients_path, method: :get, class: "search-form d-flex justify-content-between" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "standard-input border-0 flex-grow-1",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "button-standard border-0" %>
+    <% end %>
+  </div>
 </div>
+
+<div class="d-flex">
+  <%= link_to "Add", "#", class: "button-standard" %>
+</div>
+
+<%# Ingredients list %>
+<% if @ingredients.any? %>
+  <% @ingredients.each do |ingredient| %>
+  <div class="ingredient-card standard-card d-flex justify-content-between align-items-center  p-3 my-3">
+    <h2 class="mb-0"><%= ingredient.name %></h2>
+    <%= link_to "#" do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %>
+  </div>
+  <% end %>
+<% else %>
+  <em>Sorry, no ingredients found.</em>
+<% end %>
