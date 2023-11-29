@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :meals, only: [:index]
   resources :ingredients, only: [:index]
+  resources :daily_plans, only: [:index]
 end
