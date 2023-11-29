@@ -19,13 +19,13 @@ Meal.destroy_all
 User.destroy_all
 
 puts "Reading base ingredients..."
-require 'csv'
 
 filepath = Rails.root.join("lib", "assets", "ingredients.csv")
 
 CSV.foreach(filepath, headers: :first_row) do |row|
+
   BaseIngredient.create!(
-    name: "#{row['name']}",
+    name: "#{row[0]}",
     calories: "#{row['calories']}",
     fats: "#{row['fats']}",
     satu_fats: "#{row['sat_fats']}",
@@ -60,7 +60,7 @@ emails.each do |email|
     meal = Meal.create!(
       name: Faker::Food.dish,
       comment: Faker::Food.description,
-      user_id: user.id,
+      user_id: user.id
     )
     rand(3..10).times do
       MealIngredient.create!(
