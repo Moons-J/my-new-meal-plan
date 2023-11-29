@@ -1,7 +1,19 @@
 class MealsController < ApplicationController
-skip_before_action :authenticate_user!, only: [ :index ]
-
   def index
     @meals = Meal.all
   end
+
+  def new
+    @meal = Meal.new
+  end
+
+  # def create
+  #   @meal = Meal.new
+  # end
+
+  # private
+
+  # def meal_params
+  #   params.require(:meal).permit()
+  # end
 end
