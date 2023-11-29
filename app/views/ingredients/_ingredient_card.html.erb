@@ -1,5 +1,5 @@
 <div class="ingredient-card standard-card d-flex align-items-center  p-3 my-3">
-  <div class="flex-grow-1"><h2 class="mb-0"><%= link_to(ingredient.name, ingredient_path(ingredient)) %></h2></div>
+  <div class="flex-grow-1"><h2 class="mb-0"><%= link_to ingredient.name, edit_ingredient_path(ingredient) %></h2></div>
   <div class="mx-2"><%= link_to edit_ingredient_path(ingredient) do %>
     <i class="fa-regular fa-pen-to-square"></i>
   <% end %></div>

@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   # skip_before_action :authenticate_user!, only: :index
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :set_ingredient, only: [:edit, :update, :destroy]
 
   def index
     user_ingredients = Ingredient.where(user: current_user)
@@ -13,9 +13,6 @@ class IngredientsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: "ingredients/ingredients_list", locals: { ingredients: @ingredients }, formats: [:html] }
     end
-  end
-
-  def show
   end
 
   def new

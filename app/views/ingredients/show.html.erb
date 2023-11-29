@@ -1,0 +1,13 @@
+<h1 class="text-center">Ingredient</h1>
+
+<div class="row justify-content-center">
+  <%= simple_form_for(@ingredient) do |f| %>
+  <%= f.input :name, label: "Ingredient name", input_html: { readonly: true }%>
+  <%= f.input :calories, label: "Calories (kCal)", input_html: { readonly: true } %>
+  <%= f.input :fats, label: "Fats (g/100g)", input_html: { readonly: true } %>
+  <%= f.input :satu_fats, label: "Saturated Fats (g/100g)", input_html: { readonly: true } %>
+  <%= f.input :carbs, label: "Carbohydrates (g/100g)", input_html: { readonly: true } %>
+  <%= f.input :protein, label: "Proteins (g/100g)", input_html: { readonly: true } %>
+  <%= link_to%>
+<% end %>
+</div>
