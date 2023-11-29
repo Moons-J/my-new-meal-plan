@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   # skip_before_action :authenticate_user!, only: :index
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :set_ingredient, only: [:edit, :update, :destroy]
 
   def index
     user_ingredients = Ingredient.where(user: current_user)
@@ -9,9 +9,6 @@ class IngredientsController < ApplicationController
     if @query.present?
       @ingredients = user_ingredients.search_by_name(@query)
     end
-  end
-
-  def show
   end
 
   def new
