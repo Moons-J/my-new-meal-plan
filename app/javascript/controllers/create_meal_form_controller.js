@@ -2,19 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="create-meal-form"
 export default class extends Controller {
-  static targets = ["card", "amount"]
+  static targets = ["card", "amount", "input"]
   connect() {
-    console.log("Hello there");
+    console.log(this.inputTarget);
   }
 
   select(event) {
-    console.log("event.target", event.target.tagName);
-
     if (event.target.tagName !== "I" && event.target.tagName !== "INPUT") {
       event.currentTarget.classList.toggle("selected");
-      if (event.currentTarget.classList.contains("selected")) {
-        event.currentTarget.querySelector("input").autofocus = true;
-      }
+      this.validate()
     }
 
     if (!event.currentTarget.classList.contains("selected")) {
@@ -24,5 +20,18 @@ export default class extends Controller {
 
   add() {
     this.element.classList.add("selected");
+  }
+
+  validate() {
+    if (this.element.classList.contains("selected") && this.amountTarget.value == "") {
+      this.amountTarget.classList.add("is-invalid")
+    } else {
+      this.amountTarget.classList.remove("is-invalid")
+    }
+  }
+
+  search(event) {
+    console.log(event.target);
+    console.log(this.inputTarget);
   }
 }
