@@ -1,49 +1,19 @@
-<div class="meal-cards-container">
-  <% @meals.each do |meal| %>
-    <%= render "meal_card", meal: meal %>
-  <% end %>
+<div data-controller="search-element">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: meals_path, method: :get, class: "search-form d-flex justify-content-between", data: {
+        search_element_target: "form",
+        action: "keyup->search-element#update"
+      } do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "standard-input border-0 flex-grow-1",
+              data: { search_element_target: "input" },
+              placeholder: "Type a meal name"
+          %>
+        <%= submit_tag "Search", name: "", class: "button-standard border-0" %>
+      <% end %>
+    </div>
+  </div>
+  <%= render "meals_list" %>
 </div>
-
-
-<div class="card-meal standard-card">
-<%# keep until render works with seed file %>
-<%# <div class="card-meal">
-  <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
-  <div class="meal-info">
-    <h4>meal</h4>
-    <p>Please add your comment here. It will be usefull for you later one. And of course pls smile.</p>
-  </div>
-  <div class="meal-nutritionfacts">
-    <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
-      </div>
-      <p class="nutrition-data">9999</p>
-    </div>
-    <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
-      </div>
-      <p class="nutrition-data">999</p>
-    </div>
-    <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
-      </div>
-      <p class="nutrition-data">999</p>
-    </div>
-    <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
-      </div>
-      <p class="nutrition-data">999</p>
-    </div>
-    <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
-      </div>
-      <p class="nutrition-data">999</p>
-    </div>
-  </div>
-<%= link_to "Edit", "#", class: "edit-button button-standard" %>
-

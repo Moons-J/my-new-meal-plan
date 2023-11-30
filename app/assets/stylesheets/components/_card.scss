@@ -22,7 +22,7 @@
     margin-bottom: 8px;
   }
 
-  h6 {
+  .plan-info {
     align-self: center;
     text-align: left;
     max-width: 310px;
@@ -30,6 +30,11 @@
     margin-bottom: 0px;
     text-decoration: none;
     color: black;
+  }
+
+  h6 {
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 // .plan-button-position {

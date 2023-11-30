@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :meals, only: [:index]
+<<<<<<< HEAD
   resources :ingredients, only: [:index]
   resources :daily_plans, only: [:index]
+=======
+  resources :ingredients, only: %i[index new create edit update destroy]
+>>>>>>> 7523ba97088b2dceadb1a56501f8efa028746334
 end
