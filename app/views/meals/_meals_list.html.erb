@@ -6,7 +6,7 @@
       <p>All <%= @meals.count %> meals</p>
     <% end %>
   </div>
-  <div class="meal-cards-container" data-controller="swipe-delete">
+  <div class="meal-cards-container">
     <% @meals.each do |meal| %>
       <%= render "meal_card", meal: meal %>
     <% end %>
