@@ -11,12 +11,20 @@
 require 'faker'
 require 'csv'
 
-puts "Deleting old records..."
 
+puts "Deleting old base ingredients..."
 BaseIngredient.destroy_all
+puts "Deleting old meal ingredients..."
+MealIngredient.destroy_all
+puts "Deleting old ingredients..."
 Ingredient.destroy_all
+puts "Deleting old meals..."
 Meal.destroy_all
+puts "Deleting old daily plans..."
+DailyPlan.destroy_all
+puts "Deleting old users..."
 User.destroy_all
+puts "Everything destroyed!"
 
 puts "Reading base ingredients..."
 
@@ -70,6 +78,15 @@ emails.each do |email|
       )
     end
   end
-
   puts "Created #{number_meals} meals!"
+  rand(2..5).times do
+    date = Faker::Date.between(from: 2.year.ago, to: Date.today)
+    DailyPlan.create!(
+      name: Faker::Food.dish,
+      user_id: user.id,
+      created_at: date,
+      updated_at: date
+    )
+  end
+  puts "Created daily plans!"
 end
