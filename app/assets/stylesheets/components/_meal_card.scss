@@ -1,5 +1,7 @@
 .card-meal {
 
+  transition-duration: 0.7s;
+
   img {
     height: 200px;
     width: 100%;
@@ -67,5 +69,23 @@
     transform: translate(-50%, -50%);
     top: 200px;
     right: -5%;
+  }
+}
+
+.meal-card-button-holder{
+  position: relative;
+
+  .deletingCard {
+    margin-left: -40%;
+  }
+
+  .button-position{
+    position: absolute;
+    top: 50%;
+    right: 8%;
+  }
+
+  .hidden {
+    display: none;
   }
 }
