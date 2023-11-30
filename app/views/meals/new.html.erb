@@ -1,4 +1,4 @@
-<div class="justify-content-center">
+<div class="justify-content-center" data-controller="create-meal-form">
   <%= simple_form_for(@meal) do |f| %>
     <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
     <div class="text-center">
@@ -40,13 +40,20 @@
     <%# Ingredients list %>
     <% current_user.ingredients.each do |user_ingredient| %>
     <%= f.fields_for :meal_ingredients do |ingredient| %>
-      <div class="row">
-        <div class="col-8">
-          <%= user_ingredient.name %>
+      <div data-create-meal-form-target="ingredient-card" data-action="click->create-meal-form#select" class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
+        <div class="d-flex align-items-center ingredient-name">
+          <%= link_to edit_ingredient_path(user_ingredient) do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <h2 class="mx-2 mb-0"><%= user_ingredient.name %></h2>
+        </div>
+
+        <div class="mx-2 input-small">
           <%= ingredient.input :ingredient_id, input_html: {value: user_ingredient.id}, as: :hidden %>
-          <%= ingredient.input :amount %>
+          <%= ingredient.input :amount, label: false, placeholder: "Amount", input_html: {class: "standard-input"} %>
         </div>
       </div>
+
     <% end %>
 
     <% end %>
