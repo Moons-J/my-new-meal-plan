@@ -2,9 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="create-meal-form"
 export default class extends Controller {
-  static targets = ["card", "amount", "input"]
+  static targets = ["card", "amount"]
   connect() {
-    console.log(this.inputTarget);
   }
 
   select(event) {
@@ -28,10 +27,5 @@ export default class extends Controller {
     } else {
       this.amountTarget.classList.remove("is-invalid")
     }
-  }
-
-  search(event) {
-    console.log(event.target);
-    console.log(this.inputTarget);
   }
 }
