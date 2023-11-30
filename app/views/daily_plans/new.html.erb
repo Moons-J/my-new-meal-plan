@@ -1,0 +1,8 @@
+<%= simple_form_for(@daily_plan) do |f| %>
+<%= f.input :name %>
+  <%= f.fields_for :daily_plan_meals do |meal| %>
+    <%= meal.input :meal_id, collection: Meal.all, value_method: :id %>
+    <%= meal.input :meal_type %>
+  <% end %>
+<%= f.submit %>
+<% end %>
