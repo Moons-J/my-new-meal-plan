@@ -7,6 +7,7 @@ class DailyPlansController < ApplicationController
   def new
     @daily_plan = DailyPlan.new
     @daily_plan.daily_plan_meals.new
+    @meals = Meal.where(user: current_user)
   end
 
   def create
