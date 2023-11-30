@@ -46,16 +46,16 @@
   // .has-events {}
 }
 
+.d-flex {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
 .calendar-heading {
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 8px;
   margin-bottom: 8px;
-
-  .d-flex {
-    justify-content: space-between;
-    flex-wrap: nowrap;
-  }
 
   a {
     border-radius: 50px;
