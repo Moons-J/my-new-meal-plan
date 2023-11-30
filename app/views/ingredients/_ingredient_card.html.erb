@@ -1,9 +1,11 @@
-<div class="ingredient-card standard-card d-flex align-items-center  p-3 my-3">
-  <div class="flex-grow-1"><h2 class="mb-0"><%= link_to ingredient.name, edit_ingredient_path(ingredient) %></h2></div>
-  <div class="mx-2"><%= link_to edit_ingredient_path(ingredient) do %>
-    <i class="fa-regular fa-pen-to-square"></i>
-  <% end %></div>
-  <div class="mx-2"><%= link_to ingredient_path(ingredient), data: {turbo_method: :delete} do %>
-    <i class="fa-solid fa-trash"></i>
-  <% end %></div>
+<div class="ingredient-card-button-holder" data-controller="swipe">
+  <div class="ingredient-card standard-card d-flex align-items-center  p-3 my-3"
+    data-action="touchstart->swipe#swipeCard touchend->swipe#stopSwipeCard"
+    data-swipe-target="card">
+    <div class="flex-grow-1"><h2 class="mb-0"><%= link_to ingredient.name, edit_ingredient_path(ingredient) %></h2></div>
+    <div class="mx-2"><%= link_to edit_ingredient_path(ingredient) do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %></div>
+  </div>
+  <%= link_to("Delete", ingredient_path(ingredient), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-delete hidden button-position') %>
 </div>
