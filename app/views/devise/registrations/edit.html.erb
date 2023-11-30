@@ -9,14 +9,14 @@
       <h6>Personal information:</h6>
       <p class="small">We will help you with your nutrition if filled in.</p>
       <%= f.input :birthday,
-                  required: false, input_html: {class: "col-12"} %>
+                  required: false %>
       <%= f.input :weight,
                   hint: "Please input a number with a single decimal place.",
                   required: false %>
       <%= f.input :height,
                   hint: "In centimeters",
                   required: false %>
-      <%# <%= f.input :intensity,
+      <%= f.input :exercise_level,
                   hint: "What is your weekly intensity level",
                   required: false %>
     </div>
