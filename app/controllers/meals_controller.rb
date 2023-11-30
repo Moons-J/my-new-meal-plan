@@ -11,4 +11,11 @@ class MealsController < ApplicationController
       format.text { render partial: "meals/meals_list", formats: [:html] }
     end
   end
+
+  def destroy
+    @meal = Meal.find(params[:id])
+    @meal.destroy
+
+    redirect_to meals_path
+  end
 end
