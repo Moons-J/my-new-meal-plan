@@ -38,7 +38,11 @@
 
 <%# Next Meal %>
 <div class="standard-card">
-  Meal
+  <% if current_user.plannings.nil? %>
+    <%= current_user.plannings %>
+  <% else %>
+    <h3 class="text-center py-3">No meals left for today!</h3>
+  <% end %>
 </div>
 
 <%# Calendar %>
@@ -52,6 +56,6 @@
 <div class="standard-card">
   <div id="user-weights">
     <h6>Weight History</h6>
-    <%= line_chart WeightHistory.group_by_day(:created_at, range: 1.weeks.ago..Time.now, expand_range: true, current: false).count(:weight) %>
+    <%= line_chart WeightHistory.group_by_day(:created_at, range: 1.weeks.ago..Time.now, current: false).count(:weight) %>
   </div>
 </div>
