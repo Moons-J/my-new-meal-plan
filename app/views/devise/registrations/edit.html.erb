@@ -48,5 +48,5 @@
   <%= link_to "Back", :back, {class: 'button-standard'}%>
 </div>
 <div class="standard-card user-cancel-styling">
-  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?", class: 'button-standard' }, method: :delete %></div>
+  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'button-delete', method: :delete %></div>
 </div>
