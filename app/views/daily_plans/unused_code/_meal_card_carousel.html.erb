@@ -1,0 +1,40 @@
+<div class="card-meal standard-card carousel-item" style=" display: block; width: 100%;">
+  <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+  <div class="meal-info">
+    <h5><%= meal.name %></h5>
+    <p><%= meal.comment %></p>
+  </div>
+  <div class="meal-nutritionfacts">
+    <div class="circle-and-number-container">
+      <div class="circle">
+        <div class="white-inner-circle"></div>
+      </div>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("calories") %></p>
+    </div>
+    <div class="circle-and-number-container">
+      <div class="circle">
+        <div class="white-inner-circle"></div>
+      </div>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("fats") %></p>
+    </div>
+    <div class="circle-and-number-container">
+      <div class="circle">
+        <div class="white-inner-circle"></div>
+      </div>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("satu-fats") %></p>
+    </div>
+    <div class="circle-and-number-container">
+      <div class="circle">
+        <div class="white-inner-circle"></div>
+      </div>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("carbs") %></p>
+    </div>
+    <div class="circle-and-number-container">
+      <div class="circle">
+        <div class="white-inner-circle"></div>
+      </div>
+      <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
+    </div>
+  </div>
+  <%= link_to "Edit", "#", class: "edit-button button-standard" %>
+</div>
