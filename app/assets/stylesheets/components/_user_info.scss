@@ -2,6 +2,23 @@
   padding: 8px;
 }
 
+.button-flex-seperator {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.user-cancel-styling {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  text-align: center;
+  padding: 8px;
+  margin-top: 25px;
+}
+
 .form-inputs{
   select, input {
     border-radius: 50px;
