@@ -1,2 +1,0 @@
-class WeightHistoriesController < ApplicationController
-end
