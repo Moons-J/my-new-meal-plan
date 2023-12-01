@@ -7,10 +7,14 @@
   text-align: center;
   text-decoration: none;
   background-color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: solid 1px $dark-gray;
 
 }
 
 .search-form {
   gap: 5px;
+}
+
+.input-small {
+  width: 100px;
 }
