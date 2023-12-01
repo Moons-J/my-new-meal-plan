@@ -9,6 +9,18 @@
   a {
     color: $dark-gray;
   }
+
+  .ingredient-name {
+    width: 230px
+  }
+}
+
+.selected {
+  box-shadow: 0 0 15px $green-buttons;
+}
+
+small {
+  font-size: 0.8rem;
 }
 
 .ingredient-card-button-holder{
