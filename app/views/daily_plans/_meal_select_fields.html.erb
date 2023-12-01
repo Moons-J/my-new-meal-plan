@@ -2,6 +2,6 @@
   <div data-controller="select-meal-for-daily-meal">
     <%= meal.input :meal_type %>
     <%= render "meals_sidescroll_show", meals: meals %>
-    <%= meal.input :meal_id, collection: Meal.all, value_method: :id %>
+    <%= meal.input :meal_id, input_html: {value: "", data: { select_meal_for_daily_meal_target: "input" }}, as: :hidden %>
   </div>
 <% end %>

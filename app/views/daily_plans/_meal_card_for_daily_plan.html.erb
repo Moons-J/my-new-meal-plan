@@ -1,5 +1,5 @@
 <%# sidescroll class only used for the side scroll effect in daily meal plan creation %>
-<div class="card-meal standard-card sidescroll" data-action="click->select-meal-for-daily-meal#select" data-select-meal-for-daily-meal-target="card">
+<div class="card-meal standard-card sidescroll" data-action="click->select-meal-for-daily-meal#select" data-select-meal-for-daily-meal-target="card" data-mealid="<%= meal.id %>">
   <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <div class="meal-info">
     <h5><%= meal.name %></h5>
