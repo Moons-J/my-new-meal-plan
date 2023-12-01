@@ -1,8 +1,8 @@
 <h2>My plans</h2>
 <div class="standard-card">
-<%= week_calendar(number_of_weeks: 2) do |date| %>
-  <%= date %>
-<% end %>
+  <%= week_calendar(number_of_weeks: 2) do |date| %>
+    <%= date %>
+  <% end %>
 </div>
 <div class="flex-container">
   <% @daily_plans.each do |plan| %>
