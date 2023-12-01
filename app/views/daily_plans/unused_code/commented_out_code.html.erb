@@ -17,21 +17,3 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-<div class="scrolling-wrapper">
-  <% @meals.each do |meal| %>
-    <%= render "meals/meal_card", meal: meal %>
-  <% end %>
-</div>
-
-<%# render the fields %>
-<%= f.fields_for :daily_plan_meals do |meal| %>
-  <p>Lunch</p>
-  <%= meal.input :meal_id, collection: Meal.all, value_method: :id %>
-  <%= meal.input :meal_type, input_html: {value: "Lunch"}, as: :hidden %>
-<% end %>
-<%= f.fields_for :daily_plan_meals do |meal| %>
-  <p>Dinner</p>
-  <%= meal.input :meal_id, collection: Meal.all, value_method: :id %>
-  <%= meal.input :meal_type, input_html: {value: "Dinner"}, as: :hidden %>
-<% end %>
