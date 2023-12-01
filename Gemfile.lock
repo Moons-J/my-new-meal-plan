@@ -110,6 +110,7 @@ GEM
     cloudinary (1.28.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
+    chartkick (5.0.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -143,6 +144,8 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -320,12 +323,14 @@ DEPENDENCIES
   bootstrap (~> 5.2)
   capybara
   cloudinary
+  chartkick
   debug
   devise
   dotenv-rails
   error_highlight (>= 0.4.0)
   faker
   font-awesome-sass (~> 6.1)
+  groupdate
   importmap-rails
   jbuilder
   pg (~> 1.1)

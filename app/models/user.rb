@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :meals
   has_many :daily_plans
   has_many :plannings
+  has_many :weight_histories
 
   validates :first_name, :last_name, :user_name, :birthday, :height, :exercise_level, :weight, presence: true
 # validation for exercise_level it should be between 1..5

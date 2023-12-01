@@ -18,18 +18,23 @@
 
     <nav>
       <div>
-        <h6>
-          <% if user_signed_in? %>
-            <h6><%= current_user.first_name %></h6>
+        <%= link_to "#" do %>
+          <%= image_tag "logo_mnmp.png", id: "logo-size" %>
+        <% end %>
+      </div>
+
+      <div class="user-avatar">
+        <div>
+        <% if user_signed_in? %>
+          <h6><%= current_user.first_name %></h6>
+          <p><%= Time.new.strftime("%b %d, %Y") %></p>
+        </div>
+        <div>
+          <%= link_to edit_user_registration_path do %>
+            <%= image_tag "default-avatar.png", class: "button-rounded" %>
           <% end %>
-        </h6>
-        <p><%= Time.new.strftime("%b %d, %Y") %><p>
-      </div>
-      <div>
-        <h1>Navbar</h1>
-      </div>
-      <div>
-        <%# button actions %>
+        </div>
+        <% end %>
       </div>
     </nav>
 
@@ -42,35 +47,40 @@
         <div>
           <li class="menu-item">
             <%= link_to ingredients_path do %>
-            <i class="fa-solid fa-carrot"></i>Food
+            <i class="fa-solid fa-carrot"></i>
+            <p>Food</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
             <%= link_to meals_path do %>
-            <i class="fa-solid fa-utensils"></i>Meals
+            <i class="fa-solid fa-utensils"></i>
+            <p>Meals</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
-            <%= link_to meals_path do %>
-            <i class="fa-solid fa-house"></i>Home
+            <%= link_to root_path do %>
+            <i class="fa-solid fa-house"></i>
+            <p>Home</p>
+            <% end %>
+          </li>
+        </div>
+        <div>
+          <li class="menu-item">
+            <%= link_to daily_plans_path do %>
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Plans</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
             <%= link_to "#" do %>
-            <i class="fa-solid fa-calendar-days"></i>Plans
-            <% end %>
-          </li>
-        </div>
-        <div>
-          <li class="menu-item">
-            <%= link_to "#" do %>
-            <i class="fa-solid fa-basket-shopping"></i>Groceries
+            <i class="fa-solid fa-basket-shopping"></i>
+            <p>Groceries</p>
             <% end %>
           </li>
         </div>

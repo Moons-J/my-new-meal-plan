@@ -17,7 +17,7 @@
                   hint: "In centimeters",
                   required: false %>
       <%= f.input :exercise_level,
-                  hint: "What is your weekly intensity level",
+                  hint: "From 1 (no excersice) to 5 (very active), what is your weekly activity level?",
                   required: false %>
     </div>
     <div class="standard-card user-info">
@@ -40,14 +40,13 @@
                   input_html: { autocomplete: "current-password" } %>
     </div>
   </div>
-<div class="d-flex">
+<div class="button-flex-seperator">
   <div class="form-actions">
-    <%= f.button :submit, "Update", {class: 'button-standard'} %>
+    <%= f.button :submit, "Save changes", {class: 'button-standard'} %>
   </div>
-<% end %>
-<%= link_to "Back", :back, {class: 'button-standard'}%>
+  <% end %>
+  <%= link_to "Back", :back, {class: 'button-standard'}%>
 </div>
-<div class="standard-card d-flex">
-  <h6 class="space">Cancel my account</h6>
-  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?", class: 'button-standard' }, method: :delete %></div>
+<div class="standard-card user-cancel-styling">
+  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'button-delete', method: :delete %></div>
 </div>

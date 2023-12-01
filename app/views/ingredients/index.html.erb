@@ -1,4 +1,4 @@
-<h1 class="text-center">Ingredients</h1>
+<h2>Ingredients</h2>
 
 <div data-controller="search-element">
   <%# Search form %>
@@ -10,7 +10,7 @@
       } do %>
         <%= text_field_tag :query,
               params[:query],
-              class: "standard-input border-0 flex-grow-1",
+              class: "standard-input flex-grow-1",
               data: { search_element_target: "input" },
               placeholder: "Type a keyword"
           %>

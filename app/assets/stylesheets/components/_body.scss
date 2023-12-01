@@ -2,4 +2,11 @@ body {
   a{
     text-decoration: none;
   }
+  #logo-size {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+  }
 }
