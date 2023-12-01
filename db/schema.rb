@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_095500) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_152051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -107,6 +107,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_095500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weight_histories", force: :cascade do |t|
+    t.float "weight"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_weight_histories_on_user_id"
+  end
+
   add_foreign_key "daily_plan_meals", "daily_plans"
   add_foreign_key "daily_plan_meals", "meals"
   add_foreign_key "daily_plans", "users"
@@ -116,4 +124,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_095500) do
   add_foreign_key "meals", "users"
   add_foreign_key "plannings", "daily_plans"
   add_foreign_key "plannings", "users"
+  add_foreign_key "weight_histories", "users"
 end
