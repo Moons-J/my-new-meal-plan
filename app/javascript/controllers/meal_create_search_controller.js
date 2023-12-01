@@ -10,9 +10,9 @@ export default class extends Controller {
   search(event) {
     const query = this.inputTarget.value.toLowerCase()
     console.log(query);
-    if (query == "") {
-      this.sort()
-    }
+    // if (query == "") {
+    //   this.sort()
+    // }
 
     this.cardTargets.forEach(card => {
       if (card.querySelector("h2").innerText.toLowerCase().includes(query)) {
@@ -24,19 +24,19 @@ export default class extends Controller {
 
   }
 
-  sort() {
-    let list = Array.from(this.cardTargets);
-    list.sort((a, b)=> {
-      if (a.classList.contains("selected")) {
-        return -1
-      } else {
-        return 1
-      }
-    })
-    list.forEach(element => {
-      this.listTarget.appendChild(element);
-    });
-  }
+  // sort() {
+  //   let list = Array.from(this.cardTargets);
+  //   list.sort((a, b)=> {
+  //     if (a.classList.contains("selected")) {
+  //       return -1
+  //     } else {
+  //       return 1
+  //     }
+  //   })
+  //   list.forEach(element => {
+  //     this.listTarget.appendChild(element);
+  //   });
+  // }
 
   image(event) {
     // this.element.querySelector(".picture-show").appendChild(event.target.files[0]);
