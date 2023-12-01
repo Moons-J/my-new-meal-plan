@@ -49,7 +49,7 @@
         </div>
       </label>
     </div>
-    <%= f.input :comment, as: :text, input_html: { cols: 5, rows: 5 }, wrapper_html: { class: 'mt-2' } %>
+    <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' } %>
     <%# Ingredients list %>
     <input type="text" class="standard-input w-100 mt-3" placeholder="Search"
     data-meal-create-search-target="input"
@@ -72,8 +72,9 @@
 
           <div class="mx-2 input-small">
             <%= ingredient.input :ingredient_id, input_html: {value: user_ingredient.id}, as: :hidden %>
+
             <%= ingredient.input :amount,
-              label: false, placeholder: "Amount",
+              label: false, placeholder: "Amount(g)",
               input_html: {class: "standard-input",
               data: {create_meal_form_target: "amount", action: "click->create-meal-form#add keyup->create-meal-form#validate blur->create-meal-form#validate"}} %>
           </div>
