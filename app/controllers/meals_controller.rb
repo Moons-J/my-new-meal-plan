@@ -37,7 +37,7 @@ class MealsController < ApplicationController
   # private
 
   def meal_ingredients_params
-    params.require(:meal).permit(:name, :photo, meal_ingredients_attributes: [:amount, :ingredient_id])
+    params.require(:meal).permit(:name, :photo, :comment, meal_ingredients_attributes: [:amount, :ingredient_id])
   end
 
 
