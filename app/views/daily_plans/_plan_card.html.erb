@@ -13,8 +13,8 @@
                 "https://allnutritious.com/wp-content/uploads/2020/08/10-Chicken-Meatballs-With-Quinoa-Curried-Cauliflower.jpg"] %>
       <% rand_img = img[rand(img.length)] %>
       <img src=<%= rand_img %> alt="meal image">
-      <% plan.daily_plan_meals.each do |i| %>
-        <%= i.meal_type %>
+      <% plan.meals.each do |i| %>
+        <%= i.name %>
       <% end %>
     </div>
   </div>
