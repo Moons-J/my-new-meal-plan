@@ -1,0 +1,62 @@
+<h2>Your intake of today:</h2>
+
+<%# Intakes %>
+<div class="standard-card">
+  <div id="user-nutritionfacts">
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data"><%= %>Calories</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data"><%= %>Fats</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data"><%= %>Satu-fats</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data"><%= %>Carbs</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data"><%= %>Protein</p>
+      </div>
+    </div>
+</div>
+
+<%# Next Meal %>
+<div class="standard-card">
+  <% if current_user.plannings.nil? %>
+    <%= current_user.plannings %>
+  <% else %>
+    <h3 class="text-center py-3">No meals left for today!</h3>
+  <% end %>
+</div>
+
+<%# Calendar %>
+<div class="standard-card">
+  <%= week_calendar(number_of_weeks: 2) do |date| %>
+    <%= date %>
+  <% end %>
+</div>
+
+<%# Weight history %>
+<div class="standard-card">
+  <div id="user-weights">
+    <h6>Weight History</h6>
+    <%= line_chart WeightHistory.group_by_day(:created_at, range: 1.weeks.ago..Time.now, current: false).average(:weight),
+        min: "60", max: "70" %>
+  </div>
+</div>

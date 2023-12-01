@@ -22,6 +22,8 @@ puts "Deleting old meals..."
 Meal.destroy_all
 puts "Deleting old daily plans..."
 DailyPlan.destroy_all
+puts "Deleting evidences of weight history..."
+WeightHistory.destroy_all
 puts "Deleting old users..."
 User.destroy_all
 puts "Everything destroyed!"
@@ -89,4 +91,22 @@ emails.each do |email|
     )
   end
   puts "Created daily plans!"
+
+  puts "Looking for some history..."
+  number_days = 30
+  (1..number_days).each do |day|
+    WeightHistory.create!(
+      weight: rand(60..70),
+      user_id: user.id,
+      created_at: Time.new(Time.now.year, 11, day)
+    )
+  end
+  (1..Time.now.day).each do |day|
+    WeightHistory.create!(
+      weight: rand(60..70),
+      user_id: user.id,
+      created_at: Time.new(Time.now.year, 12, day)
+    )
+  end
+  puts "I have found the weight history of the last #{number_days} days!"
 end

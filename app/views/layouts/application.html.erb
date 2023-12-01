@@ -18,18 +18,23 @@
 
     <nav>
       <div>
-        <h6>
-          <% if user_signed_in? %>
-            <h6><%= current_user.first_name %></h6>
+        <%= link_to "#" do %>
+          <%= image_tag "logo_mnmp.png", id: "logo-size" %>
+        <% end %>
+      </div>
+
+      <div class="user-avatar">
+        <div>
+        <% if user_signed_in? %>
+          <h6><%= current_user.first_name %></h6>
+          <p><%= Time.new.strftime("%b %d, %Y") %></p>
+        </div>
+        <div>
+          <%= link_to edit_user_registration_path do %>
+            <%= image_tag "default-avatar.png", class: "button-rounded" %>
           <% end %>
-        </h6>
-        <p><%= Time.new.strftime("%b %d, %Y") %><p>
-      </div>
-      <div>
-        <h1>Navbar</h1>
-      </div>
-      <div>
-        <%# button actions %>
+        </div>
+        <% end %>
       </div>
     </nav>
 
@@ -42,35 +47,61 @@
         <div>
           <li class="menu-item">
             <%= link_to ingredients_path do %>
-            <i class="fa-solid fa-carrot"></i>Food
+            <% if controller_name == 'ingredients' %>
+              <i class="fa-solid fa-carrot clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-carrot"></i>
+            <% end %>
+            <p>Food</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
             <%= link_to meals_path do %>
-            <i class="fa-solid fa-utensils"></i>Meals
+
+            <% if controller_name == 'meals' %>
+              <i class="fa-solid fa-utensils clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-utensils"></i>
+            <% end %>
+            <p>Meals</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
-            <%= link_to meals_path do %>
-            <i class="fa-solid fa-house"></i>Home
+            <%= link_to root_path do %>
+            <% if controller_name == 'pages' && action_name == 'dashboard' %>
+              <i class="fa-solid fa-house clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-house"></i>
+            <% end %>
+            <p>Home</p>
+            <% end %>
+          </li>
+        </div>
+        <div>
+          <li class="menu-item">
+            <%= link_to daily_plans_path do %>
+            <% if controller_name == 'daily_plans' %>
+              <i class="fa-solid fa-calendar-days clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-calendar-days"></i>
+            <% end %>
+            <p>Plans</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
             <%= link_to "#" do %>
-            <i class="fa-solid fa-calendar-days"></i>Plans
+            <% if controller_name == '#' %>
+              <i class="fa-solid fa-basket-shopping clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-basket-shopping"></i>
             <% end %>
-          </li>
-        </div>
-        <div>
-          <li class="menu-item">
-            <%= link_to "#" do %>
-            <i class="fa-solid fa-basket-shopping"></i>Groceries
+            <p>Groceries</p>
             <% end %>
           </li>
         </div>
