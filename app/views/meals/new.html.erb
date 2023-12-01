@@ -40,8 +40,11 @@
       </div>
       <%# Picture input %>
       <label for="images" class="drop-container" id="dropcontainer">
+        <i class="fa-regular fa-images"></i>
         <span class="drop-title">Add a picture</span>
-        <%= f.input :photo, as: :file, label: false %>
+        <div style="margin-bottom: -30px">
+          <%= f.input :photo, as: :file, label: false, input_html: {id: "images"} %>
+        </div>
       </label>
     </div>
     <%# Ingredients list %>
@@ -56,7 +59,7 @@
           data-meal-create-search-target="card"
           class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
 
-          <div class="d-flex align-items-center ingredient-name">
+          <div class="d-flex align-items-center ingredient-name justify-content-start">
             <%= link_to edit_ingredient_path(user_ingredient) do %>
               <i class="fa-regular fa-pen-to-square"></i>
             <% end %>

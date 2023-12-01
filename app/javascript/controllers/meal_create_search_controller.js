@@ -12,12 +12,12 @@ export default class extends Controller {
     const query = event.currentTarget.value
     console.log(query);
     this.ingredientTargets.forEach(ingredient => {
-      console.log(this.cardTarget);
-      // if (ingredient.innerText.includes(query)) {
-      //   this.cardTarget.classList.remove("d-none")
-      // } else {
-      //   this.cardTarget.classList.add("d-none")
-      // }
+      console.log(ingredient.innerText.includes(query));
+      if (!ingredient.innerText.includes(query)) {
+        this.cardTarget.classList.remove("d-none")
+      } else {
+        this.cardTarget.classList.add("d-none")
+      }
     });
   }
 }
