@@ -1,5 +1,9 @@
 <%# sidescroll class only used for the side scroll effect in daily meal plan creation %>
-<div class="card-meal standard-card sidescroll" data-action="click->select-meal-for-daily-meal#select" data-select-meal-for-daily-meal-target="card" data-mealid="<%= meal.id %>">
+<div class="card-meal standard-card sidescroll"
+  data-action="click->select-meal-for-daily-meal#select"
+  data-select-meal-for-daily-meal-target="card"
+  data-live-update-nutritions-target="mealCard"
+  data-mealid="<%= meal.id %>">
   <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <div class="meal-info">
     <h5><%= meal.name %></h5>
@@ -10,31 +14,31 @@
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data"><%= meal.calculate_nutrition("calories") %></p>
+      <p class="nutrition-data" id="calories"><%= meal.calculate_nutrition("calories") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data"><%= meal.calculate_nutrition("fats") %></p>
+      <p class="nutrition-data" id="fats"><%= meal.calculate_nutrition("fats") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data"><%= meal.calculate_nutrition("satu-fats") %></p>
+      <p class="nutrition-data" id="satu-fats"><%= meal.calculate_nutrition("satu-fats") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data"><%= meal.calculate_nutrition("carbs") %></p>
+      <p class="nutrition-data" id="carbs"><%= meal.calculate_nutrition("carbs") %></p>
     </div>
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
       </div>
-      <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
+      <p class="nutrition-data" id="protein"><%= meal.calculate_nutrition("protein") %></p>
     </div>
   </div>
   <%= link_to "Edit", "#", class: "edit-button button-standard" %>

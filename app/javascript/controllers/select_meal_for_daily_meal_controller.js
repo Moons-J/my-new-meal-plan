@@ -13,7 +13,10 @@ export default class extends Controller {
       };
     });
     event.currentTarget.classList.toggle("selected");
-    // console.log(event.currentTarget.dataset.mealid);
     this.inputTarget.value = event.currentTarget.dataset.mealid;
+
+    // Custom event we will use as our trigger
+    const trigger = new CustomEvent("trigger-nutrition-update");
+    window.dispatchEvent(trigger);
   }
 }
