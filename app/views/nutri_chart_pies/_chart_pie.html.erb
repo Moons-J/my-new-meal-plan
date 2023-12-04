@@ -1,0 +1,25 @@
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Cal.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, 1000) %>;--c:#8CB369;"><%= current_user.user_calories %></div>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Fat.</p>
+      <div class="pie animate" style="--p:80;--c:#F4E285;"><%= current_user.min_user_fats %></div>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Satu-F.</p>
+      <div class="pie animate" style="--p:67;--c:#F4A259;"><%= current_user.max_user_satu_fats %></div>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Carbs.</p>
+      <div class="pie animate" style="--p:67;--c:#5B8E7D;"><%= current_user.max_user_carbs %></div>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Prot.</p>
+      <div class="pie animate" style="--p:67;--c:#BC4B51;"><%= current_user.min_user_protein %></div>
+    </div>
