@@ -1,19 +1,22 @@
-<a href="#" style="text-decoration: none;">
+<a class="" href="#" style="text-decoration: none;">
   <div class="standard-card">
     <div class="plan">
       <div class="plan-info">
         <h6><%= plan.name %></h6>
       </div>
-      <%# Meal image %>
-      <% if plan.photo.key.nil? %>
-        <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
-      <% else %>
-        <%= cl_image_tag plan.photo.key.to_s %>
-      <% end %>
+      <div class="align-items-center text-start m-auto">
+        <% plan.daily_plan_meals.each do |i| %>
+          <p class="m-0 text-decoration-none"><%= i.meal_type %>, <%= i.meal.name %></p>
+        <% end %>
     </div>
-    <%# remove below %>
-    <% plan.daily_plan_meals.each do |i| %>
-        <p><%= i.meal_type %>, <%= i.meal.name %></p>
-      <% end %>
+      <%# Meal image %>
+      <div>
+        <% if plan.photo.key.nil? %>
+          <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+        <% else %>
+          <%= cl_image_tag plan.photo.key.to_s %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </a>

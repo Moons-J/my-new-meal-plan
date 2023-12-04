@@ -48,7 +48,7 @@
       <%# <%= @updated_planning.first.daily_plan.id %>
       <%# <%= @updated_planning.first.daily_plan.meals.count %>
       <p><%= @updated_planning.first.start_time %></p>
-      <p>You will have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
+      <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
       <p>for <%= next_meal.first.meal_type %>, enjoy!</p>
     </div>
     <div class="img">
