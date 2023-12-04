@@ -11,5 +11,9 @@
         <%= cl_image_tag plan.photo.key.to_s %>
       <% end %>
     </div>
+    <%# remove below %>
+    <% plan.daily_plan_meals.each do |i| %>
+        <p><%= i.meal_type %>, <%= i.meal.name %></p>
+      <% end %>
   </div>
 </a>
