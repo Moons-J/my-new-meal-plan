@@ -17,3 +17,8 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<%# dont forget to remove before pushing to master %>
+      <% plan.daily_plan_meals.each do |i| %>
+        <p><%= i.meal_type %>, <%= i.meal.name %></p>
+      <% end %>

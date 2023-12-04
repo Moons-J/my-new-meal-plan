@@ -6,6 +6,16 @@
       <div class="meal-nutritionfacts border-0" data-action="trigger-nutrition-update@window->live-update-nutritions#update">
         <%= render "nutrition_circles" %>
       </div>
+      <%# Picture input %>
+      <label for="images" class="drop-container" id="dropcontainer">
+        <div class="text-center picture-preview mb-3">
+        </div>
+        <i class="fa-regular fa-images"></i>
+        <span class="drop-title">Add a picture</span>
+        <div style="margin-bottom: -30px">
+          <%= f.input :photo, as: :file, label: false, input_html: {id: "images", data: {action: "change->live-update-nutritions#image"}} %>
+        </div>
+      </label>
     </div>
     <div data-adding-delete-section-to-daily-plan-target="form">
       <%= f.fields_for :daily_plan_meals do |meal| %>

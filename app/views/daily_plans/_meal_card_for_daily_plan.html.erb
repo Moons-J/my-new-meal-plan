@@ -1,5 +1,5 @@
 <%# sidescroll class only used for the side scroll effect in daily meal plan creation %>
-<div class="card-meal standard-card sidescroll"
+<div class="card-meal-for-daily-plan standard-card sidescroll"
   data-action="click->select-meal-for-daily-meal#select"
   data-select-meal-for-daily-meal-target="card"
   data-live-update-nutritions-target="mealCard"
@@ -7,9 +7,8 @@
   <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <div class="meal-info">
     <h5><%= meal.name %></h5>
-    <p><%= meal.comment %></p>
   </div>
-  <div class="meal-nutritionfacts">
+  <div class="meal-nutritionfacts-create">
     <div class="circle-and-number-container">
       <div class="circle">
         <div class="white-inner-circle"></div>
@@ -41,5 +40,4 @@
       <p class="nutrition-data" id="protein"><%= meal.calculate_nutrition("protein") %></p>
     </div>
   </div>
-  <%= link_to "Edit", "#", class: "edit-button button-standard" %>
 </div>

@@ -2,10 +2,11 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 20px;
+  height: 300px;
+  gap: 15px;
 
   .sidescroll {
-    width: 350px;
+    width: 265px;
     flex: 0 0 auto;
   }
 }

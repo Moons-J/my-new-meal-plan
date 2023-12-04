@@ -24,6 +24,6 @@ class DailyPlansController < ApplicationController
   private
 
   def daily_plan_params
-    params.require(:daily_plan).permit(:name, daily_plan_meals_attributes: %i[meal_id meal_type])
+    params.require(:daily_plan).permit(:name, :photo, daily_plan_meals_attributes: %i[meal_id meal_type])
   end
 end

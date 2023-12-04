@@ -27,4 +27,13 @@ export default class extends Controller {
     this.carbsTarget.innerText = Math.round(totalCarbs * 10) / 10;;
     this.proteinTarget.innerText = Math.round(totalProtein * 10) / 10;;
   }
+
+  image(event) {
+    // this.element.querySelector(".picture-show").appendChild(event.target.files[0]);
+    // <img src="" alt="" class="picture-show"></img>
+    this.element.querySelector(".picture-preview").innerHTML = '';
+    this.element.querySelector(".drop-title").innerText = "Edit image"
+    this.element.querySelector(".picture-preview").insertAdjacentHTML("beforeend", `<img src="${URL.createObjectURL(event.target.files[0])}" alt="" class="picture-show"></img>`);
+    console.log(URL.createObjectURL(event.target.files[0]));
+  }
 }
