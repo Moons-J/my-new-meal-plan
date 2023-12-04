@@ -4,7 +4,12 @@
   data-select-meal-for-daily-meal-target="card"
   data-live-update-nutritions-target="mealCard"
   data-mealid="<%= meal.id %>">
-  <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+  <%# Meal image %>
+  <% if meal.photo.key.nil? %>
+    <%= image_tag "default_recipe.png" %>
+  <% else %>
+    <%= cl_image_tag meal.photo.key.to_s %>
+  <% end %>
   <div class="meal-info">
     <h5><%= meal.name %></h5>
   </div>
