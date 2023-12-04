@@ -22,31 +22,38 @@ class User < ApplicationRecord
 
   after_create :copy_base_ingredients
 
+  def percentage_calculation(total, part)
+    (part.to_f / total.to_f) *100
+  end
 
   def user_calories
     total = self.user_nutri_calculation * self.real_active_level * self.user_phase
     total.to_i
   end
 
-  def min_user_fats(current_user)
-    current_user.weight * 0.9 * 9
+  def min_user_fats
+    total = self.weight * 0.9 * 9
+    total.round(1)
   end
 
-  def max_user_satu_fats(current_user)
-    user_calories(current_user) * 0.1
+  def max_user_satu_fats
+    total = user_calories * 0.1
+    total.round(1)
   end
 
-  def max_user_carbs(current_user)
-    user_calories(current_user) * 0.65
+  def max_user_carbs
+    total = user_calories * 0.65
+    total.round(1)
   end
 
-  def min_user_protein(current_user)
-    case current_user.phase
+  def min_user_protein
+    case self.phase
     when "gain"
-      current_user.weight * 2 * 1.1
+      total = self.weight * 2 * 1.1
     else
-      current_user.weight * 2
+      total = self.weight * 2
     end
+    total.round(1)
   end
 
   private

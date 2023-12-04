@@ -3,29 +3,36 @@
 <%# Intakes %>
 <div class="standard-card">
   <div id="user-nutritionfacts">
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Max.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, 1000) %>;--c:#8CB369;"><%= current_user.user_calories %></div>
+      <p class="nutrition-data">Cal.</p>
+    </div>
 
     <div class="circle-and-number-container">
-      <div class="pie animate" style="--p:70;--c:#8CB369;">9999</div>
-      <p class="nutrition-data"><%= current_user.user_calories %> Cal.</p>
+      <p class="nutrition-data">Min.</p>
+      <div class="pie animate" style="--p:80;--c:#F4E285;"><%= current_user.min_user_fats %></div>
+      <p class="nutrition-data">Fat.</p>
     </div>
 
-<div class="circle-and-number-container">
-      <div class="pie animate" style="--p:70;--c:#8CB369;">9999</div>
-      <p class="nutrition-data"><%= current_user.user_calories %> Cal.</p>
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Max.</p>
+      <div class="pie animate" style="--p:67;--c:#F4A259;"><%= current_user.max_user_satu_fats %></div>
+      <p class="nutrition-data">Satu-F.</p>
     </div>
-<div class="circle-and-number-container">
-      <div class="pie animate" style="--p:70;--c:#8CB369;">9999</div>
-      <p class="nutrition-data"><%= current_user.user_calories %> Cal.</p>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Max.</p>
+      <div class="pie animate" style="--p:67;--c:#5B8E7D;"><%= current_user.max_user_carbs %></div>
+      <p class="nutrition-data">Carbs.</p>
     </div>
-<div class="circle-and-number-container">
-      <div class="pie animate" style="--p:70;--c:#8CB369;">9999</div>
-      <p class="nutrition-data"><%= current_user.user_calories %> Cal.</p>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Min.</p>
+      <div class="pie animate" style="--p:67;--c:#BC4B51;"><%= current_user.min_user_protein %></div>
+      <p class="nutrition-data">Prot.</p>
     </div>
-<div class="circle-and-number-container">
-      <div class="pie animate" style="--p:70;--c:#8CB369;">9999</div>
-      <p class="nutrition-data"><%= current_user.user_calories %> Cal.</p>
-    </div>
-    </div>
+  </div>
 </div>
 
 <%# Next Meal %>
