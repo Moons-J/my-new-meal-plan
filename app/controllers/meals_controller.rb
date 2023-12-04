@@ -14,7 +14,6 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @meal.meal_ingredients.new
   end
 
   def create
@@ -29,7 +28,6 @@ class MealsController < ApplicationController
 
   def edit
     @meal = Meal.find(params[:id])
-    @meal.meal_ingredients.new
   end
 
   def update

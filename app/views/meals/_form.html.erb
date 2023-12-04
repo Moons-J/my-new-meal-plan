@@ -1,96 +1,129 @@
 <%= simple_form_for(meal) do |f| %>
-    <div class="d-flex justify-content-end mb-3">
-      <%= f.submit "Save", class: "button-standard" %>
+  <div class="d-flex justify-content-end mb-3">
+    <%= f.submit "Save", class: "button-standard" %>
+  </div>
+  <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
+  <div class="text-center">
+    <h4 class="text-center">Meal's nutrition</h4>
+    <div class="meal-nutritionfacts border-0">
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data" data-meal-create-search-target="calloriesnum">0</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data" data-meal-create-search-target="fatsnum">0</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data" data-meal-create-search-target="satufatsnum">0</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data" data-meal-create-search-target="carbsnum">0</p>
+      </div>
+      <div class="circle-and-number-container">
+        <div class="circle">
+          <div class="white-inner-circle"></div>
+        </div>
+        <p class="nutrition-data" data-meal-create-search-target="proteinnum">0</p>
+      </div>
     </div>
-    <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
-    <div class="text-center">
-      <h4 class="text-center">Meal's nutrition</h4>
-      <div class="meal-nutritionfacts border-0">
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="calloriesnum">0</p>
+    <%# Picture input %>
+
+    <label for="images" class="drop-container" id="dropcontainer">
+      <div class="text-center picture-preview mb-3">
+      </div>
+      <i class="fa-regular fa-images"></i>
+      <span class="drop-title">Add a picture</span>
+      <div style="margin-bottom: -30px">
+        <%= f.input :photo, as: :file, label: false, input_html: {id: "images", data: {action: "change->meal-create-search#image"}} %>
+      </div>
+    </label>
+  </div>
+  <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' } %>
+  <%# Meal Ingredients list %>
+  <% meal.meal_ingredients.each do |meal_ingredient| %>
+    <%= f.fields_for :meal_ingredients, meal_ingredient do |meal_ingredient_f| %>
+    <div>
+      <div
+        data-callories="<%= meal_ingredient.ingredient.calories %>"
+        data-fats="<%= meal_ingredient.ingredient.fats %>"
+        data-satufats="<%= meal_ingredient.ingredient.satu_fats %>"
+        data-carbs="<%= meal_ingredient.ingredient.carbs %>"
+        data-protein="<%= meal_ingredient.ingredient.protein %>"
+        class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
+
+        <div class="d-flex align-items-center ingredient-name justify-content-start">
+          <%= link_to edit_ingredient_path(meal_ingredient.ingredient) do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <h2 class="mx-2 mb-0"><%= meal_ingredient.ingredient.name %></h2>
         </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="fatsnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="satufatsnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="carbsnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="proteinnum">0</p>
+
+        <div class="mx-2 input-small">
+          <%= meal_ingredient_f.input :ingredient_id, input_html: {value: meal_ingredient.ingredient_id}, as: :hidden %>
+
+          <%= meal_ingredient_f.input :amount,
+            label: false, placeholder: "Amount(g)",
+            input_html: {class: "standard-input amount"} %>
         </div>
       </div>
-      <%# Picture input %>
-
-      <label for="images" class="drop-container" id="dropcontainer">
-        <div class="text-center picture-preview mb-3">
-        </div>
-        <i class="fa-regular fa-images"></i>
-        <span class="drop-title">Add a picture</span>
-        <div style="margin-bottom: -30px">
-          <%= f.input :photo, as: :file, label: false, input_html: {id: "images", data: {action: "change->meal-create-search#image"}} %>
-        </div>
-      </label>
     </div>
-    <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' } %>
-    <%# Ingredients list %>
-    <input type="text" class="standard-input w-100 mt-3" placeholder="Search"
-    data-meal-create-search-target="input"
-    data-action="keyup->meal-create-search#search">
-    <% current_user.ingredients.each do |user_ingredient| %>
-      <%= f.fields_for :meal_ingredients do |ingredient| %>
-      <div data-meal-create-search-target="list">
-        <div
-          data-controller="create-meal-form"
-          data-action="click->create-meal-form#select"
-          data-callories="<%= user_ingredient.calories %>"
-          data-fats="<%= user_ingredient.fats %>"
-          data-satufats="<%= user_ingredient.satu_fats %>"
-          data-carbs="<%= user_ingredient.carbs %>"
-          data-protein="<%= user_ingredient.protein %>"
-          data-meal-create-search-target="card"
-          class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
+    <% end %>
+  <% end %>
 
-          <div class="d-flex align-items-center ingredient-name justify-content-start">
-            <%= link_to edit_ingredient_path(user_ingredient) do %>
-              <i class="fa-regular fa-pen-to-square"></i>
-            <% end %>
-            <h2 class="mx-2 mb-0" data-meal-create-search-target="ingredient"><%= user_ingredient.name %></h2>
-          </div>
+  <%# Ingredients list %>
+  <input type="text" class="standard-input w-100 mt-3" placeholder="Search"
+  data-meal-create-search-target="input"
+  data-action="keyup->meal-create-search#search">
+   <% meal.meal_ingredients.each do |meal_ingredient| %>
+    <%= f.fields_for :meal_ingredients, meal_ingredient do |meal_ingredient_f| %>
+    <div data-meal-create-search-target="list">
+      <div
+        data-controller="create-meal-form"
+        data-action="click->create-meal-form#select"
+        data-callories="<%= meal_ingredient.ingredient.calories %>"
+        data-fats="<%= meal_ingredient.ingredient.fats %>"
+        data-satufats="<%= meal_ingredient.ingredient.satu_fats %>"
+        data-carbs="<%= meal_ingredient.ingredient.carbs %>"
+        data-protein="<%= meal_ingredient.ingredient.protein %>"
+        data-meal-create-search-target="card"
+        class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
 
-          <div class="mx-2 input-small">
-            <%= ingredient.input :ingredient_id, input_html: {value: user_ingredient.id}, as: :hidden %>
+        <div class="d-flex align-items-center ingredient-name justify-content-start">
+          <%= link_to edit_ingredient_path(meal_ingredient.ingredient) do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <h2 class="mx-2 mb-0" data-meal-create-search-target="ingredient"><%= meal_ingredient.ingredient.name %></h2>
+        </div>
 
-            <%= ingredient.input :amount,
-              label: false, placeholder: "Amount(g)",
-              input_html: {class: "standard-input amount",
-              data: { create_meal_form_target: "amount",
-              meal_create_search_target: "amount",
-              action: "click->create-meal-form#add
+        <div class="mx-2 input-small">
+          <%= meal_ingredient_f.input :ingredient_id, input_html: {value: meal_ingredient.ingredient_id}, as: :hidden %>
+          <div class="mb-3 integer">
+            <input type="text" name="amount" placeholder = "Amount(g)"
+            class = "form-control is-valid numeric integer optional standard-input amount " data-meal-create-search-target = "amount",
+              data-action ="click->create-meal-form#add
               keyup->create-meal-form#validate
               blur->create-meal-form#validate
               blur->meal-create-search#sort
-              blur->meal-create-search#calculate"}} %>
+              blur->meal-create-search#calculate">
           </div>
         </div>
       </div>
-      <% end %>
+    </div>
     <% end %>
   <% end %>
+  <%# Ingredient template for adding to simple form %>
+  <template>
+
+  </template>
+<% end %>
