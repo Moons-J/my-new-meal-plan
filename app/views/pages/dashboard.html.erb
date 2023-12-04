@@ -37,9 +37,24 @@
 </div>
 
 <%# Next Meal %>
-<div class="standard-card">
-  <% if current_user.plannings.nil? %>
-    <%= current_user.plannings %>
+<div class="d-flex daily-plan-card">
+  <% daily_plan = @updated_planning.first.daily_plan %>
+  <% next_meal = daily_plan.daily_plan_meals %>
+  <% if next_meal[0] > 0 %>
+    <div class="info">
+      <h5>Daily plan: <br><strong><%= daily_plan.name %></strong></h5>
+      <%# <%= @updated_planning.first.daily_plan.id %>
+      <%# <%= @updated_planning.first.daily_plan.meals.count %>
+      <p>You will have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
+      <p>for <%= next_meal.first.meal_type %>, enjoy!</p>
+    </div>
+    <div class="img">
+      <% if next_meal.meal.photo.attached? %>
+        <%= cl_image_tag next_meal.meal.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+      <% else %>
+        <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+      <% end %>
+    </div>
   <% else %>
     <h3 class="text-center py-3">No meals left for today!</h3>
   <% end %>
@@ -47,7 +62,7 @@
 
 <%# Calendar %>
 <div class="standard-card">
-  <%= week_calendar(number_of_weeks: 2) do |date| %>
+  <%= week_calendar(start_date_param: :my_date, number_of_weeks: 1) do |date| %>
     <%= date %>
   <% end %>
 </div>
@@ -55,8 +70,8 @@
 <%# Weight history %>
 <div class="standard-card">
   <div id="user-weights">
-    <h6>Weight History</h6>
+    <h6>Weight History (kg)</h6>
     <%= line_chart WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight),
-        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight) %>
+        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight), colors: ['#5B8E7D'] %>
   </div>
 </div>

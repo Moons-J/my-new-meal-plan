@@ -11,7 +11,6 @@
 require 'faker'
 require 'csv'
 
-
 puts "Deleting old base ingredients..."
 BaseIngredient.destroy_all
 puts "Deleting old meal ingredients..."
@@ -19,9 +18,12 @@ MealIngredient.destroy_all
 puts "Deleting old ingredients..."
 Ingredient.destroy_all
 puts "Deleting old meals..."
+DailyPlanMeal.destroy_all
 Meal.destroy_all
 puts "Deleting old daily plans..."
 DailyPlan.destroy_all
+puts "Deleting old plannings"
+Planning.destroy_all
 puts "Deleting evidences of weight history..."
 WeightHistory.destroy_all
 puts "Deleting old users..."
@@ -33,14 +35,13 @@ puts "Reading base ingredients..."
 filepath = Rails.root.join("lib", "assets", "ingredients.csv")
 
 CSV.foreach(filepath, headers: :first_row) do |row|
-
   BaseIngredient.create!(
-    name: "#{row[0]}",
-    calories: "#{row['calories']}",
-    fats: "#{row['fats']}",
-    satu_fats: "#{row['sat_fats']}",
-    carbs: "#{row['carbs']}",
-    protein: "#{row['protein']}",
+    name: row[0].to_s,
+    calories: row['calories'].to_s,
+    fats: row['fats'].to_s,
+    satu_fats: row['sat_fats'].to_s,
+    carbs: row['carbs'].to_s,
+    protein: row['protein'].to_s,
   )
 end
 puts "Created #{BaseIngredient.count} base ingredients!"
@@ -81,14 +82,41 @@ emails.each do |email|
     end
   end
   puts "Created #{number_meals} meals!"
+
+  puts "Creating daily plans and daily plan meals..."
   rand(2..5).times do
     date = Faker::Date.between(from: 2.year.ago, to: Date.today)
-    DailyPlan.create!(
+    daily_plan = DailyPlan.create!(
       name: Faker::Food.dish,
       user_id: user.id,
       created_at: date,
       updated_at: date
     )
+
+    rand(3).times do
+      DailyPlanMeal.create!(
+        meal_id: Meal.all.sample.id,
+        daily_plan_id: daily_plan.id,
+        meal_type: %w[breakfast lunch dinner].sample
+      )
+    end
+
+    rand(3).times do
+      Planning.create!(
+        date: Time.new,
+        daily_plan_id: daily_plan.id,
+        user_id: user.id,
+        start_time: Time.new(
+          Time.now.year,
+          Time.now.month,
+          Time.now.day,
+          rand(8..23),
+          rand(1..59),
+          rand(1..59),
+          Time.zone.name
+        )
+      )
+    end
   end
   puts "Created daily plans!"
 
