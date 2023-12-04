@@ -56,7 +56,7 @@
 <div class="standard-card">
   <div id="user-weights">
     <h6>Weight History</h6>
-    <%= line_chart WeightHistory.group_by_day(:created_at, range: 1.weeks.ago..Time.now, current: false).average(:weight),
-        min: "60", max: "70" %>
+    <%= line_chart WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight),
+        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight) %>
   </div>
 </div>
