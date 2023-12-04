@@ -1,5 +1,5 @@
 <div data-controller="live-update-nutritions adding-delete-section-to-daily-plan">
-  <%= simple_form_for(@daily_plan, data: {adding_delete_section_to_daily_plan_target: "form"}) do |f| %>
+  <%= simple_form_for(@daily_plan) do |f| %>
   <%= f.input :name %>
     <div class="text-center">
       <h4 class="text-center">Daily-Plan's nutrition</h4>
@@ -7,7 +7,7 @@
         <%= render "nutrition_circles" %>
       </div>
     </div>
-    <div>
+    <div data-adding-delete-section-to-daily-plan-target="form">
       <%= f.fields_for :daily_plan_meals do |meal| %>
         <p>Breakfast</p>
         <div data-controller="select-meal-for-daily-meal">
