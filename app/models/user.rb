@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
   has_many :ingredients
   has_many :meals
   has_many :daily_plans
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   after_create :copy_base_ingredients
 
   def user_calories(current_user)
-    user_nutri_calculation(current_user) * real_active_level(current_user)
+    user_nutri_calculation(current_user) * real_active_level(current_user) * user_phase(current_user)
   end
 
   def minimum_user_fats(current_user)
@@ -39,10 +39,45 @@ class User < ApplicationRecord
   end
 
   def user_protein(current_user)
-    user_calories(current_user) * 0.25 / 4
+    case current_user.phase
+    when "gain"
+      current_user.weight * 2 * 1.1
+    else
+      current_user.weight * 2
+    end
   end
 
   private
+
+  def date_not_in_future
+    errors.add(:birthday, "can't be in the future") if birthday.present? && birthday > Date.today
+    end
+  end
+
+  def copy_base_ingredients
+    BaseIngredient.all.each do |ingredient|
+      Ingredient.create(
+      name: ingredient.name,
+      calories: ingredient.calories,
+      fats: ingredient.fats,
+      satu_fats: ingredient.satu_fats,
+      carbs: ingredient.carbs,
+      protein: ingredient.protein,
+      user_id: self.id
+      )
+    end
+  end
+
+  def user_phase(current_user)
+    case current_user.phase
+    when "gain"
+      phase = 1.1
+    when "maintain"
+      phase = 1
+    when "lose"
+      phase = 0.9
+    end
+  end
 
   def real_active_level(current_user)
     case current_user.active_level
@@ -68,22 +103,4 @@ class User < ApplicationRecord
     end
   end
 
-  def date_not_in_future
-    errors.add(:birthday, "can't be in the future") if birthday.present? && birthday > Date.today
-  end
-
-  def copy_base_ingredients
-    BaseIngredient.all.each do |ingredient|
-      Ingredient.create(
-      name: ingredient.name,
-      calories: ingredient.calories,
-      fats: ingredient.fats,
-      satu_fats: ingredient.satu_fats,
-      carbs: ingredient.carbs,
-      protein: ingredient.protein,
-      user_id: self.id
-      )
-    end
-  end
-end
 end

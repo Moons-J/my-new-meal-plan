@@ -48,6 +48,8 @@ puts "Created #{BaseIngredient.count} base ingredients!"
 puts "Creating users..."
 
 emails = ["test1@email.com", "test2@email.com", "test3@email.com", "test4@email.com", "test5@email.com"]
+@sex = ["male", "female", "rather not say"]
+@phase = ["gain", "maintain", "lose"]
 
 emails.each do |email|
   user = User.create!(
@@ -56,9 +58,11 @@ emails.each do |email|
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     user_name: Faker::Internet.username,
-    height: rand(130..200),
+    sex: @sex.sample,
+    phase: @phase.sample,
+    height: rand(150..200),
     exercise_level: rand(1..5),
-    weight: rand(30..160),
+    weight: rand(60..110),
     birthday: "#{rand(1..30)}/#{rand(1..12)}/#{rand(1990..2005)}"
   )
   puts "#{user.ingredients.count} ingredients added to user with email: #{email}"
