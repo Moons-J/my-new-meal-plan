@@ -12,6 +12,8 @@ export default class extends Controller {
       this.validate()
     }
 
+    // Update nutrition stats
+
     if (!event.currentTarget.classList.contains("selected")) {
       this.amountTarget.value = "";
     }
@@ -28,4 +30,5 @@ export default class extends Controller {
       this.amountTarget.classList.remove("is-invalid")
     }
   }
+
 }

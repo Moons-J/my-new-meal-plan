@@ -1,4 +1,4 @@
-<h1>Your intake of today:</h1>
+<h2>Your intake of today:</h2>
 
 <%# Intakes %>
 <div class="standard-card">
@@ -37,7 +37,11 @@
 
 <%# Next Meal %>
 <div class="standard-card">
-  Meal
+  <% if current_user.plannings.nil? %>
+    <%= current_user.plannings %>
+  <% else %>
+    <h3 class="text-center py-3">No meals left for today!</h3>
+  <% end %>
 </div>
 
 <%# Calendar %>
@@ -51,6 +55,7 @@
 <div class="standard-card">
   <div id="user-weights">
     <h6>Weight History</h6>
-    <%= line_chart WeightHistory.group_by_day(:created_at, range: 1.weeks.ago..Time.now, expand_range: true, current: false).count(:weight) %>
+    <%= line_chart WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight),
+        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight) %>
   </div>
 </div>

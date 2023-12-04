@@ -21,7 +21,6 @@ export default class extends Controller {
     const swipeDistance = this.endX - this.startX;
     const width = this.cardTarget.offsetWidth
     const height = this.cardTarget.offsetHeight
-    console.log(width)
     if (swipeDistance < -50) {
       this.cardTarget.classList.add("deletingCard")
       this.cardTarget.style.width = `${width}px`
