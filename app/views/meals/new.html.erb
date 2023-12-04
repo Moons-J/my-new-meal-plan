@@ -39,9 +39,10 @@
         </div>
       </div>
       <%# Picture input %>
-      <div class="text-center picture-preview mb-3">
-      </div>
+
       <label for="images" class="drop-container" id="dropcontainer">
+        <div class="text-center picture-preview mb-3">
+        </div>
         <i class="fa-regular fa-images"></i>
         <span class="drop-title">Add a picture</span>
         <div style="margin-bottom: -30px">
@@ -59,7 +60,12 @@
       <div data-meal-create-search-target="list">
         <div
           data-controller="create-meal-form"
-          data-action="click->create-meal-form#select click->meal-create-search#sort"
+          data-action="click->create-meal-form#select"
+          data-callories="<%= user_ingredient.calories %>"
+          data-fats="<%= user_ingredient.fats %>"
+          data-satufats="<%= user_ingredient.satu_fats %>"
+          data-carbs="<%= user_ingredient.carbs %>"
+          data-protein="<%= user_ingredient.protein %>"
           data-meal-create-search-target="card"
           class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
 
@@ -76,7 +82,7 @@
             <%= ingredient.input :amount,
               label: false, placeholder: "Amount(g)",
               input_html: {class: "standard-input",
-              data: {create_meal_form_target: "amount", action: "click->create-meal-form#add keyup->create-meal-form#validate blur->create-meal-form#validate"}} %>
+              data: {create_meal_form_target: "amount", action: "click->create-meal-form#add keyup->create-meal-form#validate blur->create-meal-form#validate blur->meal-create-search#sort"}} %>
           </div>
         </div>
       </div>
