@@ -11,37 +11,38 @@
           <div class="circle">
             <div class="white-inner-circle"></div>
           </div>
-          <p class="nutrition-data"><%= @meal.calculate_nutrition("calories") %></p>
+          <p class="nutrition-data" data-meal-create-search-target="calloriesnum">0</p>
         </div>
         <div class="circle-and-number-container">
           <div class="circle">
             <div class="white-inner-circle"></div>
           </div>
-          <p class="nutrition-data"><%= @meal.calculate_nutrition("fats") %></p>
+          <p class="nutrition-data" data-meal-create-search-target="fatsnum">0</p>
         </div>
         <div class="circle-and-number-container">
           <div class="circle">
             <div class="white-inner-circle"></div>
           </div>
-          <p class="nutrition-data"><%= @meal.calculate_nutrition("satu-fats") %></p>
+          <p class="nutrition-data" data-meal-create-search-target="satufatsnum">0</p>
         </div>
         <div class="circle-and-number-container">
           <div class="circle">
             <div class="white-inner-circle"></div>
           </div>
-          <p class="nutrition-data"><%= @meal.calculate_nutrition("carbs") %></p>
+          <p class="nutrition-data" data-meal-create-search-target="carbsnum">0</p>
         </div>
         <div class="circle-and-number-container">
           <div class="circle">
             <div class="white-inner-circle"></div>
           </div>
-          <p class="nutrition-data"><%= @meal.calculate_nutrition("protein") %></p>
+          <p class="nutrition-data" data-meal-create-search-target="proteinnum">0</p>
         </div>
       </div>
       <%# Picture input %>
-      <div class="text-center picture-preview mb-3">
-      </div>
+
       <label for="images" class="drop-container" id="dropcontainer">
+        <div class="text-center picture-preview mb-3">
+        </div>
         <i class="fa-regular fa-images"></i>
         <span class="drop-title">Add a picture</span>
         <div style="margin-bottom: -30px">
@@ -59,7 +60,12 @@
       <div data-meal-create-search-target="list">
         <div
           data-controller="create-meal-form"
-          data-action="click->create-meal-form#select click->meal-create-search#sort"
+          data-action="click->create-meal-form#select"
+          data-callories="<%= user_ingredient.calories %>"
+          data-fats="<%= user_ingredient.fats %>"
+          data-satufats="<%= user_ingredient.satu_fats %>"
+          data-carbs="<%= user_ingredient.carbs %>"
+          data-protein="<%= user_ingredient.protein %>"
           data-meal-create-search-target="card"
           class="ingredient-card standard-card d-flex justify-content-between align-items-center p-3 my-3">
 
@@ -75,8 +81,14 @@
 
             <%= ingredient.input :amount,
               label: false, placeholder: "Amount(g)",
-              input_html: {class: "standard-input",
-              data: {create_meal_form_target: "amount", action: "click->create-meal-form#add keyup->create-meal-form#validate blur->create-meal-form#validate"}} %>
+              input_html: {class: "standard-input amount",
+              data: { create_meal_form_target: "amount",
+              meal_create_search_target: "amount",
+              action: "click->create-meal-form#add
+              keyup->create-meal-form#validate
+              blur->create-meal-form#validate
+              blur->meal-create-search#sort
+              blur->meal-create-search#calculate"}} %>
           </div>
         </div>
       </div>
