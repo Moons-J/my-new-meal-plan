@@ -27,6 +27,21 @@ class MealsController < ApplicationController
     end
   end
 
+  def edit
+    @meal = Meal.find(params[:id])
+    @meal.meal_ingredients.new
+  end
+
+  def update
+    @meal = Meal.find(params[:id])
+    @meal.update(meal_ingredients_params)
+    if @meal.save
+      redirect_to meal_path(@meal)
+    else
+      render :edit, status: unprocessable_entity
+    end
+  end
+
   def destroy
     @meal = Meal.find(params[:id])
     @meal.destroy

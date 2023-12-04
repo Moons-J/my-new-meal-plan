@@ -46,7 +46,7 @@
         <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
       </div>
     </div>
-    <%= link_to "Edit", "#", class: "edit-button button-standard" %>
+    <%= link_to "Edit", edit_meal_path(meal), class: "edit-button button-standard" %>
   </div>
   <%# <div class="d-flex flex-grow-1 justify-content-center"> %>
   <%= link_to("Delete", meal_path(meal), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-delete hidden button-position') %>
