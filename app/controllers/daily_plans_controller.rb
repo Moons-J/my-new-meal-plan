@@ -13,10 +13,11 @@ class DailyPlansController < ApplicationController
   def create
     @daily_plan = DailyPlan.new(daily_plan_params)
     @daily_plan.user = current_user
+
     if @daily_plan.save
       redirect_to daily_plans_path
     else
-      render :new, status: unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
