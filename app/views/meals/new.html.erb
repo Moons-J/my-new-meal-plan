@@ -50,7 +50,7 @@
         </div>
       </label>
     </div>
-    <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' } %>
+    <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' }, input_html: { class: "standard-textarea" } %>
     <%# Ingredients list %>
     <input type="text" class="standard-input w-100 mt-3" placeholder="Search"
     data-meal-create-search-target="input"

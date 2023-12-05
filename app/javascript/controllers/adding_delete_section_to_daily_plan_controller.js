@@ -20,5 +20,6 @@ export default class extends Controller {
     label.setAttribute("name", label.name.replace(this.regex, this.currentId));
     this.currentId += 1;
     this.formTarget.appendChild(sectionClone);
+    this.formTarget.lastElementChild.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
   }
 }
