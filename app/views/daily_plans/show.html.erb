@@ -1,11 +1,34 @@
 <h4 class="text-center"><%= @daily_plan.name %></h4>
-<%# Meal image %>
+<%# Daily_plan image %>
 <div class="daily-plan-img-container">
   <% if @daily_plan.photo.key.nil? %>
     <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
   <% else %>
     <%= cl_image_tag @daily_plan.photo.key.to_s %>
   <% end %>
+</div>
+<%# Daily_plan nutrition data %>
+<div class="meal-nutritionfacts border-0">
+  <div class="circle-and-number-container">
+    <p class="nutrition-data">Cal.</p>
+    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, meal.calculate_nutrition("calories")) %>;--c:#8CB369;"><%= meal.calculate_nutrition("calories") %></div>
+  </div>
+  <div class="circle-and-number-container">
+    <p class="nutrition-data">Fat.</p>
+    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_fats.to_i, meal.calculate_nutrition("fats")) %>;--c:#F4E285;"><%= meal.calculate_nutrition("fats") %></div>
+  </div>
+  <div class="circle-and-number-container">
+    <p class="nutrition-data">Satu-F.</p>
+    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_satu_fats.to_i, meal.calculate_nutrition("satu-fats")) %>;--c:#F4A259;"><%= meal.calculate_nutrition("satu-fats") %></div>
+  </div>
+  <div class="circle-and-number-container">
+    <p class="nutrition-data">Carbs.</p>
+    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_carbs.to_i, meal.calculate_nutrition("carbs")) %>;--c:#5B8E7D;"><%= meal.calculate_nutrition("carbs") %></div>
+  </div>
+  <div class="circle-and-number-container">
+    <p class="nutrition-data">Prot.</p>
+    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, meal.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= meal.calculate_nutrition("protein") %></div>
+  </div>
 </div>
 <div class="text-center">
   <% @daily_plan.daily_plan_meals.each do |daily_plan_meal| %>
