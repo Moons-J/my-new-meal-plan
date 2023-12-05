@@ -1,0 +1,28 @@
+// button used in the daily plan creation page
+.plus-button {
+  // green-button color
+  // background-color: rgba(95, 179, 0, 0.2);
+  background-color: white;
+  border: 1px solid rgba($color: $dark-gray, $alpha: 0.5);
+  width: 265px;
+  height: 130px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus-button-container{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.plus-icon {
+  font-size: 3rem;
+  color: $dark-gray;
+  opacity: 0.5;
+}

@@ -16,34 +16,24 @@
     </div>
     <div class="meal-nutritionfacts">
       <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= meal.calculate_nutrition("calories") %></p>
+        <p class="nutrition-data">Cal.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, meal.calculate_nutrition("calories")) %>;--c:#8CB369;"><%= meal.calculate_nutrition("calories") %></div>
       </div>
       <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= meal.calculate_nutrition("fats") %></p>
+        <p class="nutrition-data">Fat.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_fats.to_i, meal.calculate_nutrition("fats")) %>;--c:#F4E285;"><%= meal.calculate_nutrition("fats") %></div>
       </div>
       <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= meal.calculate_nutrition("satu-fats") %></p>
+        <p class="nutrition-data">Satu-F.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_satu_fats.to_i, meal.calculate_nutrition("satu-fats")) %>;--c:#F4A259;"><%= meal.calculate_nutrition("satu-fats") %></div>
       </div>
       <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= meal.calculate_nutrition("carbs") %></p>
+        <p class="nutrition-data">Carbs.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_carbs.to_i, meal.calculate_nutrition("carbs")) %>;--c:#5B8E7D;"><%= meal.calculate_nutrition("carbs") %></div>
       </div>
       <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= meal.calculate_nutrition("protein") %></p>
+        <p class="nutrition-data">Prot.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, meal.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= meal.calculate_nutrition("protein") %></div>
       </div>
     </div>
     <%= link_to "Edit", "#", class: "edit-button button-standard" %>

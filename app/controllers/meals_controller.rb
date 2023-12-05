@@ -23,7 +23,7 @@ class MealsController < ApplicationController
     if @meal.save
       redirect_to meals_path
     else
-      render :new, status: unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

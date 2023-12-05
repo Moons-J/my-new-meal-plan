@@ -1,30 +1,24 @@
-<div class="circle-and-number-container">
-  <div class="circle">
-    <div class="white-inner-circle"></div>
-  </div>
-  <p class="nutrition-data" data-live-update-nutritions-target="calories">0</p>
+<div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.user_calories %>">
+  <div class="pie animate" data-live-update-nutritions-target="calories" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#8CB369;">0</div>
+  <p class="nutrition-data">Cal.</p>
 </div>
-<div class="circle-and-number-container">
-  <div class="circle">
-    <div class="white-inner-circle"></div>
-  </div>
-  <p class="nutrition-data" data-live-update-nutritions-target="fats">0</p>
+
+<div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.min_user_fats %>">
+  <div class="pie animate" data-live-update-nutritions-target="satuFats" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4E285;">0</div>
+  <p class="nutrition-data">Fat.</p>
 </div>
-<div class="circle-and-number-container">
-  <div class="circle">
-    <div class="white-inner-circle"></div>
-  </div>
-  <p class="nutrition-data" data-live-update-nutritions-target="satuFats">0</p>
+
+<div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.max_user_satu_fats %>">
+  <div class="pie animate" data-live-update-nutritions-target="carbs" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4A259;">0</div>
+  <p class="nutrition-data">Satu-F.</p>
 </div>
-<div class="circle-and-number-container">
-  <div class="circle">
-    <div class="white-inner-circle"></div>
-  </div>
-  <p class="nutrition-data" data-live-update-nutritions-target="carbs">0</p>
+
+<div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.max_user_carbs %>">
+  <div class="pie animate" data-live-update-nutritions-target="fats" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#5B8E7D;">0</div>
+  <p class="nutrition-data">Carbs.</p>
 </div>
-<div class="circle-and-number-container">
-  <div class="circle">
-    <div class="white-inner-circle"></div>
-  </div>
-  <p class="nutrition-data" data-live-update-nutritions-target="protein">0</p>
+
+<div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.min_user_protein %>">
+  <div class="pie animate" data-live-update-nutritions-target="protein" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#BC4B51;">0</div>
+  <p class="nutrition-data">Prot.</p>
 </div>

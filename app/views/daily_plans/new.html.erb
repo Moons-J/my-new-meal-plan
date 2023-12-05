@@ -1,10 +1,15 @@
 <div data-controller="live-update-nutritions adding-delete-section-to-daily-plan">
   <%= simple_form_for(@daily_plan) do |f| %>
-  <%= f.input :name %>
+      <div class="d-flex justify-content-end mb-3">
+        <%= f.submit "Save", class: "button-standard" %>
+      </div>
+  <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your daily plan..."}, label: false %>
     <div class="text-center">
-      <h4 class="text-center">Daily-Plan's nutrition</h4>
-      <div class="meal-nutritionfacts border-0" data-action="trigger-nutrition-update@window->live-update-nutritions#update">
-        <%= render "nutrition_circles" %>
+      <%# <h4 class="text-center">Daily-Plan's nutrition</h4> %>
+      <div class="standard-card mt-3">
+        <div class="meal-nutritionfacts border-0" data-action="trigger-nutrition-update@window->live-update-nutritions#update">
+          <%= render "nutrition_circles" %>
+        </div>
       </div>
       <%# Picture input %>
       <label for="images" class="drop-container" id="dropcontainer">
@@ -19,7 +24,7 @@
     </div>
     <div data-adding-delete-section-to-daily-plan-target="form">
       <%= f.fields_for :daily_plan_meals do |meal| %>
-        <p>Breakfast</p>
+        <h5 class="text-center mt-3" >Breakfast</h5>
         <div data-controller="select-meal-for-daily-meal">
           <%= render "meals_sidescroll_show", meals: @meals %>
           <%= meal.input :meal_id, input_html: {value: "", data: { select_meal_for_daily_meal_target: "input" }}, as: :hidden %>
@@ -27,7 +32,7 @@
         </div>
       <% end %>
       <%= f.fields_for :daily_plan_meals do |meal| %>
-        <p>Lunch</p>
+        <h5 class="text-center mt-3" >Lunch</h5>
         <div data-controller="select-meal-for-daily-meal">
           <%= render "meals_sidescroll_show", meals: @meals %>
           <%= meal.input :meal_id, input_html: {value: "", data: { select_meal_for_daily_meal_target: "input" }}, as: :hidden %>
@@ -35,7 +40,7 @@
         </div>
       <% end %>
       <%= f.fields_for :daily_plan_meals do |meal| %>
-        <p>Dinner</p>
+        <h5 class="text-center mt-3" >Dinner</h5>
         <div data-controller="select-meal-for-daily-meal">
           <%= render "meals_sidescroll_show", meals: @meals %>
           <%= meal.input :meal_id, input_html: {value: "", data: { select_meal_for_daily_meal_target: "input" }}, as: :hidden %>
@@ -43,18 +48,13 @@
         </div>
       <% end %>
     </div>
-    <button
-      data-action="click->adding-delete-section-to-daily-plan#addSection">
-      Add Snack
-    </button>
+    <div class="plus-button-container">
+      <div class="plus-button" data-action="click->adding-delete-section-to-daily-plan#addSection">
+        <i class="fa-solid fa-plus plus-icon"></i>
+      </div>
+    </div>
     <template id="template">
       <%= render "meal_select_fields", f: f, meals: @meals %>
     </template>
-
-  <%= f.submit %>
   <% end %>
 </div>
-
-
-<%# data-adding-delete-section-to-daily-plan-target="form" %>
-<%# , data: {adding_delete_section_to_daily_plan_target: "form"} %>

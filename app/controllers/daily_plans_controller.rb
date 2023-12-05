@@ -23,6 +23,10 @@ class DailyPlansController < ApplicationController
     end
   end
 
+  def show
+    @daily_plan = DailyPlan.find(params[:id])
+  end
+
   private
 
   def daily_plan_params
