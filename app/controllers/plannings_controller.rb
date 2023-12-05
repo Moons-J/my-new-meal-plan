@@ -1,16 +1,25 @@
 class PlanningsController < ApplicationController
-  def new
-    @planning = Planning.new
-    @daily_plans = DailyPlan.all
-  end
-
   def create
     @planning = Planning.new(planning_params)
     @planning.user = current_user
     if @planning.save
-      redirect_to daily_plans_path
+      redirect_to daily_plans_path, notice: "Plan added"
     else
-      render daily_plans_path, status: :unprocessable_entity
+      redirect_to daily_plans_path, notice: "The plan could not be added: #{@planning.errors.full_messages.join(", ")}"
+    end
+  end
+
+  def edit
+    @planning = Planning.find(params[:id])
+  end
+
+  def update
+    @planning = Planning.find(params[:id])
+    @planning.user = current_user
+    if @planning.update
+      redirect_to daily_plans_path, notice: "Plan updated"
+    else
+      redirect_to daily_plans_path, notice: "The plan could not be added: #{@planning.errors.full_messages.join(", ")}"
     end
   end
 
