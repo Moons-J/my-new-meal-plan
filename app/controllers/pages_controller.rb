@@ -9,9 +9,9 @@ class PagesController < ApplicationController
     @updated_planning = []
     @daily_meals = { breakfast: "", lunch: "", dinner: "" }
     if current_user.plannings.length.positive?
-      @arranged_plannings = planning.sort_by(&:start_time)
+      @arranged_plannings = planning.sort_by(&:date)
       @updated_planning = @arranged_plannings.select do |meal|
-        meal.start_time >= Time.now.day
+        meal.date >= Time.now.day
       end
       @updated_planning
     end
