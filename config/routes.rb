@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :meals, only: %i[index new create destroy]
   resources :daily_plans, only: [:index]
   resources :ingredients, only: %i[index new create edit update destroy]
+  resources :account, only: %i[edit update]
 end
