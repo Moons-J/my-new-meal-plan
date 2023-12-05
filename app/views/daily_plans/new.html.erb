@@ -1,7 +1,9 @@
 <div data-controller="live-update-nutritions adding-delete-section-to-daily-plan">
   <%= simple_form_for(@daily_plan) do |f| %>
       <div class="d-flex justify-content-end mb-3">
-        <%= f.submit "Save", class: "button-standard" %>
+        <%= f.button :submit, class: "button-rounded-green" do %>
+          <i class="fa-regular fa-floppy-disk" style="color: #ffffff;"></i>
+        <% end %>
       </div>
   <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your daily plan..."}, label: false %>
     <div class="text-center">
