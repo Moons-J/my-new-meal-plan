@@ -8,7 +8,7 @@ class MealIngredient < ApplicationRecord
   private
 
   def ingredient_belongs_to_user
-    unless self.user == self.ingredient.user
+    unless self.meal.user_id == self.ingredient.user_id
       errors.add(:ingredient, "must belong to the same user as the meal")
     end
   end
