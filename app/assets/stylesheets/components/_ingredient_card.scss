@@ -40,3 +40,11 @@ small {
     display: none;
   }
 }
+
+.fa-trash {
+  color: $dark-gray;
+}
+
+.hide-from-ingredient-list {
+  display: none !important;
+}

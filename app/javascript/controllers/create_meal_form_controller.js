@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="create-meal-form"
 export default class extends Controller {
-  static targets = ["card", "amount", "list"]
+  static targets = ["card", "amount", "list", "ingredientsList"]
   connect() {
     this.regex = /(\d+)/;
     // select last input and get index with regex
@@ -12,7 +12,14 @@ export default class extends Controller {
     } else {
       this.lastInputIndex = 0;
     }
-    console.log(this.lastInputIndex);
+  }
+
+  delete(event) {
+    if (event.target.tagName == "I") {
+      const ingredientId = event.currentTarget.querySelector("input[type='hidden']").value;
+      event.currentTarget.remove();
+      console.log(this.ingredientsListTarget.querySelector(`#ingredient_${ingredientId}`).classList.remove("hide-from-ingredient-list"));
+    }
   }
 
   insert(event) {
@@ -30,19 +37,10 @@ export default class extends Controller {
       clone.querySelector("input[type='hidden']").id = `meal_meal_ingredients_attributes_${this.lastInputIndex + 1}_ingredient_id`;
       clone.querySelector("input.amount").name = `meal[meal_ingredients_attributes][${this.lastInputIndex + 1}][amount]`;
       clone.querySelector("input.amount").id = `meal_meal_ingredients_attributes_${this.lastInputIndex + 1}_amount`;
-
       this.lastInputIndex += 1;
-      // increase last input index
-      // this.lastInputIndex += 1;
-      // replace the number in the name attribute with the last input index
-
-      // console.log(event.currentTarget.querySelector("h2").innerText);
-      // console.log(event.currentTarget.dataset);
-      console.log(clone);
-      // console.log(clone.querySelector(".ingredient-card").dataset);
-      // console.log(clone.querySelector(".ingredient-card").dataset);
       this.listTarget.appendChild(clone);
-      // console.log(this.listTarget)
+      event.currentTarget.classList.add("hide-from-ingredient-list");
+      console.log(event.currentTarget);
     }
   }
 
