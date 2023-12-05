@@ -1,4 +1,4 @@
-<%= week_calendar(number_of_weeks: 2) do |date| %>
+<%= week_calendar(number_of_weeks: weeks) do |date| %>
   <div>
     <%= date.day %>
   </div>
@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
     <% @plannings.each do |plan| %>
-      <% if plan.exercise %>
+      <% if date == plan.date && plan.exercise %>
         <i class="fa-solid fa-dumbbell fs-4"></i>
       <% end %>
     <% end %>

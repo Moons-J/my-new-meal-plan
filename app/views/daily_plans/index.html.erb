@@ -1,7 +1,7 @@
 <h2>My plans</h2>
 <div data-controller="planning-calendar">
   <div class="standard-card">
-    <%= render "pages/week_calendar", planning: @planning %>
+    <%= render "pages/week_calendar", planning: @planning, weeks: 2 %>
   </div>
   <%# Planning form %>
   <div class="d-flex mb-3 d-none" data-planning-calendar-target="form">
