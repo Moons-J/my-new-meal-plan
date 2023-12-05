@@ -3,6 +3,7 @@ class DailyPlansController < ApplicationController
     @user = current_user
     @daily_plans = @user.daily_plans
     @planning = Planning.new
+    @plannings = Planning.where(user: current_user)
   end
 
   def new
