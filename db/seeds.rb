@@ -81,7 +81,7 @@ emails.each do |email|
       MealIngredient.create!(
         amount: rand(10..150),
         meal_id: meal.id,
-        ingredient_id: Ingredient.all.sample.id
+        ingredient_id: meal.user.ingredients.sample.id
       )
     end
   end
