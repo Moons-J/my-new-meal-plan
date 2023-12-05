@@ -22,7 +22,8 @@ class MealsController < ApplicationController
     if @meal.save
       redirect_to meals_path
     else
-      render :new, status: unprocessable_entity
+      debugger
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,6 +33,7 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find(params[:id])
+    @meal.meal_ingredients.destroy_all
     @meal.update(meal_ingredients_params)
     if @meal.save
       redirect_to meal_path(@meal)
