@@ -22,7 +22,6 @@ class MealsController < ApplicationController
     if @meal.save
       redirect_to meals_path
     else
-      debugger
       render :new, status: :unprocessable_entity
     end
   end

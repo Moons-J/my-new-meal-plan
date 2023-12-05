@@ -1,18 +1,23 @@
-<a href="#" style="text-decoration: none;">
+<a class="" href="<%= daily_plan_path(plan) %>" style="text-decoration: none;">
   <div class="standard-card">
     <div class="plan">
       <div class="plan-info">
         <h6><%= plan.name %></h6>
       </div>
-      <% img = ["https://www.eatingwell.com/thmb/v86G1ptq0Tk_3CDPTvpKdh2Pi7g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/57831531-73819d8ce8f5413cac42cf1c907bc37a.jpg",
-                "https://www.freshnlean.com/wp-content/uploads/2021/03/Meal-Plan-plate-protein.png",
-                "https://hips.hearstapps.com/hmg-prod/images/steak-grain-bowl-1-1654094751.jpeg?crop=0.668xw:1.00xh;0.189xw,0&resize=640:*",
-                "https://allnutritious.com/wp-content/uploads/2020/08/1-Vegan-Cobb-Salad-Recipe.jpg",
-                "https://allnutritious.com/wp-content/uploads/2020/08/2-Cauliflower-Mac-Cheese-With-Chicken-Thighs.jpg",
-                "https://allnutritious.com/wp-content/uploads/2020/08/4-Steak-Fajita-Salad.jpg",
-                "https://allnutritious.com/wp-content/uploads/2020/08/10-Chicken-Meatballs-With-Quinoa-Curried-Cauliflower.jpg"] %>
-      <% rand_img = img[rand(img.length)] %>
-      <img src=<%= rand_img %> alt="meal image">
+      <%# remove before showing app to the world %>
+      <div class="align-items-center text-start m-auto">
+        <% plan.daily_plan_meals.each do |i| %>
+          <p class="m-0 text-decoration-none"><%= i.meal_type %>, <%= i.meal.name %></p>
+        <% end %>
+      </div>
+      <%# Meal image %>
+      <div>
+        <% if plan.photo.key.nil? %>
+          <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+        <% else %>
+          <%= cl_image_tag plan.photo.key.to_s %>
+        <% end %>
+      </div>
     </div>
   </div>
 </a>

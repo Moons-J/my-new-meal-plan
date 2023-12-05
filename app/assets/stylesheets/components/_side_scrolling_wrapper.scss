@@ -1,0 +1,12 @@
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 100%;
+  gap: 15px;
+
+  .sidescroll {
+    width: 265px;
+    flex: 0 0 auto;
+  }
+}

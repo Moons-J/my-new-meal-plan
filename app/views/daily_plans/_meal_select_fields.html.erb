@@ -1,0 +1,7 @@
+<%= f.fields_for :daily_plan_meals do |meal| %>
+  <div data-controller="select-meal-for-daily-meal">
+    <%= meal.input :meal_type, input_html: {class: "meal_type_name standard-input", placeholder: "Name your Meal Type..."}, label: false %>
+    <%= render "meals_sidescroll_show", meals: meals %>
+    <%= meal.input :meal_id, input_html: { value: "", class: "meal_id", data: { select_meal_for_daily_meal_target: "input" }}, as: :hidden %>
+  </div>
+<% end %>

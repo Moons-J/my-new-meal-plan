@@ -3,51 +3,70 @@
 <%# Intakes %>
 <div class="standard-card">
   <div id="user-nutritionfacts">
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= %>Calories</p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= %>Fats</p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= %>Satu-fats</p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= %>Carbs</p>
-      </div>
-      <div class="circle-and-number-container">
-        <div class="circle">
-          <div class="white-inner-circle"></div>
-        </div>
-        <p class="nutrition-data"><%= %>Protein</p>
-      </div>
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Max.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, 1000) %>;--c:#8CB369;"><%= current_user.user_calories %></div>
+      <p class="nutrition-data">Cal.</p>
     </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Min.</p>
+      <div class="pie animate" style="--p:80;--c:#F4E285;"><%= current_user.min_user_fats %></div>
+      <p class="nutrition-data">Fat.</p>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Max.</p>
+      <div class="pie animate" style="--p:67;--c:#F4A259;"><%= current_user.max_user_satu_fats %></div>
+      <p class="nutrition-data">Satu-F.</p>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Max.</p>
+      <div class="pie animate" style="--p:67;--c:#5B8E7D;"><%= current_user.max_user_carbs %></div>
+      <p class="nutrition-data">Carbs.</p>
+    </div>
+
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Min.</p>
+      <div class="pie animate" style="--p:67;--c:#BC4B51;"><%= current_user.min_user_protein %></div>
+      <p class="nutrition-data">Prot.</p>
+    </div>
+  </div>
 </div>
 
 <%# Next Meal %>
-<div class="standard-card">
-  <% if current_user.plannings.nil? %>
-    <%= current_user.plannings %>
-  <% else %>
+<div class="d-flex daily-plan-card">
+  <% if @updated_planning.empty? %>
     <h3 class="text-center py-3">No meals left for today!</h3>
+  <% else %>
+    <% daily_plan = @updated_planning.first.daily_plan %>
+    <% next_meal = daily_plan.daily_plan_meals %>
+    <% if next_meal.nil? %>
+      <h3 class="text-center py-3">No meals left for today!</h3>
+    <% else %>
+      <div class="info">
+        <h5>Daily plan: <br><strong><%= daily_plan.name %></strong></h5>
+        <%# <%= @updated_planning.first.daily_plan.id %>
+        <%# <%= @updated_planning.first.daily_plan.meals.count %>
+        <%# <p><%= @updated_planning.first.start_time %>
+        <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
+        <p>for <%= next_meal.first.meal_type %>, enjoy!</p>
+      </div>
+      <div class="img">
+        <% if next_meal.first.meal.photo.attached? %>
+          <%= cl_image_tag next_meal.meal.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+        <% else %>
+          <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
 <%# Calendar %>
 <div class="standard-card">
-  <%= week_calendar(number_of_weeks: 2) do |date| %>
+  <%= week_calendar(start_date_param: :my_date, number_of_weeks: 1) do |date| %>
     <%= date %>
   <% end %>
 </div>
@@ -55,8 +74,8 @@
 <%# Weight history %>
 <div class="standard-card">
   <div id="user-weights">
-    <h6>Weight History</h6>
+    <h6>Weight History (kg)</h6>
     <%= line_chart WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight),
-        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight) %>
+        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight), colors: ['#5B8E7D'] %>
   </div>
 </div>
