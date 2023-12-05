@@ -3,6 +3,7 @@ class Meal < ApplicationRecord
   has_many :meal_ingredients, dependent: :destroy
   has_many :daily_plan_meals
   has_many :ingredients, through: :meal_ingredients
+  has_one_attached :photo
 
   accepts_nested_attributes_for :meal_ingredients
 

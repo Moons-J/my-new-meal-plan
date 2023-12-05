@@ -2,7 +2,14 @@
   <div class="card-meal standard-card"
     data-action="touchstart->swipe#swipeCard touchend->swipe#stopSwipeCard"
     data-swipe-target="card">
-    <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+    <%# Meal image %>
+    <% if meal.photo.key.nil? %>
+      <%= image_tag "default_recipe.png" %>
+    <% else %>
+      <%= cl_image_tag meal.photo.key.to_s %>
+    <% end %>
+    <%# <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt=""> %>
+
     <div class="meal-info">
       <h5><%= meal.name %></h5>
       <p><%= meal.comment %></p>

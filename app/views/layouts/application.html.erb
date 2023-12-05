@@ -47,7 +47,11 @@
         <div>
           <li class="menu-item">
             <%= link_to ingredients_path do %>
-            <i class="fa-solid fa-carrot"></i>
+            <% if controller_name == 'ingredients' %>
+              <i class="fa-solid fa-carrot clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-carrot"></i>
+            <% end %>
             <p>Food</p>
             <% end %>
           </li>
@@ -55,7 +59,12 @@
         <div>
           <li class="menu-item">
             <%= link_to meals_path do %>
-            <i class="fa-solid fa-utensils"></i>
+
+            <% if controller_name == 'meals' %>
+              <i class="fa-solid fa-utensils clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-utensils"></i>
+            <% end %>
             <p>Meals</p>
             <% end %>
           </li>
@@ -63,7 +72,11 @@
         <div>
           <li class="menu-item">
             <%= link_to root_path do %>
-            <i class="fa-solid fa-house"></i>
+            <% if controller_name == 'pages' && action_name == 'dashboard' %>
+              <i class="fa-solid fa-house clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-house"></i>
+            <% end %>
             <p>Home</p>
             <% end %>
           </li>
@@ -71,15 +84,23 @@
         <div>
           <li class="menu-item">
             <%= link_to daily_plans_path do %>
-            <i class="fa-solid fa-calendar-days"></i>
+            <% if controller_name == 'daily_plans' %>
+              <i class="fa-solid fa-calendar-days clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-calendar-days"></i>
+            <% end %>
             <p>Plans</p>
             <% end %>
           </li>
         </div>
         <div>
           <li class="menu-item">
-            <%= link_to "#" do %>
-            <i class="fa-solid fa-basket-shopping"></i>
+            <%= link_to groceries_path do %>
+            <% if controller_name == 'groceries' %>
+              <i class="fa-solid fa-basket-shopping clicked"></i>
+            <% else %>
+              <i class="fa-solid fa-basket-shopping"></i>
+            <% end %>
             <p>Groceries</p>
             <% end %>
           </li>

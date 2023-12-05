@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 <h4>Account information</h4>
 <p>(Editable)</p>
+=======
+
+<header class="d-flex justify-content-between">
+  <div>
+    <h4>Information</h4>
+    <p>(Editable)</p>
+  </div>
+  <div>
+    <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete }, class: 'button-standard' %>
+  </div>
+</header>
+
+>>>>>>> master
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -63,5 +77,5 @@
 </div>
 <% end %>
 <div class="standard-card user-cancel-styling">
-  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?", class: 'button-standard' }, method: :delete %></div>
+  <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'button-delete', method: :delete %></div>
 </div>

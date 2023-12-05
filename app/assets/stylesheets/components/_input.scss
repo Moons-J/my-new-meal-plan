@@ -6,7 +6,12 @@
   padding-bottom: 5px;
   text-align: center;
   text-decoration: none;
+<<<<<<< HEAD
   border: solid 1px $dark-gray;
+=======
+  background-color: white;
+  border: 1px solid $dark-gray;
+>>>>>>> master
 }
 
 .search-form {
@@ -14,5 +19,19 @@
 }
 
 .input-small {
-  width: 100px;
+  width: 140px;
+}
+
+.standard-input:focus {
+  border-color: $green-buttons;
+  // the rgba color is the green-buttons color with 0.6 opacity
+  box-shadow: 0 1px 1px rgba(95, 179, 0, 0.075) inset, 0 0 8px rgba(95, 179, 0, 0.6);
+  outline: 0 none;
+}
+
+.standard-textarea:focus {
+  border-color: $green-buttons;
+  // the rgba color is the green-buttons color with 0.6 opacity
+  box-shadow: 0 1px 1px rgba(95, 179, 0, 0.075) inset, 0 0 8px rgba(95, 179, 0, 0.6);
+  outline: 0 none;
 }
