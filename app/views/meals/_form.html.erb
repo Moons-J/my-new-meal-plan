@@ -56,7 +56,7 @@
     <div data-create-meal-form-target="list" class="meal-ingredients">
       <% meal.meal_ingredients.each do |meal_ingredient| %>
         <%= f.fields_for :meal_ingredients, MealIngredient.new do |meal_ingredient_f| %>
-          <div >
+          <div>
             <div
               data-create-meal-form-target="card"
               data-action="click->create-meal-form#delete"

@@ -19,7 +19,7 @@ export default class extends Controller {
       const ingredientId = event.currentTarget.querySelector("input[type='hidden']").value;
       console.log(event.currentTarget.nextElementSibling);
       event.currentTarget.remove();
-      
+
       this.ingredientsListTarget.querySelector(`#ingredient_${ingredientId}`).classList.remove("hide-from-ingredient-list");
     }
   }
@@ -44,6 +44,11 @@ export default class extends Controller {
       event.currentTarget.classList.add("hide-from-ingredient-list");
       console.log(event.currentTarget);
     }
+  }
+
+  calculate() {
+    // select all fields for where amount is not empty
+    
   }
 
   // select(event) {
@@ -72,3 +77,34 @@ export default class extends Controller {
   // }
 
 }
+
+    //     // select all where amount is not empty
+    //     const ingredients = this.cardTargets.filter(card => !card.querySelector(".amount").value=="");
+    //     // calculate nutritions
+    //     let nutritions = {
+    //       calories: 0,
+    //       fats: 0,
+    //       satufats: 0,
+    //       carbs: 0,
+    //       protein: 0
+    //     }
+    //     // console.log(ingredients);
+    //     ingredients.forEach(ingredient => {
+    //       // console.log(parseFloat(ingredient.dataset.fats));
+    //       // console.log(parseFloat(ingredient.dataset.satufats ));
+    //       // console.log(parseFloat(ingredient.dataset.carbs ));
+    //       // console.log(parseFloat(ingredient.dataset.protein ));
+    //       // console.log(ingredient.querySelector(".amount").value);
+    //       let amount = parseInt(ingredient.querySelector(".amount").value)
+    //       nutritions.calories += parseInt(ingredient.dataset.callories) / 100 * amount;
+    //       nutritions.fats += parseFloat(ingredient.dataset.fats) / 100 * amount;
+    //       nutritions.satufats += parseFloat(ingredient.dataset.satufats) / 100 * amount;
+    //       nutritions.carbs += parseFloat(ingredient.dataset.carbs) / 100 * amount;
+    //       nutritions.protein += parseFloat(ingredient.dataset.protein) / 100 * amount;
+    //     });
+    //     // display nutritions
+    //     this.calloriesnumTarget.innerText = nutritions.calories;
+    //     this.fatsnumTarget.innerText = Math.round(nutritions.fats * 10) / 10;
+    //     this.satufatsnumTarget.innerText = Math.round(nutritions.satufats * 10) / 10;
+    //     this.carbsnumTarget.innerText = Math.round(nutritions.carbs * 10) / 10;
+    //     this.proteinnumTarget.innerText = Math.round(nutritions.protein * 10) / 10;
