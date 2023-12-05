@@ -1,6 +1,6 @@
 class GroceriesController < ApplicationController
   def index
-    plans = Planning.all.select { |plan| plan.start_time >= Time.new(2023, 12, 4) } # Time.new(2023, 12, 4)
+    plans = Planning.all.select { |plan| plan.date >= Time.now } # Time.new(2023, 12, 4)
     # @plans[0].daily_plan.meals[0].ingredients.count
     ingredients = []
     plans.each do |plan|

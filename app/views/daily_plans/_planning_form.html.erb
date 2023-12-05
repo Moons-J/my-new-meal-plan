@@ -1,0 +1,8 @@
+<%= simple_form_for(planning) do |f| %>
+  <%= f.input :daily_plan_id, collection: DailyPlan.all, value_method: :id %>
+  <%= f.input :exercise %>
+  <%= f.input :date, input_html: { }, as: :string %>
+  <%# <%= f.input :start_time, input_html: { }, as: :string %>
+  <%# <%= f.input :end_time, input_html: { }, as: :string %>
+  <%= f.submit %>
+<% end %>

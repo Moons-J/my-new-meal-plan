@@ -66,9 +66,7 @@
 
 <%# Calendar %>
 <div class="standard-card">
-  <%= week_calendar(start_date_param: :my_date, number_of_weeks: 1) do |date| %>
-    <%= date %>
-  <% end %>
+  <%= render "week_calendar", planning: @planning, weeks: 1 %>
 </div>
 
 <%# Weight history %>
