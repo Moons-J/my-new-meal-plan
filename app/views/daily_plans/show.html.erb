@@ -1,39 +1,42 @@
-<h4 class="text-center"><%= @daily_plan.name %></h4>
+<h1 class="text-center pt-1 pb-2"><%= @daily_plan.name %></h1>
 <%# Daily_plan image %>
-<div class="daily-plan-img-container">
-  <% if @daily_plan.photo.key.nil? %>
-    <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
-  <% else %>
-    <%= cl_image_tag @daily_plan.photo.key.to_s %>
-  <% end %>
-</div>
+<div class="standard-card mt-3">
+  <div class="daily-plan-img-container">
+    <% if @daily_plan.photo.key.nil? %>
+      <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+    <% else %>
+      <%= cl_image_tag @daily_plan.photo.key.to_s %>
+    <% end %>
+  </div>
 <%# Daily_plan nutrition data %>
-<div class="meal-nutritionfacts border-0">
-  <div class="circle-and-number-container">
-    <p class="nutrition-data">Cal.</p>
-    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, meal.calculate_nutrition("calories")) %>;--c:#8CB369;"><%= meal.calculate_nutrition("calories") %></div>
-  </div>
-  <div class="circle-and-number-container">
-    <p class="nutrition-data">Fat.</p>
-    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_fats.to_i, meal.calculate_nutrition("fats")) %>;--c:#F4E285;"><%= meal.calculate_nutrition("fats") %></div>
-  </div>
-  <div class="circle-and-number-container">
-    <p class="nutrition-data">Satu-F.</p>
-    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_satu_fats.to_i, meal.calculate_nutrition("satu-fats")) %>;--c:#F4A259;"><%= meal.calculate_nutrition("satu-fats") %></div>
-  </div>
-  <div class="circle-and-number-container">
-    <p class="nutrition-data">Carbs.</p>
-    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_carbs.to_i, meal.calculate_nutrition("carbs")) %>;--c:#5B8E7D;"><%= meal.calculate_nutrition("carbs") %></div>
-  </div>
-  <div class="circle-and-number-container">
-    <p class="nutrition-data">Prot.</p>
-    <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, meal.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= meal.calculate_nutrition("protein") %></div>
+  <h4 class="text-center pt-3">Daily Plan nutrition's</h4>
+  <div class="meal-nutritionfacts border-0">
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Cal.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, @daily_plan.calculate_nutrition("calories")) %>;--c:#8CB369;"><%= @daily_plan.calculate_nutrition("calories") %></div>
+    </div>
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Fat.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_fats.to_i, @daily_plan.calculate_nutrition("fats")) %>;--c:#F4E285;"><%= @daily_plan.calculate_nutrition("fats") %></div>
+    </div>
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Satu-F.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_satu_fats.to_i, @daily_plan.calculate_nutrition("satu-fats")) %>;--c:#F4A259;"><%= @daily_plan.calculate_nutrition("satu-fats") %></div>
+    </div>
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Carbs.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_carbs.to_i, @daily_plan.calculate_nutrition("carbs")) %>;--c:#5B8E7D;"><%= @daily_plan.calculate_nutrition("carbs") %></div>
+    </div>
+    <div class="circle-and-number-container">
+      <p class="nutrition-data">Prot.</p>
+      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, @daily_plan.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= @daily_plan.calculate_nutrition("protein") %></div>
+    </div>
   </div>
 </div>
 <div class="text-center">
   <% @daily_plan.daily_plan_meals.each do |daily_plan_meal| %>
     <div>
-      <%= daily_plan_meal.meal_type %>
+      <h3 class="meal-title"><%= daily_plan_meal.meal_type %></h3>
       <%= render "meals/meal_card", meal: daily_plan_meal.meal %>
     </div>
   <% end %>
