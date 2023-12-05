@@ -4,6 +4,9 @@
     <%= date %>
   <% end %>
 </div>
+<div class="d-flex mb-3">
+  <%= link_to "Add new Daily meal", new_daily_plan_path, class: "button-standard" %>
+</div>
 <div class="flex-container">
   <% @daily_plans.each do |plan| %>
     <%= render "plan_card", plan: plan %>

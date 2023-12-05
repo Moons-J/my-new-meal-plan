@@ -44,3 +44,33 @@
 //   top: 91px;
 //   left: 264px;
 // }
+
+.daily-plan-card{
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 30px;
+
+  .info{
+    margin-block: 20px;
+  }
+
+  h4{
+    margin-bottom: 16px;
+  }
+
+  p{
+    margin-block: 0px;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+}
