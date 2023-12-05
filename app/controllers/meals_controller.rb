@@ -35,10 +35,11 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @meal.meal_ingredients.destroy_all
     @meal.update(meal_ingredients_params)
+
     if @meal.save
       redirect_to meal_path(@meal)
     else
-      render :edit, status: unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

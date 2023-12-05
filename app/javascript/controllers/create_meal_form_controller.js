@@ -17,8 +17,10 @@ export default class extends Controller {
   delete(event) {
     if (event.target.tagName == "I") {
       const ingredientId = event.currentTarget.querySelector("input[type='hidden']").value;
+      console.log(event.currentTarget.nextElementSibling);
       event.currentTarget.remove();
-      console.log(this.ingredientsListTarget.querySelector(`#ingredient_${ingredientId}`).classList.remove("hide-from-ingredient-list"));
+
+      this.ingredientsListTarget.querySelector(`#ingredient_${ingredientId}`).classList.remove("hide-from-ingredient-list");
     }
   }
 

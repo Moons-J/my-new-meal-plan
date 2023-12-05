@@ -55,8 +55,8 @@
     <%# Meal Ingredients list %>
     <div data-create-meal-form-target="list" class="meal-ingredients">
       <% meal.meal_ingredients.each do |meal_ingredient| %>
-        <%= f.fields_for :meal_ingredients, meal_ingredient do |meal_ingredient_f| %>
-          <div>
+        <%= f.fields_for :meal_ingredients, MealIngredient.new do |meal_ingredient_f| %>
+          <div >
             <div
               data-create-meal-form-target="card"
               data-action="click->create-meal-form#delete"
@@ -77,7 +77,7 @@
 
                 <%= meal_ingredient_f.input :amount,
                   label: false, placeholder: "Amount(g)",
-                  input_html: {class: "standard-input amount"} %>
+                  input_html: {class: "standard-input amount", value: meal_ingredient.amount} %>
               </div>
             </div>
           </div>
