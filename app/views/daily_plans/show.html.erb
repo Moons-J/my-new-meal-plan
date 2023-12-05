@@ -1,0 +1,17 @@
+<h4 class="text-center"><%= @daily_plan.name %></h4>
+<%# Meal image %>
+<div class="daily-plan-img-container">
+  <% if @daily_plan.photo.key.nil? %>
+    <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+  <% else %>
+    <%= cl_image_tag @daily_plan.photo.key.to_s %>
+  <% end %>
+</div>
+<div class="text-center">
+  <% @daily_plan.daily_plan_meals.each do |daily_plan_meal| %>
+    <div>
+      <%= daily_plan_meal.meal_type %>
+      <%= render "meals/meal_card", meal: daily_plan_meal.meal %>
+    </div>
+  <% end %>
+</div>
