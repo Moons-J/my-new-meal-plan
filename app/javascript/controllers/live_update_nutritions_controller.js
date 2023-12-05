@@ -26,6 +26,9 @@ export default class extends Controller {
     this.satuFatsTarget.innerText = Math.round(totalSatuFats * 10) / 10;
     this.carbsTarget.innerText = Math.round(totalCarbs * 10) / 10;;
     this.proteinTarget.innerText = Math.round(totalProtein * 10) / 10;;
+
+    const trigger = new CustomEvent("trigger-nutrition-chart-update");
+    window.dispatchEvent(trigger);
   }
 
   image(event) {
