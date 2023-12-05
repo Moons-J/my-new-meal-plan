@@ -64,8 +64,13 @@
   </div>
 <div class="button-flex-seperator">
   <div class="form-actions">
-    <%= link_to "Back", :back, {class: 'btn button-standard'}%>`
-    <%= f.button :submit, "Save changes", {class: 'button-standard'} %>
+    <%= link_to :back, class: 'btn button-standard' do %>
+      <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+    <% end %>
+
+    <%= f.button :submit, class: 'button-standard' do %>
+      <i class="fa-regular fa-floppy-disk" style="color: #ffffff;"></i>
+    <% end %>
   </div>
 </div>
 <% end %>
