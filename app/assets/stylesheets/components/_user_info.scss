@@ -19,17 +19,25 @@
   margin-top: 25px;
 }
 
+.form-check {
+  label{
+    color: black;
+  }
+}
+
 .form-inputs{
   select, input {
     border-radius: 50px;
+<<<<<<< HEAD
+=======
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-bottom: 8px;
+>>>>>>> master
     text-align: center;
     text-decoration: none;
-    background-color: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
   }
 }
