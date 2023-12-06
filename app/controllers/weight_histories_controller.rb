@@ -3,10 +3,8 @@ class WeightHistoriesController < ApplicationController
     @weight_history = WeightHistory.new(weight_history_params)
     @weight_history.user = current_user
     if @weight_history.save
-      session[:weight_history_errors] = nil
       redirect_to root_path
     else
-      session[:weight_history_errors] = @weight_history.errors.full_messages
       redirect_to root_path, status: :unprocessable_entity
     end
   end
