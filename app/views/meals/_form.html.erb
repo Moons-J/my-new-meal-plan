@@ -1,6 +1,9 @@
 <%= simple_form_for(meal) do |f| %>
   <div data-controller="create-meal-form">
-    <div class="d-flex justify-content-end mb-3">
+    <div class="d-flex justify-content-between mb-3">
+      <%= link_to(meal_path(@meal), data: {turbo_method: :delete}, class: 'button-rounded-red') do %>
+        <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+      <% end %>
       <%= f.submit "Save", class: "button-standard" %>
     </div>
     <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
