@@ -1,11 +1,8 @@
 <%= simple_form_for(meal) do |f| %>
   <div data-controller="create-meal-form">
-    <div class="form-actions button-flex-seperator">
+    <div class="d-flex justify-content-between mb-3">
       <%= link_to :back, class: 'button-rounded-green' do %>
         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
-      <% end %>
-      <%= link_to(meal_path(@meal), data: {turbo_method: :delete}, class: 'button-rounded-red') do %>
-        <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
       <% end %>
       <button type="submit" class="d-flex button-standard">
         <span class="button-text-space">Save</span>
@@ -100,6 +97,14 @@
         <% end %>
       <% end %>
     </div>
+
+    <% if meal.id %>
+      <div class="d-flex justify-content-end">
+        <%= link_to(meal_path(meal), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this meal?"}, class: 'button-rounded-red') do %>
+          <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+        <% end %>
+      </div>
+    <% end %>
     <%# Ingredient template for adding to simple form %>
     <template>
       <%= f.fields_for :meal_ingredients, MealIngredient.new do |meal_ingredient_f| %>

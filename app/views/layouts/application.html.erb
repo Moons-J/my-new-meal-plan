@@ -40,6 +40,18 @@
 
     <div class="basic-container">
       <%= yield %>
+      <% case controller_name %>
+      <% when "ingredients" %>
+        <%= link_to new_ingredient_path, class: "button-rounded-green sticky-button" do %>
+          <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+        <% end %>
+      <% when "meals" %>
+        <%= link_to new_meal_path, class: "button-rounded-green sticky-button" do %>
+          <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+        <% end %>
+      <% else %>
+        <div class="div">Hello</div>
+      <% end %>
     </div>
 
     <footer>
