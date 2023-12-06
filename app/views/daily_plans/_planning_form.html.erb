@@ -1,8 +1,13 @@
 <%= simple_form_for(planning) do |f| %>
-  <%= f.input :daily_plan_id, collection: DailyPlan.all, value_method: :id %>
-  <%= f.input :exercise %>
-  <%= f.input :date, input_html: { }, as: :string %>
+  <div class="d-flex">
+    <%= f.input :daily_plan_id, collection: current_user.daily_plans, value_method: :id %>
+    <%= f.input :exercise, class: "m-auto" %>
+  </div>
+  <div class="">
+    <%= f.input :date, as: :string, class: "input-small"%>
+  </div>
+  <%= f.submit "Save planning", class: "button-standard" %>
   <%# <%= f.input :start_time, input_html: { }, as: :string %>
   <%# <%= f.input :end_time, input_html: { }, as: :string %>
-  <%= f.submit %>
+  <i class="fa-solid fa-xmark" data-action="click->planning-calendar#hide"></i>
 <% end %>

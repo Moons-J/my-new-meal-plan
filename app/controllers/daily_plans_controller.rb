@@ -4,6 +4,13 @@ class DailyPlansController < ApplicationController
     @daily_plans = @user.daily_plans
     @planning = Planning.new
     @plannings = Planning.where(user: current_user)
+    if params[:p]
+      @planning = Planning.find(params[:p]) if params[:p] != ""
+    end
+    respond_to do |format|
+      format.html
+      format.text { render partial: "planning_form", locals: { planning: @planning }, formats: [:html] }
+    end
   end
 
   def new
