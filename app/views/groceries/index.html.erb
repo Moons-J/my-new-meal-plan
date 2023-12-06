@@ -1,22 +1,17 @@
 <h2>Grocerie List</h2>
 
 <div class="ingredient-card-button-holder">
-  <% if @grocerie_list.empty? %>
-    <p>No meals planned.<br>Start <%= link_to("planning you meals", daily_plans_path, style: 'color: #5FB300;') %>!</p>
-  <% else %>
-    <% @grocerie_list.each do |ingredient| %>
-      <div class="ingredient-card standard-card d-flex align-items-center p-3 my-3"
-        data-controller="check-item"
-        data-check-item-target="item">
+
+  <% @groceries.each do |grocery| %>
+    <div class="ingredient-card-button-holder" data-controller="swipe">
+      <div class="ingredient-card standard-card d-flex align-items-center  p-3 my-3">
         <div class="flex-grow-1">
-          <h2 class="mb-0"><%= ingredient[0] %>, Qty: <%= ingredient[1] %></h2>
+          <h2 class="mb-0"><%= grocery.ingredient %>, Qty: <%= grocery.quantity %></h2>
         </div>
-        <div class="mx-2">
-          <form action="" method="post" target="_blank" data-action="click->check-item#check">
-            <input type="checkbox" name="cb-autos" data-check-item-target="checkbox">
-          </form>
-        </div>
+        <%= link_to(grocery_path(grocery), data: {turbo_method: :delete, swipe_target: 'button'}) do %>
+          <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>
