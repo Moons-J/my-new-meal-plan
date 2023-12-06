@@ -1,5 +1,5 @@
 <div class="daily-meal-card-button-holder" data-controller="swipe">
-  <div class="standard-card"
+  <div class="standard-card" style="transition-duration: 0.7s;"
     data-action="touchstart->swipe#swipeCard touchend->swipe#stopSwipeCard"
     data-swipe-target="card">
     <a class="" href="<%= daily_plan_path(plan) %>" style="text-decoration: none; width: 100%;">
@@ -17,5 +17,7 @@
       </div>
     </a>
   </div>
-  <%= link_to("Delete", daily_plan_path(plan), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-delete hidden button-position') %>
+  <%= link_to(daily_plan_path(plan), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-rounded-red hidden button-position') do %>
+    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+  <% end %>
 </div>

@@ -42,6 +42,8 @@
   <% end %>
 </div>
 
-<div>
-  <%= link_to() do %>
+<div class="d-flex justify-content-center">
+  <%= link_to(daily_plan_path(@daily_plan), data: {turbo_method: :delete}, class: 'button-rounded-red') do %>
+    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+  <% end %>
 </div>
