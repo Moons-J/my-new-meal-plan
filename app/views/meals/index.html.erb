@@ -1,3 +1,4 @@
+<h2>Meals</h2>
 <div data-controller="search-element">
   <div class="row justify-content-center">
     <div class="col-sm-8 my-3">
@@ -11,13 +12,17 @@
               data: { search_element_target: "input" },
               placeholder: "Type a meal name"
           %>
-        <%= submit_tag "Search", name: "", class: "button-standard border-0" %>
+        <%= button_tag class: "button-rounded-green" do %>
+          <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
 
   <div class="d-flex mb-2">
-    <%= link_to "Add meal", new_meal_path, class: "button-standard" %>
+    <%= link_to new_meal_path, class: "button-rounded-green" do %>
+      <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+    <% end %>
   </div>
 
   <%= render "meals_list" %>
