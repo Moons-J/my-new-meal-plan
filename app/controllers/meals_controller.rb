@@ -33,11 +33,16 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find(params[:id])
-    @meal.meal_ingredients.destroy_all
-    @meal.update(meal_ingredients_params)
+
+    @meal.transaction do
+      @meal.meal_ingredients.destroy_all
+      @meal.assign_attributes(meal_ingredients_params)
+
+      raise ActiveRecord::Rollback unless @meal.valid?
+    end
 
     if @meal.save
-      redirect_to meal_path(@meal)
+      redirect_to meal_path(@meal), notice: "Saved"
     else
       render :edit, status: :unprocessable_entity
     end

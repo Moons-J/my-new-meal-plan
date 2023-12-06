@@ -61,7 +61,7 @@
     <h5 class="text-center mb-0 mt-5">Ingredients</h5>
     <div data-create-meal-form-target="list" class="meal-ingredients">
       <% meal.meal_ingredients.each do |meal_ingredient| %>
-        <%= f.fields_for :meal_ingredients, MealIngredient.new do |meal_ingredient_f| %>
+        <%= f.simple_fields_for :meal_ingredients, meal_ingredient, include_id: false do |meal_ingredient_f| %>
           <div>
             <div
               data-create-meal-form-target="card"
@@ -83,6 +83,7 @@
 
                 <%= meal_ingredient_f.input :amount,
                   label: false, placeholder: "Amount(g)",
+                  error: false,
                   input_html: {class: "standard-input amount", value: meal_ingredient.amount, data: {create_meal_form_target: "amount", action: "keyup->create-meal-form#calculate"}} %>
               </div>
             </div>
