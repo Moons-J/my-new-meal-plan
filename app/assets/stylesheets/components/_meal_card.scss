@@ -89,3 +89,21 @@
     display: none;
   }
 }
+
+.daily-meal-card-button-holder{
+  position: relative;
+
+  .deletingCard {
+    margin-left: -40%;
+  }
+
+  .button-position{
+    position: absolute;
+    top: 30%;
+    right: 8%;
+  }
+
+  .hidden {
+    display: none;
+  }
+}

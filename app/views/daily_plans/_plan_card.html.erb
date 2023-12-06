@@ -1,23 +1,21 @@
-<a class="" href="<%= daily_plan_path(plan) %>" style="text-decoration: none;">
-  <div class="standard-card">
-    <div class="plan">
-      <div class="plan-info">
-        <h6><%= plan.name %></h6>
+<div class="daily-meal-card-button-holder" data-controller="swipe">
+  <div class="standard-card"
+    data-action="touchstart->swipe#swipeCard touchend->swipe#stopSwipeCard"
+    data-swipe-target="card">
+    <a class="" href="<%= daily_plan_path(plan) %>" style="text-decoration: none; width: 100%;">
+      <div class="plan d-flex justify-content-between">
+        <div class="plan-info">
+          <h6><%= plan.name %></h6>
+        </div>
+        <div>
+          <% if plan.photo.key.nil? %>
+            <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
+          <% else %>
+            <%= cl_image_tag plan.photo.key.to_s %>
+          <% end %>
+        </div>
       </div>
-      <%# remove before showing app to the world %>
-      <div class="align-items-center text-start m-auto">
-        <% plan.daily_plan_meals.each do |i| %>
-          <p class="m-0 text-decoration-none"><%= i.meal_type %>, <%= i.meal.name %></p>
-        <% end %>
-      </div>
-      <%# Meal image %>
-      <div>
-        <% if plan.photo.key.nil? %>
-          <img src="https://www.gutekueche.at/storage/media/recipe/134629/spaghetti-al-pomodoro.jpg" alt="">
-        <% else %>
-          <%= cl_image_tag plan.photo.key.to_s %>
-        <% end %>
-      </div>
-    </div>
+    </a>
   </div>
-</a>
+  <%= link_to("Delete", daily_plan_path(plan), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-delete hidden button-position') %>
+</div>
