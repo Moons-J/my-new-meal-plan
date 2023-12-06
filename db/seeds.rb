@@ -81,7 +81,7 @@ emails.each do |email|
       MealIngredient.create!(
         amount: rand(10..150),
         meal_id: meal.id,
-        ingredient_id: Ingredient.all.sample.id
+        ingredient_id: meal.user.ingredients.sample.id
       )
     end
   end
@@ -105,22 +105,22 @@ emails.each do |email|
       )
     end
 
-    rand(3).times do
-      Planning.create!(
-        date: Time.new,
-        daily_plan_id: daily_plan.id,
-        user_id: user.id,
-        start_time: Time.new(
-          Time.now.year,
-          Time.now.month,
-          Time.now.day,
-          rand(8..23),
-          rand(1..59),
-          rand(1..59),
-          Time.zone.name
-        )
-      )
-    end
+    # rand(3).times do
+    #   Planning.create!(
+    #     date: Time.new,
+    #     daily_plan_id: daily_plan.id,
+    #     user_id: user.id,
+    #     start_time: Time.new(
+    #       Time.now.year,
+    #       Time.now.month,
+    #       Time.now.day,
+    #       rand(8..23),
+    #       rand(1..59),
+    #       rand(1..59),
+    #       Time.zone.name
+    #     )
+    #   )
+    # end
   end
   puts "Created daily plans!"
 

@@ -1,0 +1,19 @@
+<%= week_calendar(number_of_weeks: weeks) do |date| %>
+  <div>
+    <%= date.day %>
+  </div>
+  <%# Is there planning created? %>
+  <div>
+    <% @plannings.each do |plan| %>
+      <% if date == plan.date %>
+        <i class="fa-solid fa-utensils fs-4" data-plan-id="<%= plan.id %>"></i>
+      <% end %>
+    <% end %>
+    <% @plannings.each do |plan| %>
+      <% if date == plan.date && plan.exercise %>
+        <i class="fa-solid fa-dumbbell fs-4"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <%# ------- %>
+<% end %>

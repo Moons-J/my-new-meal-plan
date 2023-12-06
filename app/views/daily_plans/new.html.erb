@@ -9,8 +9,10 @@
   <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your daily plan..."}, label: false %>
     <div class="text-center">
       <%# <h4 class="text-center">Daily-Plan's nutrition</h4> %>
-      <div class="meal-nutritionfacts border-0" data-action="trigger-nutrition-update@window->live-update-nutritions#update">
-        <%= render "nutrition_circles" %>
+      <div class="standard-card mt-3">
+        <div class="meal-nutritionfacts border-0" data-action="trigger-nutrition-update@window->live-update-nutritions#update">
+          <%= render "nutrition_circles" %>
+        </div>
       </div>
       <%# Picture input %>
       <label for="images" class="drop-container" id="dropcontainer">

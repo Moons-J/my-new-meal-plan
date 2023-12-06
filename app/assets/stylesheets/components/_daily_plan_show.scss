@@ -3,5 +3,12 @@
     width: 100%;
     height: 230px;
     object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
   }
+}
+
+.meal-title {
+  margin-top: 25px;
+  margin-bottom: 17px;
 }

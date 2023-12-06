@@ -8,6 +8,7 @@ export default class extends Controller {
    }
 
   connect() {
+    // this.update();
   }
 
   update() {

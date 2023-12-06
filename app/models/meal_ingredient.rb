@@ -1,11 +1,15 @@
 class MealIngredient < ApplicationRecord
   belongs_to :meal
   belongs_to :ingredient
-  after_create :remove_empty
+  has_one :user, through: :meal
 
+  validate :ingredient_belongs_to_user
+  # validates :amount, presence: true, numericality: { greater_than: 0 }
   private
 
-  def remove_empty
-    destroy if amount.nil?
+  def ingredient_belongs_to_user
+    unless self.meal.user_id == self.ingredient.user_id
+      errors.add(:ingredient, "must belong to the same user as the meal")
+    end
   end
 end

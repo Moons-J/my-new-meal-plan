@@ -1,14 +1,20 @@
 <h2>My plans</h2>
-<div class="standard-card">
-  <%= week_calendar(number_of_weeks: 2) do |date| %>
-    <%= date %>
-  <% end %>
+<div data-controller="planning-calendar">
+  <div class="standard-card">
+    <%= render "pages/week_calendar_displayed", planning: @planning, weeks: 2 %>
+  </div>
+  <%# Planning form %>
+  <div class="d-flex mb-3 d-none" data-planning-calendar-target="form">
+    <%= render "planning_form", planning: @planning %>
+  </div>
 </div>
+<%# Add new daily plan %>
 <div class="d-flex mb-3">
   <%= link_to new_daily_plan_path, class: "button-rounded-green" do %>
     <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
   <% end %>
 </div>
+<%# List all daily plans %>
 <div class="flex-container">
   <% @daily_plans.each do |plan| %>
     <%= render "plan_card", plan: plan %>
