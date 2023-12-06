@@ -2,7 +2,7 @@ class MealsController < ApplicationController
   def index
     user_meals = Meal.where(user: current_user)
     @query = params[:query]
-    @meals = user_meals
+    @meals = user_meals.reverse
     if @query.present?
       @meals = user_meals.search_by_name_comment_ingredients(params[:query])
     end

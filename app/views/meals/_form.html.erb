@@ -7,38 +7,7 @@
     <%# Nutritions %>
     <div class="text-center">
       <h4 class="text-center">Meal's nutrition</h4>
-      <%# <div class="meal-nutritionfacts border-0">
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-create-meal-form-target="calloriesnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-create-meal-form-target="fatsnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-create-meal-form-target="satufatsnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-create-meal-form-target="carbsnum">0</p>
-        </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-create-meal-form-target="proteinnum">0</p>
-        </div>
-      </div> %>
+
       <div class="meal-nutritionfacts border-0">
         <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.user_calories %>">
           <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#8CB369;" data-create-meal-form-target="calloriesnum">0</div>
@@ -89,6 +58,7 @@
     </div>
     <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' } %>
     <%# Meal Ingredients list %>
+    <h5 class="text-center mb-0 mt-5">Ingredients</h5>
     <div data-create-meal-form-target="list" class="meal-ingredients">
       <% meal.meal_ingredients.each do |meal_ingredient| %>
         <%= f.fields_for :meal_ingredients, MealIngredient.new do |meal_ingredient_f| %>
@@ -170,10 +140,6 @@
         p-3 my-3 <%= "hide-from-ingredient-list" if meal.ingredient_ids.include?(ingredient.id) %>">
 
         <div class="d-flex align-items-center ingredient-name justify-content-start">
-          <%# Edit ingredient %>
-          <%# <= link_to edit_ingredient_path(meal_ingredient.ingredient) do >
-            <i class="fa-regular fa-pen-to-square"></i>
-          < end > %>
           <h2 class="mx-2 mb-0" data-meal-create-search-target="ingredient"><%= ingredient.name %></h2>
         </div>
 
