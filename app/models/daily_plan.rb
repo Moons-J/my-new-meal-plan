@@ -35,4 +35,6 @@ class DailyPlan < ApplicationRecord
 
     return number.round(1)
   end
+
+  validates :name, presence: true
 end

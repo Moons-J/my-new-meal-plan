@@ -36,7 +36,7 @@ class DailyPlansController < ApplicationController
 
   def destroy
     @daily_plan = DailyPlan.find(params[:id])
-    if @daily_plan.delete
+    if @daily_plan.destroy
       redirect_to daily_plans_path
     else
       render :show, status: :unprocessable_entity
