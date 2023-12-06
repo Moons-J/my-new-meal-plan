@@ -55,10 +55,23 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-bottom: 16px;
   position: relative;
-  padding-left: 30px;
+  padding-left: 0px;
 
   .info{
-    margin-block: 20px;
+    margin-block: 0px;
+    margin-left: 15%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .info-text {
+    display: flex;
+    align-items: center;
+  }
+
+  a{
+    color: $green-buttons;
+    text-decoration: none;
   }
 
   h4{
@@ -70,11 +83,10 @@
   }
 
   img {
-    height: 200px;
-    width: 100%;
+    height: 175px;
+    width: 175px;
     object-fit: cover;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
   }
-
 }
