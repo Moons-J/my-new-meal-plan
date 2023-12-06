@@ -10,7 +10,9 @@
 </div>
 <%# Add new daily plan %>
 <div class="d-flex mb-3">
-  <%= link_to "Add new Daily meal", new_daily_plan_path, class: "button-standard" %>
+  <%= link_to new_daily_plan_path, class: "button-rounded-green" do %>
+    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+  <% end %>
 </div>
 <%# List all daily plans %>
 <div class="flex-container">
@@ -18,3 +20,6 @@
     <%= render "plan_card", plan: plan %>
   <% end %>
 </div>
+
+
+

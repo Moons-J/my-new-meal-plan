@@ -7,38 +7,65 @@
     <%# Nutritions %>
     <div class="text-center">
       <h4 class="text-center">Meal's nutrition</h4>
+      <%# <div class="meal-nutritionfacts border-0">
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data" data-create-meal-form-target="calloriesnum">0</p>
+        </div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data" data-create-meal-form-target="fatsnum">0</p>
+        </div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data" data-create-meal-form-target="satufatsnum">0</p>
+        </div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data" data-create-meal-form-target="carbsnum">0</p>
+        </div>
+        <div class="circle-and-number-container">
+          <div class="circle">
+            <div class="white-inner-circle"></div>
+          </div>
+          <p class="nutrition-data" data-create-meal-form-target="proteinnum">0</p>
+        </div>
+      </div> %>
       <div class="meal-nutritionfacts border-0">
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="calloriesnum">0</p>
+        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.user_calories %>">
+          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#8CB369;" data-create-meal-form-target="calloriesnum">0</div>
+          <p class="nutrition-data">Cal.</p>
         </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="fatsnum">0</p>
+
+        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.min_user_fats %>">
+          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4E285;" data-create-meal-form-target="fatsnum">0</div>
+          <p class="nutrition-data">Fat.</p>
         </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="satufatsnum">0</p>
+
+        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.max_user_satu_fats %>">
+          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4A259;" data-create-meal-form-target="satufatsnum">0</div>
+          <p class="nutrition-data">Satu-F.</p>
         </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="carbsnum">0</p>
+
+        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.max_user_carbs %>">
+          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#5B8E7D;" data-create-meal-form-target="carbsnum">0</div>
+          <p class="nutrition-data">Carbs.</p>
         </div>
-        <div class="circle-and-number-container">
-          <div class="circle">
-            <div class="white-inner-circle"></div>
-          </div>
-          <p class="nutrition-data" data-meal-create-search-target="proteinnum">0</p>
+
+        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.min_user_protein %>">
+          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#BC4B51;" data-create-meal-form-target="proteinnum">0</div>
+          <p class="nutrition-data">Prot.</p>
         </div>
       </div>
+
       <%# Picture input %>
       <label for="images" class="drop-container" id="dropcontainer">
         <div class="text-center picture-preview mb-3">
@@ -86,7 +113,7 @@
 
                 <%= meal_ingredient_f.input :amount,
                   label: false, placeholder: "Amount(g)",
-                  input_html: {class: "standard-input amount", value: meal_ingredient.amount} %>
+                  input_html: {class: "standard-input amount", value: meal_ingredient.amount, data: {create_meal_form_target: "amount", action: "keyup->create-meal-form#calculate"}} %>
               </div>
             </div>
           </div>
@@ -117,7 +144,7 @@
 
             <%= meal_ingredient_f.input :amount,
               label: false, placeholder: "Amount(g)",
-              input_html: {class: "standard-input amount"} %>
+              input_html: {class: "standard-input amount", data: {create_meal_form_target: "amount", action: "keyup->create-meal-form#calculate"}} %>
           </div>
         </div>
       </div>
@@ -138,7 +165,6 @@
         data-carbs="<%= ingredient.carbs %>"
         data-protein="<%= ingredient.protein %>"
         data-meal-create-search-target="card"
-        data-create-meal-form-target="card"
         data-action="click->create-meal-form#insert"
         class="ingredient-card standard-card d-flex justify-content-between align-items-center
         p-3 my-3 <%= "hide-from-ingredient-list" if meal.ingredient_ids.include?(ingredient.id) %>">
