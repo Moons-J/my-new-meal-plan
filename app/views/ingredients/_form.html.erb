@@ -9,6 +9,9 @@
     <%= link_to :back, class: 'button-rounded-green' do %>
       <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
     <% end %>
+    <%= link_to(ingredients_path(@ingredient), data: {turbo_method: :delete}, class: 'button-rounded-red') do %>
+      <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+    <% end %>
     <button type="submit" class="d-flex button-standard" style="float: right">
       <span class="button-text-space">Save</span>
       <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>

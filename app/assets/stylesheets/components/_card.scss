@@ -42,7 +42,6 @@
   text-align: center;
   justify-content: space-between;
 
-
   img {
     height: 100px;
     width: 100px;
@@ -62,6 +61,11 @@
     margin-bottom: 0px;
     text-decoration: none;
     color: black;
+  }
+
+  img {
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
   }
 
   h6 {
