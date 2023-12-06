@@ -46,12 +46,39 @@
       <h3 class="text-center py-3">No meals left for today!</h3>
     <% else %>
       <div class="info">
-        <h5>Daily plan: <br><strong><%= daily_plan.name %></strong></h5>
-        <%# <%= @updated_planning.first.daily_plan.id %>
-        <%# <%= @updated_planning.first.daily_plan.meals.count %>
-        <%# <p><%= @updated_planning.first.start_time %>
         <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
         <p>for <%= next_meal.first.meal_type %>, enjoy!</p>
+
+          <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
+                <p>for <%= next_meal[0].meal_type %>, enjoy!</p>
+              </div>
+              <div class="carousel-item">
+                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
+                <p>for <%= next_meal[1].meal_type %>, enjoy!</p>
+              </div>
+              <div class="carousel-item">
+                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
+                <p>for <%= next_meal[2].meal_type %>, enjoy!</p>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
       </div>
       <div class="img">
         <% if next_meal.first.meal.photo.attached? %>
