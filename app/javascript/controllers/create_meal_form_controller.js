@@ -73,6 +73,7 @@ export default class extends Controller {
     this.satufatsnumTarget.innerText = Math.round(nutritions.satufats * 10) / 10;
     this.carbsnumTarget.innerText = Math.round(nutritions.carbs * 10) / 10;
     this.proteinnumTarget.innerText = Math.round(nutritions.protein * 10) / 10;
+
     setTimeout(() => {
       const trigger = new CustomEvent("trigger-nutrition-chart-update");
       window.dispatchEvent(trigger);

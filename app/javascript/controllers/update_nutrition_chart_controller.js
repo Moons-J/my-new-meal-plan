@@ -12,6 +12,7 @@ export default class extends Controller {
   }
 
   update() {
+    console.log("update");
     this.nutritionNumTarget.style.setProperty('--p', `${this.#percentage()}`);
   }
 
