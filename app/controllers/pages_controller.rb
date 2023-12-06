@@ -13,7 +13,7 @@ class PagesController < ApplicationController
       @updated_planning = @arranged_plannings.select do |meal|
         meal.date >= Time.now.day
       end
-      @updated_planning
+      @new_weight = WeightHistory.new
     end
   end
 end

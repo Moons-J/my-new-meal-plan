@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :plannings, only: %i[create edit update]
   resources :account, only: %i[edit update]
   resources :groceries, only: %i[index]
+  resources :weight_histories, only: %i[create]
 end
