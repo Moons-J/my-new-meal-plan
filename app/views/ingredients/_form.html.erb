@@ -5,5 +5,8 @@
   <%= f.input :satu_fats, label: "Saturated Fats (g/100g)", input_html: {class: "standard-input"} %>
   <%= f.input :carbs, label: "Carbohydrates (g/100g)", input_html: {class: "standard-input"} %>
   <%= f.input :protein, label: "Proteins (g/100g)", input_html: {class: "standard-input"} %>
-  <%= f.submit button, class: "button-standard" %>
+  <button type="submit" class="d-flex button-standard" style="float: right">
+    <span class="button-text-space">Save</span>
+    <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>
+  </button>
 <% end %>
