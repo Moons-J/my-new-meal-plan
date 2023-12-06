@@ -130,14 +130,14 @@ emails.each do |email|
     WeightHistory.create!(
       weight: rand(60..70),
       user_id: user.id,
-      created_at: Time.new(Time.now.year, 11, day)
+      created_at: Time.new(Time.now.year, 11, day, 20, 2, 2, Time.zone.name)
     )
   end
-  (1..Time.now.day).each do |day|
+  (1..(Time.now.day - 1)).each do |day|
     WeightHistory.create!(
       weight: rand(60..70),
       user_id: user.id,
-      created_at: Time.new(Time.now.year, 12, day)
+      created_at: Time.new(Time.now.year, 12, day, 20, 2, 2, Time.zone.name)
     )
   end
   puts "I have found the weight history of the last #{number_days} days!"

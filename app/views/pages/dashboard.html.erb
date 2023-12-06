@@ -120,7 +120,20 @@
 <div class="standard-card">
   <div id="user-weights">
     <h6>Weight History (kg)</h6>
-    <%= line_chart WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight),
-        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight), colors: ['#5B8E7D'] %>
+    <%# Change Weight %>
+    <% time = Time.now.beginning_of_day %>
+    <% range = time..Time.now %>
+    <% if WeightHistory.where(created_at: range).any? == false %>
+      <%= simple_form_for(@weight_history) do |f| %>
+      <div class="d-flex justify-content-center align-center mt-3">
+        <div class="log-weight">
+          <%= f.input :weight, input_html: {class: "standard-input"}, label: false %>
+          <%= f.submit "Log weight", class: "button-standard mb-3" %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <% weights_by_date = WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight).compact %>
+    <%= line_chart weights_by_date, min: (WeightHistory.minimum(:weight) - 3), max: (WeightHistory.maximum(:weight) + 3), colors: ['#5B8E7D'] %>
   </div>
 </div>
