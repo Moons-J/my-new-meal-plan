@@ -16,7 +16,7 @@ class PlanningsController < ApplicationController
   def update
     @planning = Planning.find(params[:id])
     @planning.user = current_user
-    if @planning.update
+    if @planning.update(planning_params)
       redirect_to daily_plans_path, notice: "Plan updated"
     else
       redirect_to daily_plans_path, notice: "The plan could not be added: #{@planning.errors.full_messages.join(", ")}"

@@ -4,7 +4,10 @@
       <%= link_to :back, class: 'button-rounded-green' do %>
         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
       <% end %>
-      <%= f.submit "Save", class: "button-standard" %>
+      <button type="submit" class="d-flex button-standard">
+        <span class="button-text-space">Save</span>
+        <i class="fa-regular fa-floppy-disk" style="color: #ffffff;"></i>
+      </button>
     </div>
     <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
     <%# Nutritions %>
