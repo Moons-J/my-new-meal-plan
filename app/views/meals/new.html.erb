@@ -1,7 +1,10 @@
 <div class="justify-content-center" data-controller="meal-create-search">
   <%= simple_form_for(@meal) do |f| %>
     <div class="d-flex justify-content-end mb-3">
-      <%= f.submit "Save", class: "button-standard" %>
+      <button type="submit" class="d-flex button-standard">
+        <span class="button-text-space">Save</span>
+        <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>
+      </button>
     </div>
     <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
     <div class="text-center">
