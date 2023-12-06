@@ -40,12 +40,21 @@
         </div>
       </div>
       <%# Picture input %>
-
       <label for="images" class="drop-container" id="dropcontainer">
         <div class="text-center picture-preview mb-3">
+          <%# Meal image %>
+          <% if meal.photo.key %>
+              <%= cl_image_tag meal.photo.key.to_s, style: "width: 100px; height: 100px; object-fit: cover" %>
+          <% end %>
         </div>
         <i class="fa-regular fa-images"></i>
-        <span class="drop-title">Add a picture</span>
+        <span class="drop-title">
+          <% if meal.photo.key %>
+            Edit picture
+          <% else %>
+            Add picture
+          <% end %>
+        </span>
         <div style="margin-bottom: -30px">
           <%= f.input :photo, as: :file, label: false, input_html: {id: "images", data: {action: "change->meal-create-search#image"}} %>
         </div>
@@ -56,7 +65,7 @@
     <div data-create-meal-form-target="list" class="meal-ingredients">
       <% meal.meal_ingredients.each do |meal_ingredient| %>
         <%= f.fields_for :meal_ingredients, MealIngredient.new do |meal_ingredient_f| %>
-          <div >
+          <div>
             <div
               data-create-meal-form-target="card"
               data-action="click->create-meal-form#delete"
