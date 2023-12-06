@@ -1,7 +1,13 @@
 <%= simple_form_for(meal) do |f| %>
   <div data-controller="create-meal-form">
-    <div class="d-flex justify-content-end mb-3">
-      <%= f.submit "Save", class: "button-standard" %>
+    <div class="form-actions button-flex-seperator">
+      <%= link_to :back, class: 'button-rounded-green' do %>
+        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+      <% end %>
+      <button type="submit" class="d-flex button-standard">
+        <span class="button-text-space">Save</span>
+        <i class="fa-regular fa-floppy-disk" style="color: #ffffff;"></i>
+      </button>
     </div>
     <%= f.input :name, input_html: {class: "standard-input", placeholder: "Name your meal..."}, label: false %>
     <%# Nutritions %>

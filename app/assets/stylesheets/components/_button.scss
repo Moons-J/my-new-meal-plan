@@ -39,6 +39,26 @@
   .fa-solid, .fa-regular {
     font-size: x-large;
   }
+  .red {
+    background-color: #F26565;
+  }
+}
+.button-standard-red {
+  border: 0;
+  border-radius: 50px;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #F26565;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  .button-text-space {
+    padding-right: 8px;
+  }
+  .fa-solid, .fa-regular {
+    font-size: x-large;
+  }
 }
 
 .button-small-green {
@@ -59,29 +79,8 @@
   color: white;
 }
 
-.button-delete{
-  border: 0;
-  border-radius: 50px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-  text-decoration: none;
-  background-color: #F26565;
-  color: white;
-}
-.button-add{
-  border: 0;
-  border-radius: 50px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-  text-decoration: none;
-  background-color: #5FB300;
-  color: white;
+.button-margin {
+  margin-bottom: 20px;
 }
 
 .button-flex-seperator {
