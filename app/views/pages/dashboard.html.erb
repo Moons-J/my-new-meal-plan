@@ -74,8 +74,20 @@
   <div id="user-weights">
     <h6>Weight History (kg)</h6>
     <%= line_chart WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight),
-        min: WeightHistory.minimum(:weight), max: WeightHistory.maximum(:weight), colors: ['#5B8E7D'] %>
+        min: (WeightHistory.minimum(:weight) + 3), max: (WeightHistory.maximum(:weight) + 3), colors: ['#5B8E7D'] %>
   </div>
 </div>
 
 <%# Change Weight %>
+<%= simple_form_for(@weight_history) do |f| %>
+  <%= f.input :weight %>
+  <% if session[:weight_history_errors] %>
+    <p><%= session[:weight_history_errors] %></p>
+  <% end %>
+  <%= f.submit "Save weight changes", class: "button-standard" %>
+<% end %>
+
+<%# show weight history for user %>
+<% WeightHistory.where(user: current_user).each do |weight_history| %>
+  <p><%= weight_history.weight %> at <%= weight_history.created_at %></p>
+<% end %>
