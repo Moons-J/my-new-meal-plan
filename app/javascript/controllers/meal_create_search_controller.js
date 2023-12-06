@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="meal-create-search"
 export default class extends Controller {
-  static targets = ["input", "ingredient", "card", "list", "amount", "calloriesnum", "fatsnum", "satufatsnum", "carbsnum", "proteinnum"];
+  static targets = ["input", "ingredient", "card", "list", "amount"];
 
   connect() {
   }

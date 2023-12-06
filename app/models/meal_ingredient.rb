@@ -4,7 +4,7 @@ class MealIngredient < ApplicationRecord
   has_one :user, through: :meal
 
   validate :ingredient_belongs_to_user
-
+  # validates :amount, presence: true, numericality: { greater_than: 0 }
   private
 
   def ingredient_belongs_to_user
