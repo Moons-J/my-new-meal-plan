@@ -1,32 +1,3 @@
-.card-meal {
-
-  transition-duration: 0.7s;
-
-  img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-  }
-
-  .meal-info {
-    padding: 19px 19px 0px 19px;
-
-    p {
-      font-size: 14px;
-      margin-top: 16px;
-      opacity: 0.8;
-    }
-  }
-
-  .edit-button {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 200px;
-    right: -2.5%;
-  }
-}
 
 .meal-nutritionfacts {
   margin: 0 8%;

@@ -2,8 +2,39 @@
   background: white;
   border-radius: 6px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   position: relative;
+  border: 1.5px solid #ababab;
+}
+
+.card-meal {
+  margin: 10px 0px;
+  transition-duration: 0.7s;
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .meal-info {
+    padding: 19px 19px 0px 19px;
+
+    p {
+      font-size: 14px;
+      margin-top: 16px;
+      opacity: 0.8;
+    }
+  }
+
+  .edit-button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 200px;
+    right: -2.5%;
+  }
 }
 
 .plan {
