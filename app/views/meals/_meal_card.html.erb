@@ -36,7 +36,7 @@
         <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, meal.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= meal.calculate_nutrition("protein") %></div>
       </div>
     </div>
-    <%= link_to "#", class: "edit-button button-rounded-green" do %>
+    <%= link_to edit_meal_path(meal), class: "edit-button button-rounded-green" do %>
       <i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i>
     <% end %>
   </div>

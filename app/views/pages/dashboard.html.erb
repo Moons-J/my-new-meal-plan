@@ -1,4 +1,4 @@
-<h2>Your intake of today:</h2>
+<h2 class="mt-2">Your intake of today:</h2>
 
 <%# Intakes %>
 <div class="standard-card">
@@ -36,7 +36,7 @@
 </div>
 
 <%# Next Meal %>
-<div class="d-flex daily-plan-card">
+<div class="daily-plan-card">
   <% if @updated_planning.empty? %>
     <h3 class="text-center py-3">No meals left for today!</h3>
   <% else %>
@@ -45,21 +45,68 @@
     <% if next_meal.nil? %>
       <h3 class="text-center py-3">No meals left for today!</h3>
     <% else %>
-      <div class="info">
-        <h5>Daily plan: <br><strong><%= daily_plan.name %></strong></h5>
-        <%# <%= @updated_planning.first.daily_plan.id %>
-        <%# <%= @updated_planning.first.daily_plan.meals.count %>
-        <%# <p><%= @updated_planning.first.start_time %>
-        <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %></p>
-        <p>for <%= next_meal.first.meal_type %>, enjoy!</p>
+
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="info">
+              <div class="info-text">
+                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %> for <%= next_meal[0].meal_type %>, enjoy!</p>
+              </div>
+              <div class="img">
+                <% if next_meal.first.meal.photo.attached? %>
+                  <%= cl_image_tag next_meal[0].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                <% else %>
+                  <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="info">
+              <div class="info-text">
+                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[1].id)) %> for <%= next_meal[1].meal_type %>, enjoy!</p>
+              </div>
+              <div class="img">
+                <% if next_meal.first.meal.photo.attached? %>
+                  <%= cl_image_tag next_meal[1].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                <% else %>
+                  <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="info">
+              <div class="info-text">
+                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[2].id)) %> for <%= next_meal[2].meal_type %>, enjoy!</p>
+              </div>
+              <div class="img">
+                <% if next_meal.first.meal.photo.attached? %>
+                  <%= cl_image_tag next_meal[2].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                <% else %>
+                  <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="img">
-        <% if next_meal.first.meal.photo.attached? %>
-          <%= cl_image_tag next_meal.meal.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
-        <% else %>
-          <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
-        <% end %>
-      </div>
+
     <% end %>
   <% end %>
 </div>

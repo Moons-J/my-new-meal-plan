@@ -2,7 +2,7 @@
 
 <div class="ingredient-card-button-holder">
   <% if @grocerie_list.empty? %>
-    <p>No meals planned.<br>Start <%= link_to("planning you meals", daily_plans_path) %>!</p>
+    <p>No meals planned.<br>Start <%= link_to("planning you meals", daily_plans_path, style: 'color: #5FB300;') %>!</p>
   <% else %>
     <% @grocerie_list.each do |ingredient| %>
       <div class="ingredient-card standard-card d-flex align-items-center p-3 my-3"

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: "pages#dashboard"
   # get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   resources :meals, only: %i[index new create edit update destroy]
-  resources :daily_plans, only: %i[index new create show]
+  resources :daily_plans, only: %i[index new create show destroy]
   resources :ingredients, only: %i[index new create edit update destroy]
   resources :plannings, only: %i[create edit update]
   resources :account, only: %i[edit update]

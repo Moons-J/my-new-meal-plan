@@ -11,3 +11,21 @@
   margin-top: 25px;
   margin-bottom: 17px;
 }
+
+.daily-meal-card-button-holder{
+  position: relative;
+
+  .deletingCard {
+    margin-left: -40%;
+  }
+
+  .button-position{
+    position: absolute;
+    top: 25%;
+    right: 12%;
+  }
+
+  .hidden {
+    display: none;
+  }
+}

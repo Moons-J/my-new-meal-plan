@@ -9,17 +9,18 @@
   </div>
 </div>
 <%# Add new daily plan %>
-<div class="d-flex mb-3">
-  <%= link_to new_daily_plan_path, class: "button-rounded-green" do %>
+<div class="d-flex">
+  <%= link_to new_daily_plan_path, class: "button-rounded-green button-margin" do %>
     <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
   <% end %>
 </div>
 <%# List all daily plans %>
 <div class="flex-container">
-  <% @daily_plans.each do |plan| %>
-    <%= render "plan_card", plan: plan %>
+  <% if @daily_plans.empty? %>
+    <p>No daily meals yet!</p>
+  <% else %>
+    <% @daily_plans.each do |plan| %>
+      <%= render "plan_card", plan: plan %>
+    <% end %>
   <% end %>
 </div>
-
-
-
