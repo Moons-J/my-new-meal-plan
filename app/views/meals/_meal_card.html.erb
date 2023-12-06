@@ -36,8 +36,12 @@
         <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, meal.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= meal.calculate_nutrition("protein") %></div>
       </div>
     </div>
-    <%= link_to "Edit", edit_meal_path(meal), class: "edit-button button-standard" %>
+    <%= link_to edit_meal_path(meal), class: "edit-button button-rounded-green" do %>
+      <i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i>
+    <% end %>
   </div>
   <%# <div class="d-flex flex-grow-1 justify-content-center"> %>
-  <%= link_to("Delete", meal_path(meal), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-delete hidden button-position') %>
+  <%= link_to(meal_path(meal), data: {turbo_method: :delete, swipe_target: 'button'}, class: 'button-rounded-red hidden button-position') do %>
+    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+  <% end %>
 </div>

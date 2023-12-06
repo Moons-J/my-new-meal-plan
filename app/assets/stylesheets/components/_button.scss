@@ -1,25 +1,44 @@
-.button-rounded {
+.button-rounded-red {
   border: 0;
   border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  background-color: white;
+  width: 40px;
+  height: 40px;
+  background-color: #F26565;
+  text-align: center;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-rounded-green {
+  border: 0;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: #5FB300;
+  text-align: center;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-standard {
   border: 0;
   border-radius: 50px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 8px 15px;
   text-align: center;
   text-decoration: none;
   background-color: #5FB300;
   font-weight: bold;
   color: white;
   text-decoration: none;
+  .button-text-space {
+    padding-right: 8px;
+  }
+  .fa-solid, .fa-regular {
+    font-size: x-large;
+  }
 }
 
 .button-small-green {
@@ -51,4 +70,23 @@
   text-decoration: none;
   background-color: #F26565;
   color: white;
+}
+.button-add{
+  border: 0;
+  border-radius: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #5FB300;
+  color: white;
+}
+
+.button-flex-seperator {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
