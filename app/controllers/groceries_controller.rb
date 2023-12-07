@@ -9,15 +9,16 @@ class GroceriesController < ApplicationController
       plan.date >= Time.now && plan.date <= Time.new(Time.now.year, Time.now.month, Time.now.day + 7)
     end
     # @plans[0].daily_plan.meals[0].ingredients.count
-    @ingredients = []
+    @meals = []
     plans.each do |plan|
       plan.daily_plan.meals.each do |meal|
-        @ingredients << meal.meal_ingredients
+        @meals << meal.meal_ingredients
         # meal.ingredients.each do |ingredient|
         #   @ingredients << ingredient.name
         # end
       end
     end
+
     # @ingredients.each do |ingredient|
     #   Grocery.create!(
     #     ingredient: ingredient,
@@ -25,14 +26,25 @@ class GroceriesController < ApplicationController
     #     user: current_user
     #   )
     # end
-    unless @ingredients.empty?
-      @ingredients.first.each do |ingredient|
+    hash = {}
+    unless @meals.empty?
+      @meals.flatten.each do |meal_ingredient|
         Grocery.create!(
-          ingredient: ingredient.ingredient.name,
-          quantity: @ingredients.sum(ingredient.amount),
+          ingredient: meal_ingredient.ingredient,
+          quantity: 0,
           user: current_user
         )
+
+        if hash.key?(meal_ingredient.ingredient.id)
+          hash[meal_ingredient.ingredient.id] = hash[meal_ingredient.ingredient.id] += meal_ingredient.amount
+        else
+          hash[meal_ingredient.ingredient.id] = meal_ingredient.amount
+        end
       end
+    end
+
+    Grocery.all.each do |g|
+      g.update(quantity: hash[g.ingredient.id])
     end
     redirect_to groceries_path
   end
