@@ -4,16 +4,15 @@ class GroceriesController < ApplicationController
   end
 
   def create
-    Grocery.delete_all
+    Grocery.where(user: current_user).delete_all
     plans = Planning.where(user: current_user).select do |plan|
-      plan.date >= Time.now.day && plan.date <= Time.new(Time.now.year, Time.now.month, Time.now.day + 7)
+      plan.date >= Time.now && plan.date <= Time.new(Time.now.year, Time.now.month, Time.now.day + 7)
     end
     # @plans[0].daily_plan.meals[0].ingredients.count
     @ingredients = []
     plans.each do |plan|
       plan.daily_plan.meals.each { |meal| meal.ingredients.each { |ingredient| @ingredients << ingredient.name }}
     end
-
     @ingredients.each do |ingredient|
       Grocery.create!(
         ingredient: ingredient,
