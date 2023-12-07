@@ -1,4 +1,4 @@
-<h2>My plans</h2>
+<h2 class="text-center">My plans</h2>
 <div data-controller="planning-calendar">
   <div class="standard-card">
     <%= render "pages/week_calendar_displayed", planning: @planning, weeks: 2 %>
@@ -8,12 +8,7 @@
     <%= render "planning_form", planning: @planning %>
   </div>
 </div>
-<%# Add new daily plan %>
-<div class="d-flex">
-  <%= link_to new_daily_plan_path, class: "button-rounded-green button-margin" do %>
-    <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-  <% end %>
-</div>
+
 <%# List all daily plans %>
 <div class="flex-container">
   <% if @daily_plans.empty? %>
@@ -24,3 +19,6 @@
     <% end %>
   <% end %>
 </div>
+<%= link_to new_daily_plan_path, class: "button-rounded-green sticky-button" do %>
+  <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+<% end %>

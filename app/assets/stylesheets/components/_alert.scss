@@ -1,8 +1,22 @@
 .alert {
   position: fixed;
-  top: 8%;
-  left: 26%;
-  // bottom: 16px;
-  // right: 16px;
+  // top: 8%;
+  // left: 26%;
+  bottom: 16px;
+  right: 16px;
   z-index: 1000;
+}
+
+.alert-info {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border: none;
+}
+
+.alert-warning {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 0 10px $light-red;
+  border: none;
 }
