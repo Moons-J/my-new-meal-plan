@@ -3,7 +3,7 @@
 <% if @groceries.empty? %>
   <p>No groceries listed yet! Start adding your <%= link_to "meals at planning", daily_plans_path, style: "color: #5FB300;" %>!</p>
 <% else %>
-  <p>Grocerie list for the next week</p>
+  <p class="mb-0">Grocerie list for the next week</p>
   <p><em>(refresh to create the list again)</em></p>
   <% @groceries.each do |grocery| %>
     <div class="ingredient-card standard-card d-flex align-items-center p-3 my-3">
