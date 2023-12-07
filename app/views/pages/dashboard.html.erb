@@ -123,7 +123,7 @@
     <%# Change Weight %>
     <% time = Time.now.beginning_of_day %>
     <% range = time..Time.now %>
-    <% if WeightHistory.where(created_at: range).any? == false %>
+    <% if WeightHistory.where(created_at: range, user: current_user).any? == false %>
       <%= simple_form_for(@weight_history) do |f| %>
       <div class="d-flex justify-content-center align-center mt-3">
         <div class="log-weight">
@@ -133,7 +133,8 @@
       </div>
       <% end %>
     <% end %>
-    <% weights_by_date = WeightHistory.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight).compact %>
+    <% user_weights = WeightHistory.where(user: current_user) %>
+    <% weights_by_date = user_weights.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight).compact %>
     <%= line_chart weights_by_date, min: (WeightHistory.minimum(:weight) - 3), max: (WeightHistory.maximum(:weight) + 3), colors: ['#5B8E7D'] %>
   </div>
 </div>
