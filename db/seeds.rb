@@ -97,11 +97,12 @@ emails.each do |email|
       updated_at: date
     )
 
-    rand(3).times do
+    meal_types = %w[Breakfast Lunch Dinner]
+    meal_types.each do |meal_type|
       DailyPlanMeal.create!(
         meal_id: Meal.all.sample.id,
         daily_plan_id: daily_plan.id,
-        meal_type: %w[breakfast lunch dinner].sample
+        meal_type: meal_type
       )
     end
 
@@ -128,14 +129,14 @@ emails.each do |email|
   number_days = 30
   (1..number_days).each do |day|
     WeightHistory.create!(
-      weight: rand(60..70),
+      weight: (80 - (day * 0.25) + rand(-0.5..0.5)).round(1),
       user_id: user.id,
       created_at: Time.new(Time.now.year, 11, day, 20, 2, 2, Time.zone.name)
     )
   end
   (1..(Time.now.day - 1)).each do |day|
     WeightHistory.create!(
-      weight: rand(60..70),
+      weight: (80 - ((30 + day) * 0.25) + rand(-0.5..0.5)).round(1),
       user_id: user.id,
       created_at: Time.new(Time.now.year, 12, day, 20, 2, 2, Time.zone.name)
     )
