@@ -11,36 +11,36 @@
     <%= cl_image_tag meal.photo.key.to_s %>
   <% end %>
   <div class="meal-info">
-    <h5><%= meal.name %></h5>
+    <h5 class="mb-0"><%= meal.name %></h5>
   </div>
-  <div class="meal-nutritionfacts-create">
+  <div class="meal-nutritionfacts-create pt-2">
     <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
+      <div>
+        Cals
       </div>
       <p class="nutrition-data" id="calories"><%= meal.calculate_nutrition("calories") %></p>
     </div>
     <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
+      <div>
+        Fats
       </div>
       <p class="nutrition-data" id="fats"><%= meal.calculate_nutrition("fats") %></p>
     </div>
     <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
+      <div>
+        Satu
       </div>
       <p class="nutrition-data" id="satu-fats"><%= meal.calculate_nutrition("satu-fats") %></p>
     </div>
     <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
+      <div>
+        Carbs
       </div>
       <p class="nutrition-data" id="carbs"><%= meal.calculate_nutrition("carbs") %></p>
     </div>
     <div class="circle-and-number-container">
-      <div class="circle">
-        <div class="white-inner-circle"></div>
+      <div>
+        Prot
       </div>
       <p class="nutrition-data" id="protein"><%= meal.calculate_nutrition("protein") %></p>
     </div>
