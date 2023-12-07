@@ -4,6 +4,7 @@ class GroceriesController < ApplicationController
   end
 
   def create
+    Grocery.delete_all
     plans = Planning.where(user: current_user).select do |plan|
       plan.date >= Time.now.day && plan.date <= Time.new(Time.now.year, Time.now.month, Time.now.day + 7)
     end
