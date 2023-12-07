@@ -11,15 +11,30 @@ class GroceriesController < ApplicationController
     # @plans[0].daily_plan.meals[0].ingredients.count
     @ingredients = []
     plans.each do |plan|
-      plan.daily_plan.meals.each { |meal| meal.ingredients.each { |ingredient| @ingredients << ingredient.name }}
+      plan.daily_plan.meals.each do |meal|
+        @ingredients << meal.meal_ingredients
+        # meal.ingredients.each do |ingredient|
+        #   @ingredients << ingredient.name
+        # end
+      end
     end
-    @ingredients.each do |ingredient|
-      Grocery.create!(
-        ingredient: ingredient,
-        quantity: @ingredients.count(ingredient),
-        user: current_user
-      )
+    # @ingredients.each do |ingredient|
+    #   Grocery.create!(
+    #     ingredient: ingredient,
+    #     quantity: @ingredients.count(ingredient),
+    #     user: current_user
+    #   )
+    # end
+    unless @ingredients.empty?
+      @ingredients.first.each do |ingredient|
+        Grocery.create!(
+          ingredient: ingredient.ingredient.name,
+          quantity: @ingredients.sum(ingredient.amount),
+          user: current_user
+        )
+      end
     end
+    redirect_to groceries_path
   end
 
   def destroy
