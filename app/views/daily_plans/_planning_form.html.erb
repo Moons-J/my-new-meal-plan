@@ -6,7 +6,7 @@
         <%= f.input :daily_plan_id, collection: current_user.daily_plans, value_method: :id, input_html: { class: "standard-input" } %>
       </div>
       <div class="date-exercise-input">
-        <%= f.input :date, as: :string, input_html: {class: "input-small date-input standard-input", style: "width: 125px;"} %>
+        <%= f.input :date, as: :string, input_html: {class: "input-small date-input standard-input", style: "width: 150px;"} %>
         <%= f.input :exercise, wrapper_html: { class: "exercise-input" } %>
       </div>
       <button type="submit" class="d-flex button-standard">
