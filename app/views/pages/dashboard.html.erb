@@ -57,11 +57,11 @@
             <div class="carousel-item active">
               <div class="info">
                 <div class="info-text">
-                  <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %> for <%= next_meal[0].meal_type %>, enjoy!</p>
+                  <p>You have <%= link_to(next_meal[0].meal.name, meal_path(daily_plan.meals[0].id)) %> for <%= next_meal[0].meal_type %>, enjoy!</p>
                 </div>
                 <div class="img">
-                  <% if next_meal.first.meal.photo.attached? %>
-                    <%= cl_image_tag next_meal[0].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                  <% if next_meal[0].meal.photo.attached? %>
+                    <%= cl_image_tag next_meal[0].meal.photo.key.to_s, width: 150, height: 150, crop: :thumb, gravity: :face %>
                   <% else %>
                     <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
                   <% end %>
@@ -71,11 +71,11 @@
             <div class="carousel-item">
               <div class="info">
                 <div class="info-text">
-                  <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[1].id)) %> for <%= next_meal[1].meal_type %>, enjoy!</p>
+                  <p>You have <%= link_to(next_meal[1].meal.name, meal_path(daily_plan.meals[1].id)) %> for <%= next_meal[1].meal_type %>, enjoy!</p>
                 </div>
                 <div class="img">
-                  <% if next_meal.first.meal.photo.attached? %>
-                    <%= cl_image_tag next_meal[1].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                  <% if next_meal[1].meal.photo.attached? %>
+                    <%= cl_image_tag next_meal[1].meal.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
                   <% else %>
                     <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
                   <% end %>
@@ -85,11 +85,11 @@
             <div class="carousel-item">
               <div class="info">
                 <div class="info-text">
-                  <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[2].id)) %> for <%= next_meal[2].meal_type %>, enjoy!</p>
+                  <p>You have <%= link_to(next_meal[2].meal.name, meal_path(daily_plan.meals[2].id)) %> for <%= next_meal[2].meal_type %>, enjoy!</p>
                 </div>
                 <div class="img">
-                  <% if next_meal.first.meal.photo.attached? %>
-                    <%= cl_image_tag next_meal[2].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                  <% if next_meal[2].meal.photo.attached? %>
+                    <%= cl_image_tag next_meal[2].meal.photo.key.to_s, width: 150, height: 150, crop: :thumb, gravity: :face %>
                   <% else %>
                     <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
                   <% end %>
@@ -138,6 +138,6 @@
     <% end %>
     <% user_weights = WeightHistory.where(user: current_user) %>
     <% weights_by_date = user_weights.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight).compact %>
-    <%= line_chart weights_by_date, min: (WeightHistory.minimum(:weight) - 3), max: (WeightHistory.maximum(:weight) + 3), colors: ['#5B8E7D'] %>
+    <%= line_chart weights_by_date, min: (WeightHistory.minimum(:weight) - 5).floor, max: (WeightHistory.maximum(:weight) + 5).ceil, colors: ['#5B8E7D'] %>
   </div>
 </div>
