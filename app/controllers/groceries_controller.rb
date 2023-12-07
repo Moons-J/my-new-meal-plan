@@ -29,11 +29,11 @@ class GroceriesController < ApplicationController
     hash = {}
     unless @meals.empty?
       @meals.flatten.each do |meal_ingredient|
-        Grocery.create!(
-          ingredient: meal_ingredient.ingredient,
-          quantity: 0,
-          user: current_user
-        )
+        # Grocery.create!(
+        #   ingredient: meal_ingredient.ingredient,
+        #   quantity: 0,
+        #   user: current_user
+        # )
 
         if hash.key?(meal_ingredient.ingredient.id)
           hash[meal_ingredient.ingredient.id] = hash[meal_ingredient.ingredient.id] += meal_ingredient.amount
@@ -41,11 +41,18 @@ class GroceriesController < ApplicationController
           hash[meal_ingredient.ingredient.id] = meal_ingredient.amount
         end
       end
+      @meals.flatten.uniq.each do |ingredient|
+        Grocery.create!(
+          ingredient: ingredient.ingredient,
+          quantity: hash[ingredient.ingredient.id],
+          user: current_user
+        )
+      end
     end
 
-    Grocery.all.each do |g|
-      g.update(quantity: hash[g.ingredient.id])
-    end
+    # Grocery.all.each do |g|
+    #   g.update(quantity: hash[g.ingredient.id])
+    # end
     redirect_to groceries_path
   end
 
