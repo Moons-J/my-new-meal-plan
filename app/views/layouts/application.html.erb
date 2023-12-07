@@ -40,6 +40,23 @@
 
     <div class="basic-container">
       <%= yield %>
+      <% if controller_name == "ingredients" && action_name == 'index' %>
+        <%= link_to new_ingredient_path, class: "button-rounded-green sticky-button" do %>
+          <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+        <% end %>
+      <% end %>
+
+      <% if controller_name == "meals" && action_name == 'index' %>
+        <%= link_to new_meal_path, class: "button-rounded-green sticky-button" do %>
+          <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+        <% end %>
+      <% end %>
+
+      <% if controller_name == "groceries" && action_name == 'index' %>
+        <%= link_to groceries_path, data: { turbo_method: :post }, class: "button-rounded-green sticky-button" do %>
+          <i class="fa-solid fa-rotate-right" style="color: #ffffff;"></i>
+        <% end %>
+      <% end %>
     </div>
 
 
