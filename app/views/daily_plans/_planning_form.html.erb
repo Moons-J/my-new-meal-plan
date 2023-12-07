@@ -1,21 +1,18 @@
-<%= simple_form_for(planning) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :daily_plan_id, collection: current_user.daily_plans, class: 'standard-input', value_method: :id %>
-    <%= f.input :date, as: :string, class: "input-small"%>
-  </div>
-  <div class="form-actions button-flex-seperator">
-    <%# <%= f.input :start_time, input_html: { }, as: :string %>
-    <%# <%= f.input :end_time, input_html: { }, as: :string %>
-    <%= link_to daily_plans_path, class: 'button-rounded-green', data_action: "click->planning-calendar#hide" do %>
-      <i class="fa-solid fa-arrow-left fa-solid fa-xmark" style="color: #ffffff;"></i>
+<div class="standard-card">
+  <div class="planning-card">
+    <%= simple_form_for(planning) do |f| %>
+      <i class="fa-solid fa-xmark btn-close-form" data-action="click->planning-calendar#hide"></i>
+      <div class="daily-plan-input">
+        <%= f.input :daily_plan_id, collection: current_user.daily_plans, value_method: :id, input_html: { class: "standard-input" } %>
+      </div>
+      <div class="date-exercise-input">
+        <%= f.input :date, as: :string, input_html: {class: "input-small date-input standard-input", style: "width: 125px;"} %>
+        <%= f.input :exercise, wrapper_html: { class: "exercise-input" } %>
+      </div>
+      <button type="submit" class="d-flex button-standard">
+        <span class="button-text-space">Save</span>
+        <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #FFFFFF;"></i>
+      </button>
     <% end %>
-    <div class="checkbox-button">
-      <%= f.input :exercise, as: :boolean, input_html: {class: 'button-text-space'} %>
-            <i class="fa-solid fa-dumbbell" style="font-size: x-large; color: #ffffff;"></i>
-    </div>
-    <button type="submit" class="d-flex button-standard">
-      <span class="button-text-space">Save</span>
-      <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>
-    </button>
   </div>
-<% end %>
+</div>
