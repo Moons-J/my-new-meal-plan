@@ -6,8 +6,9 @@ class GroceriesController < ApplicationController
   def create
     Grocery.where(user: current_user).delete_all
     plans = Planning.where(user: current_user).select do |plan|
-      plan.date >= Time.now && plan.date <= Time.new(Time.now.year, Time.now.month, Time.now.day + 7)
+      plan.date >= Time.new(Time.now.year, Time.now.month, Time.now.day) && plan.date <= Time.new(Time.now.year, Time.now.month, Time.now.day + 7)
     end
+
     # @plans[0].daily_plan.meals[0].ingredients.count
     @meals = []
     plans.each { |plan| plan.daily_plan.meals.each { |meal| @meals << meal.meal_ingredients }}

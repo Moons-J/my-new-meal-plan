@@ -88,7 +88,7 @@
 
   .info{
     margin-block: 0px;
-    margin-left: 15%;
+    margin-left: 45px;
     display: flex;
     justify-content: space-between;
   }
@@ -96,6 +96,7 @@
   .info-text {
     display: flex;
     align-items: center;
+    padding-right: 5px;
   }
 
   a{
