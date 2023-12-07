@@ -1,7 +1,7 @@
 <%= simple_form_for(meal) do |f| %>
   <div data-controller="create-meal-form">
     <div class="d-flex justify-content-between mb-3">
-      <%= link_to :back, class: 'button-rounded-green' do %>
+      <%= link_to meals_path, class: 'button-rounded-green' do %>
         <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
       <% end %>
       <button type="submit" class="d-flex button-standard">
@@ -62,7 +62,7 @@
         </div>
       </label>
     </div>
-    <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' } %>
+    <%= f.input :comment, as: :text, wrapper_html: { class: 'mt-2' }, input_html: { class: "standard-textarea"} %>
     <%# Meal Ingredients list %>
     <h5 class="text-center mb-0 mt-5">Ingredients</h5>
     <div data-create-meal-form-target="list" class="meal-ingredients">
