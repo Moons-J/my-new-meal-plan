@@ -141,7 +141,7 @@
     data-meal-create-search-target="input" data-action="keyup->meal-create-search#search">
 
     <div data-meal-create-search-target="list" data-create-meal-form-target="ingredientsList" >
-      <% current_user.ingredients.each do |ingredient| %>
+      <% current_user.ingredients.sort_by(&:name).each do |ingredient| %>
       <div
         id="ingredient_<%= ingredient.id %>"
         data-callories="<%= ingredient.calories %>"
