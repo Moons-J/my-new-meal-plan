@@ -1,0 +1,45 @@
+.planning-card {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+  i {
+    font-size: 20px;
+  }
+
+  .btn-close-form {
+    position: absolute;
+    top: 35px;
+    right: 40px;
+  }
+
+  .daily-plan-input {
+    margin-top: 20px;
+    width: 290px;
+  }
+
+  .date-exercise-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .date-input {
+    width: 125px;
+  }
+
+  .exercise-input {
+    margin-top: 30px;
+  }
+
+  .form-check-input:checked{
+    background-color: $green-buttons;
+    border-color: $green-buttons;
+    // the rgba color is the green-buttons color with 0.6 opacity
+    box-shadow: 0 1px 1px rgba(95, 179, 0, 0.075) inset, 0 0 8px rgba(95, 179, 0, 0.6);
+    outline: 0 none;
+  }
+
+
+}

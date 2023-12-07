@@ -8,13 +8,11 @@
   <% @groceries.each do |grocery| %>
     <div class="ingredient-card standard-card d-flex align-items-center p-3 my-3">
       <div class="flex-grow-1">
-        <h2 class="mb-0"><%= grocery.ingredient.name %>, Qty: <%= grocery.quantity %></h2>
+        <h2 class="mb-0"><%= grocery.ingredient.name %>, Qty: <%= grocery.quantity %>g</h2>
       </div>
       <%= link_to(grocery_path(grocery), data: {turbo_method: :delete}) do %>
         <i class="fa-solid fa-check"></i>
       <% end %>
     </div>
   <% end %>
-
-
 <% end %>
