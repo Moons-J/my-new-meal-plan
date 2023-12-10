@@ -1,7 +1,7 @@
 <h2 class="text-center">Grocerie List</h2>
 
 <% if @groceries.empty? %>
-  <p>No groceries listed yet! Start adding your <%= link_to "meals at planning", daily_plans_path, style: "color: #5FB300;" %>!</p>
+  <p>No groceries listed yet! Start adding your <%= link_to "meals at planning", daily_plans_path, style: "color: #5FB300;" %> or click <i class="fa-solid fa-rotate-right"></i> to refresh your grocerie list!</p>
 <% else %>
   <p class="mb-0">Grocerie list for the next week</p>
   <p><em>(refresh to create the list again)</em></p>
