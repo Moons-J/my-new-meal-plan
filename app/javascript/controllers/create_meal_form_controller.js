@@ -22,6 +22,7 @@ export default class extends Controller {
       event.currentTarget.remove();
 
       this.ingredientsListTarget.querySelector(`#ingredient_${ingredientId}`).classList.remove("hide-from-ingredient-list");
+      this.calculate();
     }
   }
 
