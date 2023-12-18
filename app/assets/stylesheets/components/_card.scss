@@ -83,13 +83,12 @@
   background: white;
   border-radius: 6px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 16px;
   position: relative;
   padding-left: 0px;
 
   .info{
     margin-block: 0px;
-    margin-left: 15%;
+    margin-left: 45px;
     display: flex;
     justify-content: space-between;
   }
@@ -97,6 +96,7 @@
   .info-text {
     display: flex;
     align-items: center;
+    padding-right: 5px;
   }
 
   a{

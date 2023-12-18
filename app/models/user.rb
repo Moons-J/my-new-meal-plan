@@ -2,8 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many :ingredients
   has_many :meals
   has_many :daily_plans
@@ -23,7 +22,7 @@ class User < ApplicationRecord
   after_create :copy_base_ingredients
 
   def percentage_calculation(total, part)
-    (part.to_f / total.to_f) *100
+    (part.to_f / total.to_f) * 100
   end
 
   def current_weight

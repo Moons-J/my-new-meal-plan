@@ -1,4 +1,4 @@
-<h2 class="mt-2">Your intake of today:</h2>
+<h2 class="mt-2 text-center">Your intake of today:</h2>
 
 <%# Intakes %>
 <div class="standard-card">
@@ -36,66 +36,61 @@
 </div>
 
 <%# Next Meal %>
-<div class="daily-plan-card">
-  <% if @updated_planning.empty? %>
-    <h3 class="text-center py-3">No meals left for today!</h3>
-  <% else %>
-    <% daily_plan = @updated_planning.first.daily_plan %>
-    <% next_meal = daily_plan.daily_plan_meals %>
-    <% if next_meal.nil? %>
-      <h3 class="text-center py-3">No meals left for today!</h3>
+<div class="standard-card">
+  <div class="daily-plan-card">
+    <% if @updated_planning.empty? %>
+      <h3 class="text-center py-3 m-0">No meals left for today!</h3>
     <% else %>
+      <% daily_plan = @updated_planning.first.daily_plan %>
+      <% next_meal = daily_plan.daily_plan_meals %>
+      <% if next_meal.nil? %>
+        <h3 class="text-center py-3">No meals left for today!</h3>
+      <% else %>
 
       <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <% next_meal.each_with_index do |meal, indx| %>
+            <% if indx > 0 %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= indx %>" aria-label="Slide <%= indx + 1 %>"></button>
+            <% end %>
+          <% end %>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="info">
-              <div class="info-text">
-                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[0].id)) %> for <%= next_meal[0].meal_type %>, enjoy!</p>
-              </div>
-              <div class="img">
-                <% if next_meal.first.meal.photo.attached? %>
-                  <%= cl_image_tag next_meal[0].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
-                <% else %>
-                  <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="info">
-              <div class="info-text">
-                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[1].id)) %> for <%= next_meal[1].meal_type %>, enjoy!</p>
-              </div>
-              <div class="img">
-                <% if next_meal.first.meal.photo.attached? %>
-                  <%= cl_image_tag next_meal[1].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
-                <% else %>
-                  <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="info">
-              <div class="info-text">
-                <p>You have <%= link_to(next_meal.first.meal.name, meal_path(daily_plan.meals[2].id)) %> for <%= next_meal[2].meal_type %>, enjoy!</p>
-              </div>
-              <div class="img">
-                <% if next_meal.first.meal.photo.attached? %>
-                  <%= cl_image_tag next_meal[2].photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
-                <% else %>
-                  <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
-                <% end %>
-              </div>
-            </div>
 
-          </div>
+        <div class="carousel-inner">
+          <% next_meal.each_with_index do |meal, indx| %>
+            <% if indx == 0 %>
+              <div class="carousel-item active">
+                <div class="info">
+                  <div class="info-text">
+                    <p>You have <%= link_to(next_meal[indx].meal.name, meal_path(daily_plan.meals[indx].id)) %> for <%= next_meal[indx].meal_type %>, enjoy!</p>
+                  </div>
+                  <div class="img">
+                    <% if next_meal[indx].meal.photo.attached? %>
+                      <%= cl_image_tag next_meal[indx].meal.photo.key.to_s, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                    <% else %>
+                      <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+              <div class="carousel-item">
+                <div class="info">
+                  <div class="info-text">
+                    <p>You have <%= link_to(next_meal[indx].meal.name, meal_path(daily_plan.meals[indx].id)) %> for <%= next_meal[indx].meal_type %>, enjoy!</p>
+                  </div>
+                  <div class="img">
+                    <% if next_meal[indx].meal.photo.attached? %>
+                      <%= cl_image_tag next_meal[indx].meal.photo.key.to_s, width: 150, height: 150, crop: :thumb, gravity: :face %>
+                    <% else %>
+                      <img src="/assets/default_recipe-6e8c69c30f0c2cfebfab9f9d5eaa2e65dfe3ac875a9b265803fd6c5a088f2d60.png" alt="">
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -106,10 +101,11 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-
     <% end %>
   <% end %>
+  </div>
 </div>
+
 
 <%# Calendar %>
 <div class="standard-card">
@@ -135,6 +131,6 @@
     <% end %>
     <% user_weights = WeightHistory.where(user: current_user) %>
     <% weights_by_date = user_weights.group_by_day(:created_at, range: 10.days.ago..Time.now, current: true).average(:weight).compact %>
-    <%= line_chart weights_by_date, min: (WeightHistory.minimum(:weight) - 3), max: (WeightHistory.maximum(:weight) + 3), colors: ['#5B8E7D'] %>
+    <%= line_chart weights_by_date, min: (WeightHistory.minimum(:weight) - 5).floor, max: (WeightHistory.maximum(:weight) + 5).ceil, colors: ['#5B8E7D'] %>
   </div>
 </div>

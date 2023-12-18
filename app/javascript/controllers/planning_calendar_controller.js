@@ -15,6 +15,7 @@ export default class extends Controller {
       fetch(`/daily_plans?p=${planId}`, { headers: { "Accept": "text/plain" } })
         .then(response => response.text())
         .then(data => {
+          console.log(this.formTarget)
           this.formTarget.innerHTML = data
         })
     }

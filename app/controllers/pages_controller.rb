@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     if @plannings.length.positive?
       @arranged_plannings = @plannings.sort_by(&:date)
       @updated_planning = @arranged_plannings.select do |meal|
-        meal.date >= Time.now.day
+        meal.date >= Time.new(Time.now.year, Time.now.month, Time.now.day)
       end
     end
     @weight_history = WeightHistory.new

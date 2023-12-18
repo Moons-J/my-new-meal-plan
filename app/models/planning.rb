@@ -10,7 +10,7 @@ class Planning < ApplicationRecord
   private
 
   def unique_data_per_user
-    if Planning.where(date: date, user_id: user_id).exists?
+    if Planning.where(date: date, user_id: user_id).where.not(id: self.id).exists?
       errors.add(:date, "must be unique per user")
     end
   end

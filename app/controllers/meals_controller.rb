@@ -50,16 +50,16 @@ class MealsController < ApplicationController
 
   def destroy
     @meal = Meal.find(params[:id])
-    @meal.destroy
-
-    redirect_to meals_path
+    if @meal.destroy
+      redirect_to meals_path, notice: "Meal deleted"
+    else
+      redirect_to meals_path, notice: "The meal could not be deleted because its linked to a plan."
+    end
   end
 
   # private
 
   def meal_ingredients_params
-    params.require(:meal).permit(:name, :photo, :comment, meal_ingredients_attributes: [:amount, :ingredient_id])
+    params.require(:meal).permit(:name, :photo, :comment, meal_ingredients_attributes: %i[amount ingredient_id])
   end
-
-
 end

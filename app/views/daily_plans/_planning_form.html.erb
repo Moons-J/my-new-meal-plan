@@ -1,13 +1,18 @@
-<%= simple_form_for(planning) do |f| %>
-  <div class="d-flex">
-    <%= f.input :daily_plan_id, collection: current_user.daily_plans, value_method: :id %>
-    <%= f.input :exercise, class: "m-auto" %>
+<div class="standard-card">
+  <div class="planning-card">
+    <%= simple_form_for(planning) do |f| %>
+      <i class="fa-solid fa-xmark btn-close-form" data-action="click->planning-calendar#hide"></i>
+      <div class="daily-plan-input">
+        <%= f.input :daily_plan_id, collection: current_user.daily_plans, value_method: :id, input_html: { class: "standard-input" } %>
+      </div>
+      <div class="date-exercise-input">
+        <%= f.input :date, as: :string, input_html: {class: "input-small date-input standard-input", style: "width: 150px;"} %>
+        <%= f.input :exercise, wrapper_html: { class: "exercise-input" } %>
+      </div>
+      <button type="submit" class="d-flex button-standard">
+        <span class="button-text-space">Save</span>
+        <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #FFFFFF;"></i>
+      </button>
+    <% end %>
   </div>
-  <div class="">
-    <%= f.input :date, as: :string, class: "input-small"%>
-  </div>
-  <%= f.submit "Save planning", class: "button-standard" %>
-  <%# <%= f.input :start_time, input_html: { }, as: :string %>
-  <%# <%= f.input :end_time, input_html: { }, as: :string %>
-  <i class="fa-solid fa-xmark" data-action="click->planning-calendar#hide"></i>
-<% end %>
+</div>
