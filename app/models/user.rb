@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :plannings
   has_many :weight_histories
 
-  validates :first_name, :last_name, :user_name, :birthday, :height, :exercise_level, :weight, presence: true
+  validates :first_name, :last_name, :user_name, :birthday, :height, :active_level, :weight, presence: true
   # validation for exercise_level it should be between 1..5
-  validates :exercise_level, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+  validates :active_level, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   # # validation for height it should be between 100..250
   #   validates :height, numericality: { only_integer: true, greater_than_or_equal_to: 100, less_than_or_equal_to: 250 }
   # # validation for weight it should be between 30..250
@@ -26,7 +26,11 @@ class User < ApplicationRecord
   end
 
   def current_weight
-    self.weight_histories.order(:created_at).pluck(:weight).last
+    if self.weight_histories.count == 0
+      self.weight
+    else
+      self.weight_histories.order(:created_at).pluck(:weight).last
+    end
   end
 
   def user_calories
