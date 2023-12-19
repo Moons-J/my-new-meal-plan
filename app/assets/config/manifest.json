@@ -1,0 +1,5 @@
+{
+  "display": "standalone",
+  "name": "My New Meal Plan",
+  "start_url": "/?standalone=true"
+}
