@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
   belongs_to :user
   has_many :meal_ingredients, dependent: :destroy
-  has_many :daily_plan_meals
+  has_many :daily_plan_meals, dependent: :destroy
   has_many :ingredients, through: :meal_ingredients
   has_one_attached :photo
 
@@ -33,10 +33,9 @@ class Meal < ApplicationRecord
   end
 
   include PgSearch::Model
-  pg_search_scope :search_by_name_comment_ingredients,
-    against: [ :name, :comment ],
+  pg_search_scope :search_by_name_comment_ingredients, against: [ :name, :comment ],
     associated_against: {
-      ingredients: [ :name ]
+      ingredients: [:name]
     },
     using: {
       tsearch: { prefix: true }
