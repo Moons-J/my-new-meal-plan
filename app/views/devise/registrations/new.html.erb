@@ -4,6 +4,32 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                  required: true %>
+      <%= f.input :last_name,
+                  required: true %>
+    <%= f.input :user_name,
+                  required: true %>
+      <%= f.input :birthday,
+                  required: true, input_html: {class: "my-1"} %>
+      <%= f.input :height,
+                  hint: "In centimeters",
+                  required: true %>
+      <%= f.input :weight, hint: "In kilograms", required: true %>
+      <%= f.input :active_level,
+                  hint: "From 1 (no exercise) to 5 (excercise 7 days in a week), what is your weekly activity level?",
+                  required: true,
+                  input_html: { type: "number", min: 1, max: 5, step: 1 } %>
+      <%= f.input :phase,
+                  as: :radio_buttons,
+                  hint: "Do you want to lose, maintain or gain weight?",
+                  collection: ["lose", "maintain", "gain"],
+                  required: true %>
+      <%= f.input :sex,
+                  hint: "the 'rather not say' option will give you a calculation that is between female and male.",
+                  as: :radio_buttons,
+                  collection: ["female", "male", "rather not say"],
+                  required: true %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -22,3 +48,5 @@
     <%= render "devise/shared/links" %>
   </div>
 <% end %>
+
+
