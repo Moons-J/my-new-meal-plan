@@ -86,25 +86,41 @@ footer{
   }
 
   .menu-item {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
   }
 
   ul div{
-    width: 68px;
+    width: 80%;
     text-align: center;
+    margin-block: 4px;
+    padding-inline: 8px;
+    padding-block: 8px;
+  }
+
+  ul div:hover{
+    background-color: $green-buttons;
+    border-radius: 4px;
+    color: white;
   }
 
   li{
     // display: inline;
-    text-align: center;
     font-size: 14px;
   }
 
   li a{
     text-decoration: none;
     color: grey;
+    display: flex;
+    align-content: center;
+    align-items: center;
+  }
+
+  li p{
+    margin-bottom: 0px;
+    padding-left: 10px;
   }
 
   li i{
