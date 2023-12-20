@@ -1,7 +1,7 @@
 <h2 class="mt-1 text-center">Meals</h2>
 <div data-controller="search-element">
   <div>
-    <div class="col-sm-8 mb-3">
+    <div class="search-field">
       <%= form_with url: meals_path, method: :get, class: "search-form d-flex justify-content-between", data: {
         search_element_target: "form",
         action: "keyup->search-element#update"
