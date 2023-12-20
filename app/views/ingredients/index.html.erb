@@ -3,7 +3,7 @@
 <div data-controller="search-element">
   <%# Search form %>
   <div>
-    <div class="col-sm-8 mb-3">
+    <div class="search-field">
       <%= form_with url: ingredients_path, method: :get, class: "search-form d-flex justify-content-between", data: {
         search_element_target: "form",
         action: "keyup->search-element#update"
