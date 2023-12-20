@@ -29,7 +29,7 @@
 
     <nav>
       <div>
-        <%= link_to "#" do %>
+        <%= link_to root_path do %>
           <%= image_tag "logo_mnmp.png", id: "logo-size" %>
         <% end %>
       </div>
@@ -73,7 +73,7 @@
 
     <footer>
       <ul>
-        <div>
+        <div id="food">
           <li class="menu-item">
             <%= link_to ingredients_path do %>
             <% if controller_name == 'ingredients' %>
@@ -81,11 +81,11 @@
             <% else %>
               <i class="fa-solid fa-carrot"></i>
             <% end %>
-            <p>Food</p>
+              <p id="food">Food</p>
             <% end %>
           </li>
         </div>
-        <div>
+        <div id="meals">
           <li class="menu-item">
             <%= link_to meals_path do %>
 
@@ -94,11 +94,11 @@
             <% else %>
               <i class="fa-solid fa-utensils"></i>
             <% end %>
-            <p>Meals</p>
+              <p id="meals">Meals</p>
             <% end %>
           </li>
         </div>
-        <div>
+        <div id="dashboard">
           <li class="menu-item">
             <%= link_to root_path do %>
             <% if controller_name == 'pages' && action_name == 'dashboard' %>
@@ -106,11 +106,11 @@
             <% else %>
               <i class="fa-solid fa-house"></i>
             <% end %>
-            <p>Home</p>
+              <p id="dashboard">Home</p>
             <% end %>
           </li>
         </div>
-        <div>
+        <div id="plans">
           <li class="menu-item">
             <%= link_to daily_plans_path do %>
             <% if controller_name == 'daily_plans' %>
@@ -118,11 +118,11 @@
             <% else %>
               <i class="fa-solid fa-calendar-days"></i>
             <% end %>
-            <p>Plans</p>
+              <p id="plans">Plans</p>
             <% end %>
           </li>
         </div>
-        <div>
+        <div id="groceries">
           <li class="menu-item">
             <%= link_to groceries_path do %>
             <% if controller_name == 'groceries' %>
@@ -130,7 +130,7 @@
             <% else %>
               <i class="fa-solid fa-basket-shopping"></i>
             <% end %>
-            <p>Groceries</p>
+              <p id="groceries">Groceries</p>
             <% end %>
           </li>
         </div>
