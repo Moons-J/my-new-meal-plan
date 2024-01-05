@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  has_one :account
   has_many :ingredients
   has_many :meals
   has_many :daily_plans
@@ -20,4 +21,24 @@ class User < ApplicationRecord
   # validate :date_not_in_future
 
   after_create :copy_base_ingredients
+
+  private
+
+  def copy_base_ingredients
+    BaseIngredient.all.each do |ingredient|
+      create_ingredient(ingredient)
+    end
+  end
+
+  def create_ingredient(base_ingredient)
+    Ingredient.create(
+      name: base_ingredient.name,
+      calories: base_ingredient.calories,
+      fats: base_ingredient.fats,
+      satu_fats: base_ingredient.satu_fats,
+      carbs: base_ingredient.carbs,
+      protein: base_ingredient.protein,
+      user_id: id
+    )
+  end
 end

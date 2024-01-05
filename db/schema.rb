@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_03_125221) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_04_143611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "height"
-    t.integer "active_level"
-    t.integer "exercise_level"
-    t.date "birthday"
-    t.float "weight"
-    t.string "sex"
-    t.string "phase"
+    t.integer "user_id", null: false
+    t.integer "height", null: false
+    t.integer "active_level", null: false
+    t.integer "exercise_level", null: false
+    t.date "birthday", null: false
+    t.float "weight", null: false
+    t.string "sex", null: false
+    t.string "phase", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

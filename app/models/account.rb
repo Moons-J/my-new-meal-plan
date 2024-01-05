@@ -45,20 +45,6 @@ class Account < ApplicationRecord
     errors.add(:birthday, "can't be in the future") if birthday.present? && birthday > Date.today
   end
 
-  def copy_base_ingredients
-    BaseIngredient.all.each do |ingredient|
-      Ingredient.create(
-        name: ingredient.name,
-        calories: ingredient.calories,
-        fats: ingredient.fats,
-        satu_fats: ingredient.satu_fats,
-        carbs: ingredient.carbs,
-        protein: ingredient.protein,
-        user_id: self.id
-        )
-    end
-  end
-
   def age_year
     Date.today.year - self.birthday.year
   end

@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
   end
 
   def dashboard
+    @account = Account.find_by(user: current_user)
     @plannings = Planning.where(user: current_user)
     @updated_planning = []
     @daily_meals = { breakfast: "", lunch: "", dinner: "" }

@@ -41,7 +41,7 @@ CSV.foreach(filepath, headers: :first_row) do |row|
     fats: row['fats'].to_s,
     satu_fats: row['sat_fats'].to_s,
     carbs: row['carbs'].to_s,
-    protein: row['protein'].to_s,
+    protein: row['protein'].to_s
   )
 end
 puts "Created #{BaseIngredient.count} base ingredients!"
