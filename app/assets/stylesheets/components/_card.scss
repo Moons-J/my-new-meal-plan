@@ -6,6 +6,15 @@
   position: relative;
 }
 
+.centered-card {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
 .card-meal {
   margin: 10px 0px;
   transition-duration: 0.7s;

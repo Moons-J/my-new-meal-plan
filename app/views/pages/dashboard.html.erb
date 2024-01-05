@@ -2,9 +2,16 @@
 
 <%# Intakes %>
 <% if @account == nil %>
-  <div class="standard-card">
+  <div class="standard-card centered-card">
     <div class="d-flex justify-content-center align-center">
-      <h3 class="text-center py-3">To see your nutrition facts, please fill all fields in your account.</h3>
+      <h3 class="text-center"><strong>Please fill out the form!</strong></h3>
+    </div>
+      <h3 class="text-center">Then we can calculate your nutrition facts.</h3>
+    <div class="d-flex">
+      <%= link_to new_account_path, class: 'd-flex button-standard' do %>
+        <span class="button-text-space">Form</span>
+        <i class="fa-solid fa-list-check" style="color: #ffffff;"></i>
+      <% end %>
     </div>
   </div>
 <% else %>
