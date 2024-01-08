@@ -1,5 +1,6 @@
-class AccountsController < ApplicationController
+require_relative '../models/account'
 
+class AccountsController < ApplicationController
   def new
     @account = Account.new
   end

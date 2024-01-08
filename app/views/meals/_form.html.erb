@@ -13,34 +13,63 @@
     <%# Nutritions %>
     <div class="text-center">
       <h4 class="text-center">Meal's nutrition</h4>
-
       <div class="meal-nutritionfacts border-0">
-        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.user_calories %>">
-          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#8CB369;" data-create-meal-form-target="calloriesnum">0</div>
-          <p class="nutrition-data">Cal.</p>
+
+        <% if @account == nil %>
+          <div class="circle-and-number-container">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:100;--c:#8CB369;" data-create-meal-form-target="calloriesnum">0</div>
+            <p class="nutrition-data">Cal.</p>
+          </div>
+
+          <div class="circle-and-number-container">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:100;--c:#F4E285;" data-create-meal-form-target="fatsnum">0</div>
+            <p class="nutrition-data">Fat.</p>
+          </div>
+
+          <div class="circle-and-number-container">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:100;--c:#F4A259;" data-create-meal-form-target="satufatsnum">0</div>
+            <p class="nutrition-data">Satu-F.</p>
+          </div>
+
+          <div class="circle-and-number-container">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:100;--c:#5B8E7D;" data-create-meal-form-target="carbsnum">0</div>
+            <p class="nutrition-data">Carbs.</p>
+          </div>
+
+          <div class="circle-and-number-container">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:100;--c:#BC4B51;" data-create-meal-form-target="proteinnum">0</div>
+            <p class="nutrition-data">Prot.</p>
+          </div>
         </div>
 
-        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.min_user_fats %>">
-          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4E285;" data-create-meal-form-target="fatsnum">0</div>
-          <p class="nutrition-data">Fat.</p>
-        </div>
+        <% else %>
+          <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= account.user_calories %>">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#8CB369;" data-create-meal-form-target="calloriesnum">0</div>
+            <p class="nutrition-data">Cal.</p>
+          </div>
 
-        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.max_user_satu_fats %>">
-          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4A259;" data-create-meal-form-target="satufatsnum">0</div>
-          <p class="nutrition-data">Satu-F.</p>
-        </div>
+          <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= account.min_user_fats %>">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4E285;" data-create-meal-form-target="fatsnum">0</div>
+            <p class="nutrition-data">Fat.</p>
+          </div>
 
-        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.max_user_carbs %>">
-          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#5B8E7D;" data-create-meal-form-target="carbsnum">0</div>
-          <p class="nutrition-data">Carbs.</p>
-        </div>
+          <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= account.max_user_satu_fats %>">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#F4A259;" data-create-meal-form-target="satufatsnum">0</div>
+            <p class="nutrition-data">Satu-F.</p>
+          </div>
 
-        <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= current_user.min_user_protein %>">
-          <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#BC4B51;" data-create-meal-form-target="proteinnum">0</div>
-          <p class="nutrition-data">Prot.</p>
-        </div>
+          <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= account.max_user_carbs %>">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#5B8E7D;" data-create-meal-form-target="carbsnum">0</div>
+            <p class="nutrition-data">Carbs.</p>
+          </div>
+
+          <div class="circle-and-number-container" data-controller="update-nutrition-chart" data-action="trigger-nutrition-chart-update@window->update-nutrition-chart#update" data-update-nutrition-chart-user-max-value="<%= account.min_user_protein %>">
+            <div class="pie animate" data-update-nutrition-chart-target="nutritionNum" style="--p:0;--c:#BC4B51;" data-create-meal-form-target="proteinnum">0</div>
+            <p class="nutrition-data">Prot.</p>
+          </div>
+        <% end %>
+
       </div>
-
       <%# Picture input %>
       <label for="images" class="drop-container" id="dropcontainer">
         <div class="text-center picture-preview mb-3">
