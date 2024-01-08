@@ -41,7 +41,7 @@ CSV.foreach(filepath, headers: :first_row) do |row|
     fats: row['fats'].to_s,
     satu_fats: row['sat_fats'].to_s,
     carbs: row['carbs'].to_s,
-    protein: row['protein'].to_s,
+    protein: row['protein'].to_s
   )
 end
 puts "Created #{BaseIngredient.count} base ingredients!"
@@ -49,8 +49,6 @@ puts "Created #{BaseIngredient.count} base ingredients!"
 puts "Creating users..."
 
 emails = ["test1@email.com", "test2@email.com", "test3@email.com", "test4@email.com", "test5@email.com"]
-@sex = ["male", "female", "rather not say"]
-@phase = ["gain", "maintain", "lose"]
 
 emails.each do |email|
   user = User.create!(
@@ -58,13 +56,7 @@ emails.each do |email|
     password: "123123",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    user_name: Faker::Internet.username,
-    sex: @sex.sample,
-    phase: @phase.sample,
-    height: rand(150..200),
-    exercise_level: rand(1..5),
-    weight: rand(60..110),
-    birthday: "#{rand(1..30)}/#{rand(1..12)}/#{rand(1990..2005)}"
+    user_name: Faker::Internet.username
   )
   puts "#{user.ingredients.count} ingredients added to user with email: #{email}"
 

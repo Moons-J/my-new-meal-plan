@@ -1,3 +1,13 @@
+<%# Buttons %>
+<div class="form-actions button-flex-seperator">
+  <%= link_to :back, class: 'button-rounded-green' do %>
+    <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+  <% end %>
+  <%= link_to(daily_plan_path(@daily_plan), data: {turbo_method: :delete}, class: 'button-rounded-red') do %>
+    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
+  <% end %>
+</div>
+
 <%# Daily_plan image %>
 <div class="daily-plan-img-container text-center">
   <% if @daily_plan.photo.key.nil? %>
@@ -12,26 +22,52 @@
 <div class="mt-3">
   <h4 class="text-center pt-3">Daily Plan nutrition's</h4>
   <div class="meal-nutritionfacts border-0">
-    <div class="circle-and-number-container">
-      <p class="nutrition-data">Cal.</p>
-      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, @daily_plan.calculate_nutrition("calories")) %>;--c:#8CB369;"><%= @daily_plan.calculate_nutrition("calories") %></div>
-    </div>
-    <div class="circle-and-number-container">
-      <p class="nutrition-data">Fat.</p>
-      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_fats.to_i, @daily_plan.calculate_nutrition("fats")) %>;--c:#F4E285;"><%= @daily_plan.calculate_nutrition("fats") %></div>
-    </div>
-    <div class="circle-and-number-container">
-      <p class="nutrition-data">Satu-F.</p>
-      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_satu_fats.to_i, @daily_plan.calculate_nutrition("satu-fats")) %>;--c:#F4A259;"><%= @daily_plan.calculate_nutrition("satu-fats") %></div>
-    </div>
-    <div class="circle-and-number-container">
-      <p class="nutrition-data">Carbs.</p>
-      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_carbs.to_i, @daily_plan.calculate_nutrition("carbs")) %>;--c:#5B8E7D;"><%= @daily_plan.calculate_nutrition("carbs") %></div>
-    </div>
-    <div class="circle-and-number-container">
-      <p class="nutrition-data">Prot.</p>
-      <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, @daily_plan.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= @daily_plan.calculate_nutrition("protein") %></div>
-    </div>
+
+    <% if @account == nil %>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Cal.</p>
+        <div class="pie animate" style="--p:100;--c:#8CB369;"><%= @daily_plan.calculate_nutrition("calories") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Fat.</p>
+        <div class="pie animate" style="--p:100;--c:#F4E285;"><%= @daily_plan.calculate_nutrition("fats") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Satu-F.</p>
+        <div class="pie animate" style="--p:100;--c:#F4A259;"><%= @daily_plan.calculate_nutrition("satu-fats") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Carbs.</p>
+        <div class="pie animate" style="--p:100;--c:#5B8E7D;"><%= @daily_plan.calculate_nutrition("carbs") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Prot.</p>
+        <div class="pie animate" style="--p:100;--c:#BC4B51;"><%= @daily_plan.calculate_nutrition("protein") %></div>
+      </div>
+
+    <% else %>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Cal.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.user_calories.to_i, @daily_plan.calculate_nutrition("calories")) %>;--c:#8CB369;"><%= @daily_plan.calculate_nutrition("calories") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Fat.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_fats.to_i, @daily_plan.calculate_nutrition("fats")) %>;--c:#F4E285;"><%= @daily_plan.calculate_nutrition("fats") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Satu-F.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_satu_fats.to_i, @daily_plan.calculate_nutrition("satu-fats")) %>;--c:#F4A259;"><%= @daily_plan.calculate_nutrition("satu-fats") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Carbs.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.max_user_carbs.to_i, @daily_plan.calculate_nutrition("carbs")) %>;--c:#5B8E7D;"><%= @daily_plan.calculate_nutrition("carbs") %></div>
+      </div>
+      <div class="circle-and-number-container">
+        <p class="nutrition-data">Prot.</p>
+        <div class="pie animate" style="--p:<%= current_user.percentage_calculation(current_user.min_user_protein.to_i, @daily_plan.calculate_nutrition("protein")) %>;--c:#BC4B51;"><%= @daily_plan.calculate_nutrition("protein") %></div>
+      </div>
+
+    <% end %>
   </div>
 </div>
 
@@ -41,14 +77,5 @@
       <h3 class="meal-title"><%= daily_plan_meal.meal_type %></h3>
       <%= render "meals/meal_card", meal: daily_plan_meal.meal %>
     </div>
-  <% end %>
-</div>
-
-<div class="form-actions button-flex-seperator">
-  <%= link_to :back, class: 'button-rounded-green' do %>
-    <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
-  <% end %>
-  <%= link_to(daily_plan_path(@daily_plan), data: {turbo_method: :delete}, class: 'button-rounded-red') do %>
-    <i class="fa-regular fa-trash-can" style="color: #ffffff;"></i>
   <% end %>
 </div>
