@@ -7,8 +7,10 @@ This web app will give them a persice calculation of their nutrition facts.
 But the main feitures of our web app are:
 <ul>
   <li>Personal ingredients list, where the user can add, delete and update their ingredients.</li>
-  <li>A meal creation page where the nutritions of that meal are automaticaly calculated.</li>
+  <li>A meal creation page where the nutritions of that meal are automaticaly calculated by ingredients added.</li>
   <li>A daily plan creation page, where created meals can be assigned to a time.</li>
+  <li>These daily plans can then be assigned to a day of the week.</li>
+  <li>by assigning plans to your aggenda, the shopping list will show you which ingredients you should get from the store.</li>
 </ul>
 
 <h4>👴 Origin:</h4>
