@@ -9,11 +9,6 @@ But the main feitures of our web app are:
   <li>Personal ingredients list, where the user can add, delete and update their ingredients.</li>
   <li>A meal creation page where the nutritions of that meal are automaticaly calculated.</li>
   <li>A daily plan creation page, where created meals can be assigned to a time.</li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
 </ul>
 
 <h4>👴 Origin:</h4>
