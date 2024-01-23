@@ -40,10 +40,18 @@
           <h6><%= current_user.first_name %></h6>
           <p><%= Time.new.strftime("%b %d, %Y") %></p>
         </div>
-        <div>
-          <%= link_to edit_user_registration_path do %>
+        <div class="btn-group">
+          <button type="button" class="btn-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <%= image_tag "edited-profile-picture.jpg", class: "avatar-large" %>
-          <% end %>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- Dropdown menu links -->
+            <li><%= link_to "Personal Information", edit_user_account_path(current_user, current_user.account) %></li>
+            <li><%= link_to "Account Information", edit_user_registration_path %></li>
+            <li>
+              <%= link_to "Log Out", destroy_user_session_path, data: {turbo_method: :delete } %>
+            </li>
+          </ul>
         </div>
         <% end %>
       </div>

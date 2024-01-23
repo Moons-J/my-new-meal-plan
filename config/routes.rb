@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :daily_plans, only: %i[index new create show destroy]
   resources :ingredients, only: %i[index new create edit update destroy]
   resources :plannings, only: %i[create edit update]
-  resources :account, only: %i[new create edit update]
+
+  resources :users do
+    resources :accounts, only: %i[new create edit update], on: :member
+  end
+
   resources :groceries, only: %i[index create destroy]
   resources :weight_histories, only: %i[create]
 end

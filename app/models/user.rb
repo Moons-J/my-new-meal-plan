@@ -20,9 +20,13 @@ class User < ApplicationRecord
   # # validation for birthday it should be in the past
   # validate :date_not_in_future
 
-  after_create :copy_base_ingredients
+  after_create :create_account, :copy_base_ingredients
 
   private
+
+  def create_account
+    Account.create(user_id: id)
+  end
 
   def copy_base_ingredients
     BaseIngredient.all.each do |ingredient|

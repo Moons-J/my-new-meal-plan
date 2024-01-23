@@ -1,1 +1,40 @@
 <h2>Change account information:</h2>
+
+<%= simple_form_for [current_user, @account], turbo_method: :patch do |f| %>
+  <%= f.error_notification %>
+    <div class="form-inputs">
+      <div class="standard-card user-info">
+        <%= f.input :birthday,
+                  required: false, input_html: {class: "my-1"} %>
+        <%= f.input :height,
+                    hint: "In centimeters",
+                    required: false %>
+        <%= f.input :weight,
+                    hint: "In kilograms",
+                    required: false %>
+        <%= f.input :active_level,
+                    hint: "From 1 (no exercise) to 5 (excercise 7 days in a week), what is your weekly activity level?",
+                    required: false,
+                    input_html: { type: "number", min: 1, max: 5, step: 1 } %>
+        <%= f.input :phase,
+                    as: :radio_buttons,
+                    hint: "Do you want to lose, maintain or gain weight?",
+                    collection: ["lose", "maintain", "gain"],
+                    required: false %>
+        <%= f.input :sex,
+                    hint: "the 'rather not say' option will give you a calculation that is between female and male.",
+                    as: :radio_buttons,
+                    collection: ["female", "male", "rather not say"],
+                    required: false %>
+      </div>
+    </div>
+    <div class="form-actions button-flex-seperator">
+      <%= link_to :back, class: 'button-rounded-green' do %>
+        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+      <% end %>
+        <button type="submit" class="d-flex button-standard">
+          <span class="button-text-space">Save</span>
+          <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>
+        </button>
+    </div>
+<% end %>

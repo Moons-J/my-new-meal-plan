@@ -6,7 +6,7 @@ class Account < ApplicationRecord
   end
 
   def current_weight
-    self.weight_histories.order(:created_at).pluck(:weight).last
+    self.user.weight_histories.order(:created_at).pluck(:weight).last
   end
 
   def user_calories
@@ -15,7 +15,8 @@ class Account < ApplicationRecord
   end
 
   def min_user_fats
-    total = self.current_weight * 0.9 * 9
+    value_weight = self.current_weight.nil? ? 60 : self.current_weight
+    total = value_weight * 0.9 * 9
     total.round(1)
   end
 
@@ -30,11 +31,12 @@ class Account < ApplicationRecord
   end
 
   def min_user_protein
+    value_weight = self.current_weight.nil? ? 60 : self.current_weight
     case self.phase
     when "gain"
-      total = self.current_weight * 2 * 1.1
+      total = value_weight * 2 * 1.1
     else
-      total = self.current_weight * 2
+      total = value_weight * 2
     end
     total.round(1)
   end
@@ -50,7 +52,8 @@ class Account < ApplicationRecord
   end
 
   def user_phase
-    case self.phase
+    value_phase = self.phase.empty? ? "maintain" : self.phase
+    case value_phase
     when "gain"
       phase = 1.1
     when "maintain"
@@ -61,7 +64,8 @@ class Account < ApplicationRecord
   end
 
   def real_active_level
-    case self.active_level
+    value_active_level = self.active_level.nil? ? 1 : self.active_level
+    case value_active_level
     when 1
       new_active_level = 1.2
     when 2
@@ -76,12 +80,15 @@ class Account < ApplicationRecord
   end
 
   def user_nutri_calculation
+    value_weight = self.current_weight.nil? ? 60 : self.current_weight
+    value_height = self.height.nil? ? 1.60 : self.height
+    value_year = self.age_year.nil? ? (Date.today.year - 25) : self.age_year
     if self.sex == "male"
-      bmr = 66.5 + (13.75 * self.current_weight) + (5.003 * self.height) - (6.755 * self.age_year)
+      bmr = 66.5 + (13.75 * value_weight) + (5.003 * value_height) - (6.755 * self.age_year)
     elsif self.sex == "female"
-      bmr = 655.1 + (9.563 * self.current_weight) + (1.85 * self.height) - (4.676 * self.age_year)
+      bmr = 655.1 + (9.563 * value_weight) + (1.85 * value_height) - (4.676 * self.age_year)
     else
-      bmr = 325 + (12 * self.current_weight) + (3.5 * self.height) - (6 * self.age_year)
+      bmr = 325 + (12 * value_weight) + (3.5 * value_height) - (6 * self.age_year)
     end
   end
 end
