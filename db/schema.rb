@@ -16,13 +16,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_04_143611) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "height", null: false
-    t.integer "active_level", null: false
-    t.integer "exercise_level", null: false
-    t.date "birthday", null: false
-    t.float "weight", null: false
-    t.string "sex", null: false
-    t.string "phase", null: false
+    t.float "height"
+    t.float "active_level"
+    t.date "birthday"
+    t.float "weight"
+    t.string "sex"
+    t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -142,7 +141,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_04_143611) do
     t.string "encrypted_password", default: "", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "user_name"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
