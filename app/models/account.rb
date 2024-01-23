@@ -52,7 +52,8 @@ class Account < ApplicationRecord
   end
 
   def user_phase
-    case self.phase
+    value_phase = self.phase.empty? ? "maintain" : self.phase
+    case value_phase
     when "gain"
       phase = 1.1
     when "maintain"
@@ -80,12 +81,14 @@ class Account < ApplicationRecord
 
   def user_nutri_calculation
     value_weight = self.current_weight.nil? ? 60 : self.current_weight
+    value_height = self.height.nil? ? 1.60 : self.height
+    value_year = self.age_year.nil? ? (Date.today.year - 25) : self.age_year
     if self.sex == "male"
-      bmr = 66.5 + (13.75 * value_weight) + (5.003 * self.height) - (6.755 * self.age_year)
+      bmr = 66.5 + (13.75 * value_weight) + (5.003 * value_height) - (6.755 * self.age_year)
     elsif self.sex == "female"
-      bmr = 655.1 + (9.563 * value_weight) + (1.85 * self.height) - (4.676 * self.age_year)
+      bmr = 655.1 + (9.563 * value_weight) + (1.85 * value_height) - (4.676 * self.age_year)
     else
-      bmr = 325 + (12 * value_weight) + (3.5 * self.height) - (6 * self.age_year)
+      bmr = 325 + (12 * value_weight) + (3.5 * value_height) - (6 * self.age_year)
     end
   end
 end

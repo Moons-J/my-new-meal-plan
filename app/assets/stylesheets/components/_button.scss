@@ -112,3 +112,39 @@
     margin: 0!important;
   }
 }
+
+.btn-group{
+
+  button.btn-dropdown{
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+  }
+  .dropdown-menu.show{
+    left: -5em;
+    top: 4em;
+  }
+  ul{
+    width: 13em;
+    padding-inline: 20%;
+    height: auto;
+    border-radius: 8px;
+    text-align: right;
+
+    li{
+      padding-block: 0.4em;
+    }
+
+    li a{
+      text-decoration: none;
+      color: $dark-gray;
+      padding-right: 0.4em;
+    }
+    a:hover{
+      background-color: $green-buttons;
+      color: white;
+      padding: 0.4em 0.4em;
+      border-radius: 6px;
+    }
+  }
+}
