@@ -1,50 +1,44 @@
-<header class="d-flex justify-content-between">
-  <div>
-    <h4>Account information</h4>
-    <p>(Editable)</p>
-  </div>
-  <div>
-    <%= link_to destroy_user_session_path, data: {turbo_method: :delete }, class: 'd-flex button-standard' do %>
-      <span class="button-text-space">log out</span>
-      <i class="fa-solid fa-door-open" style="color: #ffffff;"></i>
-    <% end %>
-  </div>
-</header>
-
+<h2 class='text-center'>Account information</h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="standard-card user-info">
-      <h5>User information:</h5>
-      <%= f.input :email, required: true, autofocus: true %>
+  <div class="form-inputs standard-card user-info">
+    <h5>User:</h5>
+    <%= f.input :email, required: true, autofocus: true %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
 
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <h5>Change password:</h5>
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-    </div>
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :first_name,
+                required: false %>
+    <%= f.input :last_name,
+                required: false %>
+    <h5>Change password:</h5>
+    <%= f.input :password,
+                hint: "leave it blank if you don't want to change it",
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                input_html: { autocomplete: "new-password" } %>
   </div>
   <div class="form-actions button-flex-seperator">
     <%= link_to :back, class: 'button-rounded-green' do %>
       <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
     <% end %>
-      <button type="submit" class="d-flex button-standard">
-        <span class="button-text-space">Save</span>
-        <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>
-      </button>
+  <div>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete }, class: 'd-flex button-standard' do %>
+      <span class="button-text-space">Log out</span>
+      <i class="fa-solid fa-door-open" style="color: #ffffff;"></i>
+    <% end %>
+  </div>
+    <button type="submit" class="d-flex button-standard">
+      <span class="button-text-space">Save</span>
+      <i class="fa-regular fa-floppy-disk" style="font-size: x-large; color: #ffffff;"></i>
+    </button>
   </div>
 <% end %>
 <div style="text-align: center;">
