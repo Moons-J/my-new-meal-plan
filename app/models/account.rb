@@ -81,11 +81,11 @@ class Account < ApplicationRecord
     value_height = height.nil? ? 1.60 : height
     value_year = age_year.nil? ? (Date.today.year - 25) : age_year
     if sex == "male"
-      66.5 + (13.75 * value_weight) + (5.003 * value_height) - (6.755 * age_year)
+      66.5 + (13.75 * value_weight) + (5.003 * value_height) - (6.755 * value_year)
     elsif sex == "female"
-      655.1 + (9.563 * value_weight) + (1.85 * value_height) - (4.676 * age_year)
+      655.1 + (9.563 * value_weight) + (1.85 * value_height) - (4.676 * value_year)
     else
-      325 + (12 * value_weight) + (3.5 * value_height) - (6 * age_year)
+      325 + (12 * value_weight) + (3.5 * value_height) - (6 * value_year)
     end
   end
 end
