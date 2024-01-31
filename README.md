@@ -15,5 +15,5 @@ The main features of our web app are:
 
 <h4>👴 Origin:</h4>
 My original idea started when I wanted to lose weight.
-But I did't now where to start... So, I did some googling and I created a lot of excel files...
+But I didn't know where to start... So, I did some googling and I created a lot of excel files...
 with these files I made a completely automated personal diet machine and I wanted to go further but I reached my limits with Excel.
